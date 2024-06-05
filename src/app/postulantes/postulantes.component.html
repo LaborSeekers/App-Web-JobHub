@@ -1,0 +1,36 @@
+<header>
+  <H1>JobHub</H1>
+</header>
+
+<main>
+  <div class="izquierda">
+    <div class="izquierda-superior">
+      <h2>Panel de Candidato</h2>
+      <ul>
+        <li><a [routerLink]="[{ outlets: { tablaE: ['TablaOV'] } }]">Overview</a></li>
+        <li><a [routerLink]="['']">Trabajos Aplicados</a></li>
+        <li><a [routerLink]="[{ outlets: { tablaE: ['TablaFav'] } }]">Ofertas Favoritas</a></li>
+        <li><a [routerLink]="['/route/path']">Alertas de Trabajo</a></li>
+        <li><a [routerLink]="['/route/path']">Configuracion</a></li>
+      </ul>
+    </div>
+    <div class="izquierda-inferior">
+      <h2>Log Out</h2>
+    </div>
+    
+  </div>
+
+  <div class="derecha">
+    <div class="derecha-superior">
+      <h1>div-derecha-superior</h1>
+    </div>
+    <div class="derecha-inferior">
+      <h1>div-derecha-inferior</h1>
+      <router-outlet name="tablaE"></router-outlet>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <h1> &copy; 2024 JobHub - Job Board. All rights Reserverd</h1>
+</footer>

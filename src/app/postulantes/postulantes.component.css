@@ -1,0 +1,115 @@
+/*header css*/
+header{
+    display: flex;
+    flex:1;
+}
+/*main css*/
+main{
+    background-color: antiquewhite;
+    display: flex;
+    border-top-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.izquierda{
+    flex: 1;
+    border-right-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    text-align: center;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+}
+.izquierda-superior{
+    flex:3;
+    background-color: white;
+}
+.izquierda-superior h2{
+    color: #000;
+    opacity: 0.6;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-superior ul{
+    list-style-type: none;
+    /*padding: 0px;*/
+    text-align: left;
+}
+.izquierda-superior ul li a{
+    text-decoration: none;
+    color: #000;
+    opacity: 0.7;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-superior ul li a:hover{
+    color: #27A5FF;
+}
+.izquierda-superior ul li:hover{
+    background: #E7F0FA;
+}
+.izquierda-superior ul li a:focus, .izquierda-superior ul li a:active {
+    color: #27A5FF; 
+    
+}
+.izquierda-superior ul li:focus, .izquierda-superior ul li:active {
+    background-color: #E7F0FA;    
+}
+
+
+.izquierda-inferior{
+    flex:1;
+    background-color: dodgerblue;
+    justify-content: center;
+    align-items: end;
+    display: flex;
+}
+
+.derecha{
+    flex: 5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.derecha-superior{
+    flex: 1;
+    background-color: blueviolet;
+}
+.derecha-inferior{
+    flex: 3;
+    background-color: lightblue;
+}
+
+
+
+
+/*Footer CSS*/
+footer{
+    background-color: azure;
+    border-top-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+footer h1{
+    text-align: center;
+
+}
+
