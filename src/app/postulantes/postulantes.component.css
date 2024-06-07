@@ -1,11 +1,53 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
 /*header css*/
 header{
     display: flex;
+    flex: 0.9;
+    min-height: 100px;
+    align-items: center;
+}
+.logo{
+    flex:1;
+    display: flex;
+    align-items: center;
+    padding-left: 8.5%;
+}
+#logoImg{
+    height: auto;
+    width: 13%;
+    min-width: 40px;
+}
+#logoTxt{
+    color: #05B4FF;
+    text-shadow: 
+    0px 4px 4px rgba(0, 0, 0, 0.25), 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px  1px 0 #000,
+    1px  1px 0 #000; 
+    
+    font-family: "Lalezar" !important;
+    font-size: calc(48px - calc(32px - 2vw));
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;   
+    flex: 1;
+}
+.buscador{
+    display: flex;
+    align-items: center;
+    flex:1;
+}
+.perfil{
     flex:1;
 }
 /*main css*/
 main{
-    background-color: antiquewhite;
+    background-color: white;
     display: flex;
     border-top-width: 2px;
     border-style: solid;
@@ -43,8 +85,7 @@ main{
 }
 .izquierda-superior ul{
     list-style-type: none;
-    /*padding: 0px;*/
-    text-align: left;
+    min-width: 190px;
 }
 .izquierda-superior ul li a{
     text-decoration: none;
@@ -70,14 +111,51 @@ main{
 .izquierda-superior ul li:focus, .izquierda-superior ul li:active {
     background-color: #E7F0FA;    
 }
+.izquierda-superior ul li a{
+   display: flex;
+   align-items: center;
+}
+.izquierda-superior ul li {
+    padding: 5% 0% 5% 10%;
+}
 
+.izquierda-superior ul li.selected {
+     background-color: #E7F0FA
+} 
+
+#capaoverview, #portafolio-overview,#marcador-overview{
+    width: 15%;
+    height: auto;
+    margin-right: 15px;
+}
+#config-overview{
+    width: 20%;
+    height: auto;
+    margin-right: 7px;
+    margin-left: -3px;
+}
+#campana-overview{
+    width: 19%;
+    height: auto;
+    margin-right: 10px;
+    margin-left: -4px;
+}
+
+.izquierda-superior ul  {
+    padding: 0px;
+ }
 
 .izquierda-inferior{
     flex:1;
-    background-color: dodgerblue;
     justify-content: center;
     align-items: end;
     display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.izquierda-inferior img{
+    width: 15%;
+    height: auto;
 }
 
 .derecha{
@@ -93,23 +171,79 @@ main{
 .derecha-inferior{
     flex: 3;
     background-color: lightblue;
+    display: flex;
+    flex-direction: column;
 }
+.optionTabla{
+    display: flex;
+    gap: calc(512px - calc(512px - 32vw));
+}
+.optionTabla-izquierda{
+    flex: 1;
+    color: #000;
 
-
-
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.optionTabla-derecha{
+    flex: 1;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+}
+.optionTabla-derecha h4{
+   margin-left:45%;
+}
+.optionTabla-derecha img{
+    
+    max-width: 5%;
+}
+.tablaEmple{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /*Footer CSS*/
 footer{
-    background-color: azure;
+    background-color: white;
     border-top-width: 2px;
     border-style: solid;
     border-color: rgb(137, 137, 137);
     border-bottom: none;
     border-left: none;
     border-right: none;
+    display: flex;
+    align-items: center;    /*Alinea verticalmente hacia el centro*/
+    justify-content: center; /*Alinea horizontalmente al centro*/
+    flex:1
 }
 footer h1{
+    color: #000;
     text-align: center;
-
+    font-family: Epilogue;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
-
+#logout{
+    color: #000;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

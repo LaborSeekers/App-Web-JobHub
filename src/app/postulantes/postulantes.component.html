@@ -1,36 +1,66 @@
-<header>
-  <H1>JobHub</H1>
-</header>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/imagenes/Header/logoJobHub.png" alt="logo" id="logoImg">
+      <h1 id="logoTxt">JobHub</h1>
+    </div>
+    <div class="buscador">
+      <h3>peru</h3>
+      <input type="text" placeholder="Ingrese algo">
+    </div>
+    <div class="perfil">
+      <h4>insertar foto de perfil y botones</h4>
+    </div>
+  </header>
 
-<main>
-  <div class="izquierda">
-    <div class="izquierda-superior">
-      <h2>Panel de Candidato</h2>
-      <ul>
-        <li><a [routerLink]="[{ outlets: { tablaE: ['TablaOV'] } }]">Overview</a></li>
-        <li><a [routerLink]="['']">Trabajos Aplicados</a></li>
-        <li><a [routerLink]="[{ outlets: { tablaE: ['TablaFav'] } }]">Ofertas Favoritas</a></li>
-        <li><a [routerLink]="['/route/path']">Alertas de Trabajo</a></li>
-        <li><a [routerLink]="['/route/path']">Configuracion</a></li>
-      </ul>
+  <main>
+    <div class="izquierda">
+      <div class="izquierda-superior">
+        <h2>Panel de Candidato</h2>
+        <ul>
+          <li *ngFor="let link of links; let i = index"
+              (click)="selectLink(i)"
+              [ngClass]="{ 'selected': selectedIndex === i }"> 
+            <a [routerLink]="link.route">
+              <img 
+                [src]="selectedIndex === i ? link.selectedImage : link.image" 
+                [alt]="link.alt" 
+                [id]="link.id"> 
+              {{ link.text }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="izquierda-inferior">
+        <img src="assets/imagenes/Nav-bar/CerrarSesion.png">
+        <h3 id="logout">Log Out</h3>
+      </div>
+      
     </div>
-    <div class="izquierda-inferior">
-      <h2>Log Out</h2>
-    </div>
-    
-  </div>
 
-  <div class="derecha">
-    <div class="derecha-superior">
-      <h1>div-derecha-superior</h1>
+    <div class="derecha">
+      <div class="derecha-superior">
+        <h1>div-derecha-superior</h1>
+      </div>
+      <div class="derecha-inferior">
+        <div class="optionTabla">
+          <div class="optionTabla-izquierda">
+            <h4>Puestos recientemente publicados</h4>
+          </div>
+          <div class="optionTabla-derecha">
+            <h4>Mostrar Todo</h4>
+            <img src="assets/imagenes/flecha.png" alt="Flecha">
+          </div>
+        </div>
+        <div class="tablaEmple">
+          <router-outlet name="tablaE"></router-outlet>
+        </div>
+        
+      </div>
     </div>
-    <div class="derecha-inferior">
-      <h1>div-derecha-inferior</h1>
-      <router-outlet name="tablaE"></router-outlet>
-    </div>
-  </div>
-</main>
+  </main>
 
-<footer>
-  <h1> &copy; 2024 JobHub - Job Board. All rights Reserverd</h1>
-</footer>
+  <footer>
+    <h1> &copy; 2024 JobHub - Job Board. All rights Reserverd</h1>
+  </footer>
+</body>
