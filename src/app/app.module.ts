@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './material/material.module';
 import { PostulantesModule } from './postulantes/postulantes.module';
+import { OfertantesModule } from './ofertantes/ofertantes.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PostulantesModule } from './postulantes/postulantes.module';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    PostulantesModule
+    PostulantesModule,
+    OfertantesModule,
   ],
   providers: [
     provideAnimationsAsync()

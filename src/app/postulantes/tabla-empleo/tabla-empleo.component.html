@@ -1,52 +1,125 @@
-<div class="TablaEmpleos">
-  <table mat-table
-        [dataSource]="dataSource" multiTemplateDataRows
-        class="mat-elevation-z8">
-    @for (column of columnsToDisplay; track column) {
-      <ng-container matColumnDef="{{column}}">
-        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-        <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-      </ng-container>
-    }
-    <ng-container matColumnDef="expand">
-      <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
-          @if (expandedElement === element) {
-            <mat-icon>keyboard_arrow_up</mat-icon>
-          } @else {
-            <mat-icon>keyboard_arrow_down</mat-icon>
-          }
-        </button>
-      </td>
-    </ng-container>
+<div class="derecha">
+  <div class="derecha-superior">
+    <div class="derecha-superior-arriba">
+      <p>Hola, José Pérez</p>
+      <p>Aquí tienes un resumen de tus actividades diarias y alertas de trabajo</p>
+    </div>
+    <div class="derecha-superior-abajo">
+      <div class="item blue">
 
-    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-    <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
-        <div class="example-element-detail"
-            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-          <div class="example-element-diagram">
-            <div class="example-element-position"> {{element.position}} </div>
-            <div class="example-element-symbol"> {{element.symbol}} </div>
-            <div class="example-element-name"> {{element.name}} </div>
-            <div class="example-element-weight"> {{element.weight}} </div>
-          </div>
-          <div class="example-element-description">
-            {{element.description}}
-            <span class="example-element-description-attribution"> -- Wikipedia </span>
-          </div>
+        <div class="color-izqui">
+          <span class="number">100</span>
+          <span class="text">Trabajos aplicados</span>
         </div>
-      </td>
-    </ng-container>
+        <div class="color-dere">
+          <img src="assets/imagenes/Overview/portafolio2.png" alt="portafolio">
+        </div>
 
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand; sticky:true"></tr>
-    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
-        class="example-element-row"
-        [class.example-expanded-row]="expandedElement === element"
-        (click)="expandedElement = expandedElement === element ? null : element">
-    </tr>
-    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-  </table>
+      </div>
+
+      <div class="item yellow">
+
+        <div class="color-izqui">
+          <span class="number">20</span>
+          <span class="text">Ofertas Favoritas</span>
+        </div>
+        <div class="color-dere">
+          <img src="assets/imagenes/Overview/marcador2.png" alt="portafolio">
+        </div>
+      </div>
+
+
+      <div class="item green">
+        <div class="color-izqui">
+          <span class="number">250</span>
+          <span class="text">Alertas de trabajo</span>
+        </div>
+        <div class="color-dere">
+          <img src="assets/imagenes/Overview/campanasicon3.png" alt="portafolio">
+        </div>
+      </div>
+    </div>
+    
+    
+
+  </div>
+  <div class="derecha-inferior">
+    <div class="optionTabla">
+      <div class="optionTabla-izquierda">
+        <h4>Puestos recientemente publicados</h4>
+      </div>
+      <div class="optionTabla-derecha">
+        <h4>Mostrar Todo</h4>
+        <img src="assets/imagenes/flecha.png" alt="Flecha">
+      </div>
+    </div>
+    <div class="tablaEmple">
+  
+      <div class="TablaEmpleos">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Puesto Column -->
+          <ng-container matColumnDef="puesto">
+            <th mat-header-cell *matHeaderCellDef> Puestos </th>
+            <td mat-cell *matCellDef="let element">
+              <div>
+                <img [src]="element.logo" alt="logo" style="width: 24px; height: 24px; margin-right: 8px;">
+                {{element.puesto}}
+                <div>{{element.location}}</div>
+                <div>{{element.salary}}</div>
+                <div>{{element.type}}</div>
+              </div>
+            </td>
+          </ng-container>
+        
+          <!-- Reputación Column -->
+          <ng-container matColumnDef="reputacion">
+            <th mat-header-cell *matHeaderCellDef> Reputación </th>
+            <td mat-cell *matCellDef="let element">
+              <img [src]="element.reputacion" alt="reputacion" style="width: 24px; height: 24px;">
+            </td>
+          </ng-container>
+        
+          <!-- Fecha de Aplicación Column -->
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef> Fecha de Aplicación </th>
+            <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+          </ng-container>
+        
+          <!-- Estado Column -->
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element">
+              <span [ngClass]="{'active': element.estado === 'Active', 'cancelado': element.estado === 'Cancelado', 'finalizado': element.estado === 'Finalizado'}">
+                {{element.estado}}
+              </span>
+            </td>
+          </ng-container>
+        
+          <!-- Acción Column -->
+          <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef> Acción </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button color="primary" (click)="verDetalles(element)">Ver detalles</button>
+            </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        
+      </div>
+  
+    </div>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 

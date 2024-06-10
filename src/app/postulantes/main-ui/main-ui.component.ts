@@ -3,11 +3,11 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-postulantes',
-  templateUrl: './postulantes.component.html',
-  styleUrls: ['./postulantes.component.css']
+  selector: 'app-main-ui',
+  templateUrl: './main-ui.component.html',
+  styleUrl: './main-ui.component.css'
 })
-export class PostulantesComponent implements OnInit {
+export class MainUIComponent implements OnInit {
   links = [
     { route: ['TablaOV'], image: "assets/imagenes/Nav-bar/capas2.png",selectedImage:"assets/imagenes/Nav-bar/capas.png", alt: "capa", id: "capaoverview", text: "Overview" },
     { route: ['TablaApi'], image: "assets/imagenes/Nav-bar/portafolio.png",selectedImage:"assets/imagenes/Nav-bar/portafolio2.png", alt: "portafolio", id: "portafolio-overview", text: "Trabajos Aplicados" },

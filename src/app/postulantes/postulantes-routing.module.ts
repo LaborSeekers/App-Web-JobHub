@@ -5,10 +5,18 @@ import { TablaEmpleoComponent } from './tabla-empleo/tabla-empleo.component';
 import { TablaEmpleoFavComponent } from './tabla-empleo-fav/tabla-empleo-fav.component';
 
 const routes: Routes = [
-  { path: '', component: PostulantesComponent,outlet:'main'},
-  { path: '', component: TablaEmpleoComponent,outlet: 'tablaE'}, /*para que la tabla se muestre apenas entres a postulante */
-  { path: 'TablaOV', component: TablaEmpleoComponent,outlet: 'tablaE'},
-  { path: 'TablaFav', component: TablaEmpleoFavComponent,outlet: 'tablaE'}
+  { path: '', component: PostulantesComponent,
+    children:[
+      {path: '', component: TablaEmpleoComponent},
+      {path: 'TablaOV', component: TablaEmpleoComponent},
+      {path: 'TablaFav', component: TablaEmpleoFavComponent},
+      ]
+   },
+   {path: 'main-UI', loadChildren: () => import('./main-ui/main-ui.module').then(m => m.MainUIModule) },
+  { path: 'appconfiguration', loadChildren: () => import('./appconfiguration/appconfiguration.module').then(m => m.AppconfigurationModule) },
+  { path: 'curriculum', loadChildren: () => import('./curriculum/curriculum.module').then(m => m.CurriculumModule) },
+    /*Aqui debe ir el componente Curriculum en el futuro */
+
 ];
 
 @NgModule({

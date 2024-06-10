@@ -1,18 +1,5 @@
 <body>
-  <header>
-    <div class="logo">
-      <img src="assets/imagenes/Header/logoJobHub.png" alt="logo" id="logoImg">
-      <h1 id="logoTxt">JobHub</h1>
-    </div>
-    <div class="buscador">
-      <h3>peru</h3>
-      <input type="text" placeholder="Ingrese algo">
-    </div>
-    <div class="perfil">
-      <h4>insertar foto de perfil y botones</h4>
-    </div>
-  </header>
-
+  <app-header></app-header>
   <main>
     <div class="izquierda">
       <div class="izquierda-superior">
@@ -21,7 +8,7 @@
           <li *ngFor="let link of links; let i = index"
               (click)="selectLink(i)"
               [ngClass]="{ 'selected': selectedIndex === i }"> 
-            <a [routerLink]="link.route">
+            <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
               <img 
                 [src]="selectedIndex === i ? link.selectedImage : link.image" 
                 [alt]="link.alt" 
@@ -39,28 +26,8 @@
     </div>
 
     <div class="derecha">
-      <div class="derecha-superior">
-        <h1>div-derecha-superior</h1>
-      </div>
-      <div class="derecha-inferior">
-        <div class="optionTabla">
-          <div class="optionTabla-izquierda">
-            <h4>Puestos recientemente publicados</h4>
-          </div>
-          <div class="optionTabla-derecha">
-            <h4>Mostrar Todo</h4>
-            <img src="assets/imagenes/flecha.png" alt="Flecha">
-          </div>
-        </div>
-        <div class="tablaEmple">
-          <router-outlet name="tablaE"></router-outlet>
-        </div>
-        
-      </div>
+      <router-outlet></router-outlet>
     </div>
   </main>
-
-  <footer>
-    <h1> &copy; 2024 JobHub - Job Board. All rights Reserverd</h1>
-  </footer>
+  <app-footer></app-footer>
 </body>

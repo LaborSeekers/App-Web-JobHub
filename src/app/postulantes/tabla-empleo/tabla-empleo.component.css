@@ -6,7 +6,7 @@
 
 table {
     display: block;
-    max-height:415px;
+    max-height:315px;
     overflow-y: auto;
   }
 
@@ -59,4 +59,151 @@ table {
   .example-element-description-attribution {
     opacity: 0.5;
   }
+
+
+.derecha{
+    flex: 5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.derecha-superior{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.derecha-superior-arriba{
+  flex:1;
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.derecha-superior-abajo{
+  display: flex;
+
+  flex:2;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  justify-content: space-around;
+}
+.item {
+  display: flex;
+  align-items: center; /* Alinea los elementos verticalmente al centro */
+  padding: 15px 25px;
+  border-radius: 60px; /* Bordes redondeados */
+  margin: 10px;
+}
+
+.blue {
+  background-color: #e0f2f7;
+  display: flex;
+  gap: 20px;
+  min-height: 60px;
+  min-width: 230px;
+ }
+ .color-dere{
+  width: 40px; 
+  height: 40px; 
+  overflow: hidden; 
+  background-color: white;
+ }
+ .color-izqui{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+ }
+ .color-dere img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ }
+
+ 
+.yellow {
+  background-color: #fff8e1; 
+  gap: 20px;
+  min-width: 230px;
+  min-height: 60px;
+}
+
+.green {
+  background-color: #e8f5e9; 
+  gap: 20px;
+  min-height: 60px;
+  min-width: 230px;
+}
+
+.number {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+
+.derecha-inferior{
+  flex: 3;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+}
+.optionTabla{
+  display: flex;
+  gap: calc(512px - calc(512px - 32vw));
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.optionTabla-izquierda{
+  flex: 1;
+  color: #000;
+
+  text-align: center;
+  font-family: Epilogue;
+  font-size: 14px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.optionTabla-derecha{
+  flex: 1;
+  text-align: center;
+  font-family: Epilogue;
+  font-size: 14px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  
+}
+.optionTabla-derecha h4{
+ margin-left:45%;
+}
+.optionTabla-derecha img{
+  
+  max-width: 5%;
+}
+.tablaEmple{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-detail-row {
+  height: 0;
+  visibility: hidden;
+}
+
+.expanded-row + .example-detail-row {
+  visibility: visible;
+}
 
