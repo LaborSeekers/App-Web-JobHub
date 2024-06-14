@@ -13,7 +13,7 @@ export class PostulantesComponent implements OnInit {
     { route: ['TablaApi'], image: "assets/imagenes/Nav-bar/portafolio.png",selectedImage:"assets/imagenes/Nav-bar/portafolio2.png", alt: "portafolio", id: "portafolio-overview", text: "Trabajos Aplicados" },
     { route: ['TablaFav'], image: "assets/imagenes/Nav-bar/marcador.png",selectedImage:"assets/imagenes/Nav-bar/marcador3.png", alt: "marcador", id: "marcador-overview", text: "Ofertas Favoritas" },
     { route: ['/route/path'], image: "assets/imagenes/Nav-bar/campanasicon.png",selectedImage:"assets/imagenes/Nav-bar/campanasicon2.png", alt: "campana", id: "campana-overview", text: "Alertas de Trabajo" },
-    { route: ['/route/path'], image: "assets/imagenes/Nav-bar/Engranajes.png",selectedImage:"assets/imagenes/Nav-bar/Engranajes2.png", alt: "config", id: "config-overview", text: "Configuración" },
+    { route: ['appconfiguration'], image: "assets/imagenes/Nav-bar/Engranajes.png",selectedImage:"assets/imagenes/Nav-bar/Engranajes2.png", alt: "config", id: "config-overview", text: "Configuración" },
   ];
   selectedIndex: number | null = null;
 

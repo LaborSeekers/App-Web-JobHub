@@ -1,1 +1,33 @@
-<p>appconfiguration works!</p>
+<div class="configuracion">
+    <div class="superior">
+        <h2>Configuración</h2>
+    </div>
+    <div class="inferior">
+
+        <h3>Modificar datos personales</h3>
+        <div class=" conf modDatos">
+            <p>Gestiona los números de teléfono y direcciones de correo electrónico 
+               para garantizar que la información de contacto esté precisa y al día.</p>
+            <button [textContent]="['Actualizar correo electrónico']"></button>
+            <button [textContent]="['Actualizar número telefónico']"></button>
+        </div>
+        <div class=" conf fechaNaci">
+            <p>Por favor, proporciona tu fecha de nacimiento para que podamos ofrecerte
+                 una experiencia apropiada para tu edad.</p>
+            <button [textContent]="['Editar fecha de nacimiento']"></button>
+        </div>
+        <h3>Cambiar contraseña</h3>
+        <div class=" conf cambiaContra">
+            <p>Usted puede cambiar su contraseña cuantas veces desea, por favor tener en cuenta que cada vez que se
+                 cambia la contraseña, se cerrará su cuenta en todas las plataformas que inició sesión en algún momento.</p>
+            <button [textContent]="['Cambiar contraseña']"></button>
+        </div>
+
+        <h3>Eliminar cuenta</h3>
+        <div class=" conf elimCuenta">
+            <p>Seleccionar esta opción eliminará tu cuenta de forma permanente, junto con toda tu actividad
+               en la plataforma y toda la información compartida hasta ahora.</p>
+            <button [textContent]="['Eliminar cuenta']"></button>
+        </div>
+    </div>
+</div>

@@ -10,11 +10,11 @@ const routes: Routes = [
       {path: '', component: TablaEmpleoComponent},
       {path: 'TablaOV', component: TablaEmpleoComponent},
       {path: 'TablaFav', component: TablaEmpleoFavComponent},
+      {path: 'appconfiguration', loadChildren: () => import('./appconfiguration/appconfiguration.module').then(m => m.AppconfigurationModule) },
       ]
    },
    {path: 'main-UI', loadChildren: () => import('./main-ui/main-ui.module').then(m => m.MainUIModule) },
-  { path: 'appconfiguration', loadChildren: () => import('./appconfiguration/appconfiguration.module').then(m => m.AppconfigurationModule) },
-  { path: 'curriculum', loadChildren: () => import('./curriculum/curriculum.module').then(m => m.CurriculumModule) },
+   {path: 'curriculum', loadChildren: () => import('./curriculum/curriculum.module').then(m => m.CurriculumModule) },
     /*Aqui debe ir el componente Curriculum en el futuro */
 
 ];

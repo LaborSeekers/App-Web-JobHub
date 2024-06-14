@@ -17,7 +17,7 @@ export class TablaEmpleoComponent {
   displayedColumns: string[] = ['puesto', 'reputacion', 'fecha', 'estado', 'accion'];
   dataSource = [
     {
-      logo: 'path/to/logo1.png',
+      logo: 'assets/imagenes/Tabla/interbank.png',
       puesto: 'Data Scientist Senior de Riesgos',
       location: 'Javier Prado, Lima',
       salary: '$2k-5k al mes',
@@ -25,10 +25,10 @@ export class TablaEmpleoComponent {
       reputacion: 'assets/imagenes/medidor.png',
       fecha: 'Abril 15, 2024 14:35',
       estado: 'Active',
-      descripcion: 'Responsable de gestionar y analizar datos para identificar riesgos.'
+      descripcion: 'Responsable de gestionar y analizar datos para identificar riesgos.Responsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgos'
     },
     {
-      logo: 'path/to/logo2.png',
+      logo: 'assets/imagenes/Tabla/tlogo.png',
       puesto: 'Desarrollador Java',
       location: 'San Isidro, Lima',
       salary: '$1k-3k al mes',
@@ -39,7 +39,7 @@ export class TablaEmpleoComponent {
       descripcion: 'Desarrolla aplicaciones Java en un entorno de trabajo remoto.'
     },
     {
-      logo: 'path/to/logo3.png',
+      logo: 'assets/imagenes/Tabla/delsofi.png',
       puesto: 'Data Engineer - Gestión',
       location: 'Miraflores, Lima',
       salary: '$1k-3k al mes',
@@ -50,7 +50,7 @@ export class TablaEmpleoComponent {
       descripcion: 'Encargado de la gestión y el procesamiento de datos.'
     },
     {
-      logo: 'path/to/logo4.png',
+      logo: 'assets/imagenes/Tabla/bbva.png',
       puesto: 'Data Advanced Analytics',
       location: 'Javier Prado, Lima',
       salary: '$5k-7k al mes',
@@ -63,10 +63,6 @@ export class TablaEmpleoComponent {
   ];
 
   expandedElement: any | null;
-
-  toggleRow(element: any) {
-    this.expandedElement = this.expandedElement === element ? null : element;
-  }
 
   verDetalles(element: any) {
     console.log('Ver detalles', element);
