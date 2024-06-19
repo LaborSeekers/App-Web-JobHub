@@ -10,6 +10,7 @@ export class ForgotPasswordComponent {
   @ViewChild('actions') actions!: ElementRef<HTMLDivElement>;
   @ViewChild('description') description!: ElementRef<HTMLParagraphElement>;
   @ViewChild('confirmationMessage') confirmationMessage!: ElementRef<HTMLParagraphElement>;
+  @ViewChild('changePassword') changePassword!: ElementRef<HTMLDivElement>; 
 
   recoverAccount() {
     const emailValue = this.emailInput.nativeElement.value;
@@ -17,6 +18,7 @@ export class ForgotPasswordComponent {
       this.actions.nativeElement.style.display = 'none';
       this.description.nativeElement.style.display = 'none';
       this.confirmationMessage.nativeElement.style.display = 'block';
+      this.changePassword.nativeElement.style.display = 'block';
     } else {
       alert("Por favor, ingrese su correo electrónico.");
     }

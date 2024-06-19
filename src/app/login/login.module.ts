@@ -20,7 +20,8 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
     LoginRoutingModule
   ],exports: [
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ChangePasswordComponent
   ]
 })
 export class LoginModule { }
