@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+/*main css*/
+main{
+    background-color: white;
+    display: flex;
+    border-top-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.izquierda{
+    flex: 1;
+    border-right-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    text-align: center;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+}
+.izquierda-superior{
+    flex:3;
+    background-color: white;
+}
+.izquierda-superior h2{
+    color: #000;
+    opacity: 0.6;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-inferior{
+    flex:1;
+    justify-content: center;
+    align-items: end;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.derecha{
+    flex: 5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.derecha-superior{
+    flex: 1;
+    background-color: blueviolet;
+}
+.derecha-inferior{
+    flex: 3;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+}
