@@ -1,0 +1,50 @@
+<body>
+  <app-header></app-header>
+  <main>
+      <div class="izquierda">
+        <div class="izquierda-superior">
+          <h2>Panel de Candidato</h2>
+          <ul>
+            <li *ngFor="let link of links; let i = index"
+                (click)="selectLink(i)"
+                [ngClass]="{ 'selected': selectedIndex === i }"> 
+              <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <img 
+                  [src]="selectedIndex === i ? link.selectedImage : link.image" 
+                  [alt]="link.alt" 
+                  [id]="link.id"> 
+                {{ link.text }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="izquierda-inferior">
+          <img src="assets/imagenes/Nav-bar/CerrarSesion.png">
+          <h3 id="logout">Log Out</h3>
+        </div>
+        
+      </div>
+
+      <div class="derecha">
+        <div class="derecha-superior">
+          <h1>div-derecha-superior</h1>
+        </div>
+        <div class="derecha-inferior">
+          <div class="optionTabla">
+            <div class="optionTabla-izquierda">
+              <h4>Puestos recientemente publicados</h4>
+            </div>
+            <div class="optionTabla-derecha">
+              <h4>Mostrar Todo</h4>
+              <img src="assets/imagenes/flecha.png" alt="Flecha">
+            </div>
+          </div>
+          <div class="tablaEmple">
+            <router-outlet></router-outlet>
+          </div>
+          
+        </div>
+      </div>
+    </main>
+  <app-footer></app-footer>
+</body>

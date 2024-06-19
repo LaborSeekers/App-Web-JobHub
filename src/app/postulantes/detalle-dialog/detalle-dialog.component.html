@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Detalles del Puesto</h2>
+<mat-dialog-content>
+  <p><strong>Puesto:</strong> {{ data.puesto }}</p>
+  <p><strong>Ubicación:</strong> {{ data.location }}</p>
+  <p><strong>Salario:</strong> {{ data.salary }}</p>
+  <p><strong>Tipo:</strong> {{ data.type }}</p>
+  <p><strong>Reputación:</strong> <img [src]="data.reputacion" alt="reputacion" style="width: 50px; height: 30px;"></p>
+  <p><strong>Fecha de Aplicación:</strong> {{ data.fecha }}</p>
+  <p><strong>Estado:</strong> {{ data.estado }}</p>
+  <p><strong>Descripción:</strong> {{ data.descripcion }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>
