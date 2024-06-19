@@ -3,6 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; // Add this line
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+
+
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,10 +22,12 @@ import { OfertantesModule } from './ofertantes/ofertantes.module';
     AppComponent,
     RegisterComponent,
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    LoginModule
     ReactiveFormsModule,
     MaterialModule,
     PostulantesModule,
