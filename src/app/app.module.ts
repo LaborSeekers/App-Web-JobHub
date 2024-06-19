@@ -19,7 +19,7 @@ import { OfertantesModule } from './ofertantes/ofertantes.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     MaterialModule,
     PostulantesModule,
     OfertantesModule,
