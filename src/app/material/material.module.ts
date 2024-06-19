@@ -6,11 +6,12 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [],
@@ -23,9 +24,9 @@ import {MatInputModule} from '@angular/material/input';
     MatBadgeModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,ReactiveFormsModule
   ],
-  exports:[MatExpansionModule,MatTableModule,MatIconModule,MatButtonModule,MatBadgeModule,MatFormFieldModule,MatInputModule,MatDialogModule
+  exports:[MatExpansionModule,MatTableModule,MatIconModule,MatButtonModule,MatBadgeModule,MatFormFieldModule,MatInputModule,MatDialogModule,ReactiveFormsModule
    ]
 })
 export class MaterialModule { }

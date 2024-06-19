@@ -6,6 +6,8 @@ import { LoginComponent } from './login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
+import { LoginUiComponent } from './login-ui/login-ui.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -13,11 +15,12 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
     LoginComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    IniciarSesionComponent
+    IniciarSesionComponent,
+    LoginUiComponent
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule
+    LoginRoutingModule,MaterialModule
   ],exports: [
     LoginComponent,
     ForgotPasswordComponent,

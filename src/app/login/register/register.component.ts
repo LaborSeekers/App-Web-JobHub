@@ -74,7 +74,7 @@ export class RegisterComponent implements AfterViewInit {
 
 
   navigateToLogin(){
-    this.router.navigate(['/login/login.component.html']);
+    this.router.navigate(['']);
   }
   
 }

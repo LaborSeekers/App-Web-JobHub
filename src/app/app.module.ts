@@ -11,7 +11,7 @@ import { ForgotPasswordComponent } from './login/forgot-password/forgot-password
 
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './login/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { PostulantesModule } from './postulantes/postulantes.module';
@@ -21,13 +21,11 @@ import { OfertantesModule } from './ofertantes/ofertantes.module';
   declarations: [
     AppComponent,
     RegisterComponent,
-
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule
+    LoginModule,
     ReactiveFormsModule,
     MaterialModule,
     PostulantesModule,
