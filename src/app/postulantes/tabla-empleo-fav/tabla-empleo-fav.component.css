@@ -11,47 +11,114 @@
 }
 .derecha-inferior{
     flex: 3;
-    background-color: lightblue;
     display: flex;
     flex-direction: column;
 }
-.optionTabla{
-    display: flex;
-    gap: calc(512px - calc(512px - 32vw));
-}
-.optionTabla-izquierda{
-    flex: 1;
-    color: #000;
 
-    text-align: center;
-    font-family: Epilogue;
-    font-size: 14px !important;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-.optionTabla-derecha{
-    flex: 1;
-    text-align: center;
-    font-family: Epilogue;
-    font-size: 14px !important;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    
-}
-.optionTabla-derecha h4{
-   margin-left:45%;
-}
-.optionTabla-derecha img{
-    
-    max-width: 5%;
-}
-.tablaEmple{
+table {
+    width: 90%;
+    display: block;
+    max-height:615px;
+    overflow-y: auto;
+    margin: 0px auto;
+    border-collapse: collapse;
+  }
+  
+  .tablaEmple{
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    flex-direction: column;
+  }
+  
+  .TablaEmpleos{
+    display: flex;
+    width: auto;
+    margin: 0% 5% 0% 5%;
+   
+  } 
+  
+  
+  tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.detail-row {
+    height: 0;
+  }
+  
+  tr.element-row:not(.expanded-row) {
+    cursor: pointer;
+  }
+  
+  .element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  .filatabla{
+    display: flex;
+  }
+  .salario-tipo{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 3%;
+  }
+  .tipoTrabajo{
+    border-radius: 20px;
+    background: rgba(160, 210, 255, 0.50);
+    color: #0C72BB;
+  
+    padding: 2px;
+  
+    width: 110px;
+    height: 30px;
+  
+    text-align: center;
+    font-size: 14px;
+    font-family: Epilogue;
+  
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  
+  }
+  td {
+    min-width: 170px;
+    border-bottom: 1px solid #ddd; 
+    padding: 0px;
+  }
+  
+  th {
+    background-color: #D9D9D9; 
+    text-align: center;
+  }
+  .botonElim{
+    display: flex;
+    align-items: center;
+  }
+  .DeshacerCambio{
+    position:relative;
+    bottom: 11%;    
+  }
+  .DeshacerCambio button {
+    background-color: #ffffff2f;
+    color: #0000006f;
+  }
+
+
+  .progress-bar {
+    height: 2px;
+    width: 100%;
+    background-color: #f0f0f0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    background-color: #3f51b5;
+    width: 0;
+    transition: width 0.2s ease-in-out;
+  }
+  

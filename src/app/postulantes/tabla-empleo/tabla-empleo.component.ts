@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DetalleDialogComponent } from '../detalle-dialog/detalle-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tabla-empleo',
@@ -15,7 +18,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class TablaEmpleoComponent {
   displayedColumns: string[] = ['puesto', 'reputacion', 'fecha', 'estado', 'accion'];
-  dataSource = [
+  dataSource = new MatTableDataSource([
     {
       logo: 'assets/imagenes/Tabla/interbank.png',
       puesto: 'Data Scientist Senior de Riesgos',
@@ -24,8 +27,8 @@ export class TablaEmpleoComponent {
       type: 'Full Time',
       reputacion: 'assets/imagenes/medidor.png',
       fecha: 'Abril 15, 2024 14:35',
-      estado: 'Active',
-      descripcion: 'Responsable de gestionar y analizar datos para identificar riesgos.Responsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgosResponsable de gestionar y analizar datos para identificar riesgos'
+      estado: 'Activo',
+      descripcion: 'Responsable de gestionar y analizar datos para identificar riesgos.'
     },
     {
       logo: 'assets/imagenes/Tabla/tlogo.png',
@@ -57,14 +60,23 @@ export class TablaEmpleoComponent {
       type: 'Full-Time Híbrido',
       reputacion: 'assets/imagenes/medidor.png',
       fecha: 'Mar 27 , 2023 11:45',
-      estado: 'Active',
+      estado: 'Activo',
       descripcion: 'Analiza datos avanzados para obtener insights empresariales.'
     }
-  ];
+  ]);
 
   expandedElement: any | null;
+  constructor(public dialog: MatDialog) {}
 
-  verDetalles(element: any) {
-    console.log('Ver detalles', element);
+  verDetalles(element: any, event:MouseEvent) {
+    event.stopPropagation();
+    this.openDialog(element);
+  }
+
+  openDialog(element: any): void {
+    this.dialog.open(DetalleDialogComponent, {
+      width: '400px',
+      data: element
+    });
   }
 }

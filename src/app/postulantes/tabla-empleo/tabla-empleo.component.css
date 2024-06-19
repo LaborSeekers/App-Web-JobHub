@@ -81,7 +81,7 @@
 
 .derecha-inferior{
   flex: 3;
-  background-color: lightblue;
+  
   display: flex;
   flex-direction: column;
 }

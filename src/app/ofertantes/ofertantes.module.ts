@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { OfertantesRoutingModule } from './ofertantes-routing.module';
 import { OfertantesComponent } from './ofertantes.component';
+import { MaterialModule } from '../material/material.module';
+
 
 
 @NgModule({
@@ -11,8 +13,7 @@ import { OfertantesComponent } from './ofertantes.component';
   ],
   imports: [
     CommonModule,
-    OfertantesRoutingModule
+    OfertantesRoutingModule,MaterialModule
   ],
-  exports:[OfertantesComponent]
 })
 export class OfertantesModule { }

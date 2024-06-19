@@ -11,6 +11,9 @@ import { MatTableModule } from '@angular/material/table';
 import { PerfilUserComponent } from './perfil-user/perfil-user.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MaterialModule } from '../material/material.module';
+import { DetalleDialogComponent } from './detalle-dialog/detalle-dialog.component';
 
 
 
@@ -22,11 +25,12 @@ import { FooterComponent } from './footer/footer.component';
     PerfilUserComponent,
     HeaderComponent,
     FooterComponent,
+    DetalleDialogComponent,
   ],
   imports: [
     CommonModule,
-    PostulantesRoutingModule, MatIconModule, MatButtonModule,MatTableModule
+    PostulantesRoutingModule, MaterialModule
   ],
-  exports:[PostulantesComponent,TablaEmpleoComponent,TablaEmpleoFavComponent,  MatIconModule, MatButtonModule, MatTableModule, HeaderComponent, FooterComponent]
+  exports:[HeaderComponent,FooterComponent]
 })
 export class PostulantesModule { }
