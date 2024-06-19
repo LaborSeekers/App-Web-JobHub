@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
@@ -30,4 +29,3 @@ import {MatInputModule} from '@angular/material/input';
    ]
 })
 export class MaterialModule { }
-
