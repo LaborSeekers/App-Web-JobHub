@@ -114,6 +114,7 @@ main{
 .izquierda-inferior img{
     width: 15%;
     height: auto;
+    cursor: pointer;
 }
 
 .derecha{
@@ -171,4 +172,8 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+#logout a{
+    text-decoration: none;
+    color: #000;
 }

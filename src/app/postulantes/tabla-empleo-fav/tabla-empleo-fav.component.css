@@ -7,7 +7,7 @@
 }
 .derecha-superior{
     flex: 1;
-    background-color: blueviolet;
+    
 }
 .derecha-inferior{
     flex: 3;
@@ -122,3 +122,12 @@ table {
     transition: width 0.2s ease-in-out;
   }
   
+  .filter-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  
+  .mat-form-field {
+    width: 20%;
+  }

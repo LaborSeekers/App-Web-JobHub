@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MaterialModule } from '../material/material.module';
 import { DetalleDialogComponent } from './detalle-dialog/detalle-dialog.component';
+import { ReputacionDialogComponent } from './reputacion-dialog/reputacion-dialog.component';
 
 
 
@@ -26,6 +27,7 @@ import { DetalleDialogComponent } from './detalle-dialog/detalle-dialog.componen
     HeaderComponent,
     FooterComponent,
     DetalleDialogComponent,
+    ReputacionDialogComponent,
   ],
   imports: [
     CommonModule,
