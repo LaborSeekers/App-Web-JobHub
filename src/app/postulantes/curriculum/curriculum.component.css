@@ -65,3 +65,43 @@ main{
     display: flex;
     flex-direction: column;
 }
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row;
+    }
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+  }
+  
+  .btn-secondary {
+    background-color: #007bff;
+    color: white;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+  }
