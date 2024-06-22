@@ -16,11 +16,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { PostulantesModule } from './postulantes/postulantes.module';
 import { OfertantesModule } from './ofertantes/ofertantes.module';
+import { CrearCvComponent } from './postulantes/curriculum/crear-cv/crear-cv.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
+    RegisterComponent
+   
+  
   ],
   imports: [
     BrowserModule,
