@@ -15,6 +15,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MaterialModule } from '../material/material.module';
 import { DetalleDialogComponent } from './detalle-dialog/detalle-dialog.component';
 import { ReputacionDialogComponent } from './reputacion-dialog/reputacion-dialog.component';
+import { AlertasTrabajoComponent } from './alertas-trabajo/alertas-trabajo.component';
 
 
 
@@ -28,6 +29,7 @@ import { ReputacionDialogComponent } from './reputacion-dialog/reputacion-dialog
     FooterComponent,
     DetalleDialogComponent,
     ReputacionDialogComponent,
+    AlertasTrabajoComponent,
   ],
   imports: [
     CommonModule,

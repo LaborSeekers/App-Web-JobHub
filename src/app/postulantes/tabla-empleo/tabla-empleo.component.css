@@ -172,6 +172,14 @@ tr.element-row:not(.expanded-row) {
   display: flex;
   gap: 10px;
   margin-bottom: 3%;
+  align-items: center;
+}
+.puestolocation{
+  display: flex;
+  align-items: center;
+}
+.puestolocation p, .salario-tipo p{
+  margin: 3px;
 }
 .tipoTrabajo{
   border-radius: 20px;
@@ -200,4 +208,17 @@ td {
 th {
   background-color: #D9D9D9; 
   text-align: center;
+}
+.tipoE{
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.taderecha{
+  min-width: 210px
+}
+
+@media(max-width:768px){
+
 }
