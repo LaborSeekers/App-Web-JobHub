@@ -1,0 +1,50 @@
+.opciones{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.rating {
+    display: inline-block;
+    font-size: 30px; 
+    color: #ccc; 
+}
+.comentario{
+    display: flex;
+    justify-content: center;
+}
+.comentario form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.comentario input{
+    width: 600px;
+    height: 150px;
+
+}
+.calificacion{
+    margin-top: 10px;
+    justify-content: space-between  ;
+    display: flex;
+}
+
+.rating:hover .star:hover,
+.rating:hover .star:hover ~ .star,
+.rating .star.active {
+    color: gold; 
+}
+#titulo{
+    width: 600px;
+    height: 50px;
+}
+.inputs input{
+    margin: 5px;
+}
+
+.info{
+    display: flex;
+}
+body{
+    background-color: rgb(228, 228, 228);
+}
