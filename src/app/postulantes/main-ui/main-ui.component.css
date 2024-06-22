@@ -114,6 +114,7 @@ main{
 .izquierda-inferior img{
     width: 15%;
     height: auto;
+    cursor: pointer;
 }
 
 .derecha{
@@ -172,6 +173,7 @@ main{
     align-items: center;
     justify-content: center;
 }
+
 
 .container {
     min-height: 100vh;
@@ -233,4 +235,7 @@ main{
     padding: 1.5rem;
     border-radius: 9999px;
   
+#logout a{
+    text-decoration: none;
+    color: #000;
 }
