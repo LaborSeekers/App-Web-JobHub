@@ -16,6 +16,7 @@ import { ModalFiltroComponent } from './ver-postulantes/modal-filtro/modal-filtr
 
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { InicioComponent } from './inicio/inicio.component';
 
 
 @NgModule({
@@ -23,10 +24,11 @@ import { FormsModule } from '@angular/forms';
     OfertantesComponent,
     HeaderComponent,
     FooterComponent,
-    PerfilUsarioComponent
+    PerfilUsarioComponent,
     OfertasPublicadasComponent,
     VerPostulantesComponent,
     ModalFiltroComponent,
+    InicioComponent,
   ],
   imports: [
     CommonModule,

@@ -13,10 +13,10 @@ import { filter } from 'rxjs/operators';
 export class OfertantesComponent implements OnInit {
   links = [
     { route: ['TablaOV'], image: "assets/imagenes/Nav-bar/capas2.png",selectedImage:"assets/imagenes/Nav-bar/capas.png", alt: "capa", id: "capaoverview", text: "Overview" },
-    { route: ['TablaApi'], image: "assets/imagenes/Nav-bar/portafolio.png",selectedImage:"assets/imagenes/Nav-bar/portafolio2.png", alt: "portafolio", id: "portafolio-overview", text: "Ofertas publicadas" },
+    { route: ['ofertas-publicadas'], image: "assets/imagenes/Nav-bar/portafolio.png",selectedImage:"assets/imagenes/Nav-bar/portafolio2.png", alt: "portafolio", id: "portafolio-overview", text: "Ofertas publicadas" },
     { route: ['TablaFav'], image: "assets/imagenes/Nav-bar/image18.png",selectedImage:"assets/imagenes/Nav-bar/image18.png", alt: "image18", id: "marcador-overview", text: "Ver Postulantes" },
     { route: ['/route/path'], image: "assets/imagenes/Nav-bar/campanasicon.png",selectedImage:"assets/imagenes/Nav-bar/campanasicon2.png", alt: "campana", id: "campana-overview", text: "Notificaciones" },
-    { route: ['appconfiguration'], image: "assets/imagenes/Nav-bar/Engranajes.png",selectedImage:"assets/imagenes/Nav-bar/Engranajes2.png", alt: "config", id: "config-overview", text: "Configuración" },
+    { route: ['/route/path'], image: "assets/imagenes/Nav-bar/Engranajes.png",selectedImage:"assets/imagenes/Nav-bar/Engranajes2.png", alt: "config", id: "config-overview", text: "Configuración" },
  
   ];
   selectedIndex: number | null = null;
