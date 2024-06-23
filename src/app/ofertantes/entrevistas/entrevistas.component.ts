@@ -1,16 +1,13 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-
 @Component({
-  selector: 'app-ofertantes',
-  templateUrl: './ofertantes.component.html',
-  styleUrl: './ofertantes.component.css'
+  selector: 'app-entrevistas',
+  templateUrl: './entrevistas.component.html',
+  styleUrl: './entrevistas.component.css'
 })
-
-export class OfertantesComponent implements OnInit {
+export class EntrevistasComponent implements OnInit {
   links = [
     { route: ['TablaOV'], image: "assets/imagenes/Nav-bar/capas2.png",selectedImage:"assets/imagenes/Nav-bar/capas.png", alt: "capa", id: "capaoverview", text: "Overview" },
     { route: ['TablaApi'], image: "assets/imagenes/Nav-bar/portafolio.png",selectedImage:"assets/imagenes/Nav-bar/portafolio2.png", alt: "portafolio", id: "portafolio-overview", text: "Ofertas publicadas" },
@@ -32,7 +29,7 @@ export class OfertantesComponent implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => this.updateSelectedIndex());
   }
-
+  
   updateSelectedIndex() {
     // Find the index of the link that matches the current route
     this.selectedIndex = this.links.findIndex(link => {
@@ -44,6 +41,4 @@ export class OfertantesComponent implements OnInit {
   selectLink(index: number) {
     this.selectedIndex = index;
   }
-
-
 }

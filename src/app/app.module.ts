@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; // Add this line
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MaterialModule } from './material/material.module';
+import { OfertantesModule } from './ofertantes/ofertantes.module';
+
 
 
 import { LoginComponent } from './login/login.component';

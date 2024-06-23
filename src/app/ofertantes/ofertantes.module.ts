@@ -4,6 +4,11 @@ import { CommonModule } from '@angular/common';
 import { OfertantesRoutingModule } from './ofertantes-routing.module';
 import { OfertantesComponent } from './ofertantes.component';
 import { MaterialModule } from '../material/material.module';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { PerfilUsarioComponent } from './perfil-usario/perfil-usario.component';
+
+
 import { OfertasPublicadasComponent } from './ofertas-publicadas/ofertas-publicadas.component';
 import { OfertasPublicadasModule } from './ofertas-publicadas/ofertas-publicadas.module';
 import { VerPostulantesComponent } from './ver-postulantes/ver-postulantes.component';
@@ -16,14 +21,19 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     OfertantesComponent,
+    HeaderComponent,
+    FooterComponent,
+    PerfilUsarioComponent
     OfertasPublicadasComponent,
     VerPostulantesComponent,
     ModalFiltroComponent,
-
   ],
   imports: [
     CommonModule,
-    OfertantesRoutingModule,MaterialModule,MatSelectModule,FormsModule
+    OfertantesRoutingModule,
+    MaterialModule,
+    MatSelectModule,
+    FormsModule
   ],
 })
 export class OfertantesModule { }
