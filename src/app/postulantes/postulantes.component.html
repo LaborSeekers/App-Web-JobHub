@@ -1,0 +1,32 @@
+<body>
+  <app-header></app-header>
+  <main>
+    <div class="izquierda">
+      <div class="izquierda-superior">
+        <h2>Panel de Candidato</h2>
+        <ul>
+          <li *ngFor="let link of links; let i = index"
+              (click)="selectLink(i)"
+              [ngClass]="{ 'selected': selectedIndex === i }"> 
+            <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <img 
+                [src]="selectedIndex === i ? link.selectedImage : link.image" 
+                [alt]="link.alt" 
+                [id]="link.id"> 
+              {{ link.text }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="izquierda-inferior">
+        <img src="assets/imagenes/Nav-bar/CerrarSesion.png" routerLink="/login">
+        <h3 id="logout"><a routerLink="/login">Cerrar Sesión</a></h3>
+      </div>
+    </div>
+
+    <div class="derecha">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</body>

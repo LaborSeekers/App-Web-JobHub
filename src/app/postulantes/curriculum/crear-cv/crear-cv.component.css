@@ -1,0 +1,145 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  padding: 1rem;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+      flex-direction: row;
+  }
+}
+
+.templates-section {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .templates-section {
+      width: 33%;
+  }
+}
+
+.section-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.template-image {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: auto;
+}
+
+.section-subtitle {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.color-swatch {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+}
+
+.color-swatch.blue {
+  background-color: #007bff;
+}
+
+.color-swatch.red {
+  background-color: #ff0000;
+}
+
+.color-swatch.green {
+  background-color: #00ff00;
+}
+
+.color-swatch.yellow {
+  background-color: #ffff00;
+}
+
+.color-swatch.gray {
+  background-color: #808080;
+}
+
+.buttons-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cv-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .cv-image-section {
+      width: 66%;
+  }
+}
+
+.cv-preview-image {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  border-radius: 0.5rem;
+}
+
+.cv-buttons-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.actions-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-outline {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #ff0000;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+}

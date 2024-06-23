@@ -1,0 +1,32 @@
+.inferior{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+.inferior h3{
+    margin-left: 1.5%;
+}
+.conf{
+    background-color: #CFE7FF;
+    display: flex;
+    align-items: center; 
+    padding: 15px 25px;
+    border-radius: 20px; 
+    margin: 10px;
+    text-align: left;
+}
+.conf button{
+    background-color: #2871FF;
+    color: #FFFFFF;
+    margin: 1%;
+    border-radius: 20px;
+    max-width: 150px;
+}
+.elimCuenta{
+    background-color: #F4CFD1;
+}
+
+.elimCuenta button{
+    background-color: #F63659;
+}

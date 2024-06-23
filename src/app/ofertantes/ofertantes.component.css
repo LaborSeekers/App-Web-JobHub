@@ -26,10 +26,12 @@ main{
     display: flex;
     flex-direction: column;
 }
+
 .izquierda-superior{
     flex:3;
     background-color: white;
 }
+
 .izquierda-superior h2{
     color: #000;
     opacity: 0.6;
@@ -116,6 +118,11 @@ main{
     height: auto;
 }
 
+#logout a{
+    text-decoration: none;
+    color: #000;
+}
+
 .derecha{
     flex: 5;
     text-align: center;
@@ -132,6 +139,7 @@ main{
     display: flex;
     flex-direction: column;
 }
+
 .optionTabla{
     display: flex;
     gap: calc(512px - calc(512px - 32vw));
@@ -286,6 +294,3 @@ button {
     border: 1px solid #000;
     background: #30CDFF;
 }
-
-
-

@@ -1,0 +1,115 @@
+  <div class="opciones">
+    <h2 mat-dialog-title>Detalles del Puesto</h2>
+    <div class="reputacion">
+      <p><strong>{{data.reputacion}}:</strong></p>
+      <img (click)="setRepu(data,$event)" *ngIf="data.reputacion === 'Muy Alta'" src="assets/imagenes/Tabla/medidorMuyAlto.png" alt="repMuyAlta" style="width: 50px; height: 30px;">
+      <img (click)="setRepu(data,$event)" *ngIf="data.reputacion === 'Alta'" src="assets/imagenes/Tabla/medidorAlto.png" alt="repAlta" style="width: 50px; height: 30px;">
+      <img (click)="setRepu(data,$event)" *ngIf="data.reputacion === 'Media'" src="assets/imagenes/Tabla/medidorMedio.png" alt="repMedia" style="width: 50px; height: 30px;">
+      <img (click)="setRepu(data,$event)" *ngIf="data.reputacion === 'Baja'" src="assets/imagenes/Tabla/medidorBajo.png" alt="repBaja" style="width: 50px; height: 30px;">
+    </div>
+
+    <mat-dialog-actions>
+      <div class="botones">
+        <button id="postuButton">Postular</button>
+        <button id="perfilEButton">Perfil Empresarial</button>
+        <mat-icon class="mat-icon" matBadgeColor="warn"><a [routerLink]='["/"]'>star</a></mat-icon>
+      </div>
+      <button mat-button mat-dialog-close>X</button>
+    </mat-dialog-actions>
+
+  </div>
+
+  <div class="info">
+    <mat-dialog-content>
+      <div class="contenido">
+
+        <div class="izquierda">
+          <div class="contenidoBox">
+            <div class="titulo">
+              <h2><strong>Presentación:</strong></h2>
+            </div>
+            <div class="texto">
+              <p>{{ data.descripcion }}</p>
+            </div>
+          </div>
+
+          <div class="contenidoBox">
+            <div class="titulo">
+              <h2><strong>Requisitos:</strong></h2>
+            </div>
+            <div class="texto">
+              <ul>
+                <li *ngFor="let requisito of data.requisitos;">
+                  {{ requisito }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="contenidoBox">
+            <div class="titulo">
+              <h2><strong>Beneficios:</strong></h2>
+            </div>
+            <div class="texto">
+              <ul>
+                <li *ngFor="let beneficio of data.beneficios;">
+                  {{ beneficio }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="derecha">
+          <div class="logoEmpresa">
+            <img [src]="data.logo" alt="logo" style="width: 84px; height: 84px; margin-right: 8px; margin-top: 8px;">
+            <p><strong>{{ data.puesto }}</strong> </p>
+          </div>
+          <div class="infoImportante">
+            <div class="features">
+
+              <div class="EmpleoFeature" id="EmpleoFeature1">
+                <div><p>{{ data.type }}</p></div>
+                <div><p>{{ data.salary }}</p></div>
+              </div>
+              <div class="EmpleoFeature" id="EmpleoFeature2">
+                <img [src]="data.jornadaIMG" alt="tipojornadaIMG" style="width: 26px; height: 26px;">
+                <img [src]="data.sueldoIMG" alt="sueldoIMG" style="width: 26px; height: 26px;">
+              </div>
+            </div>
+           
+
+            <div class="ubi">
+              <div class="izquierdaUbi">
+                <p>{{ data.location }}</p>
+              </div>
+              <div class="derechUbi">
+                <div class="derechUbiimg">
+                  <img [src]="data.ubicacionIMG" alt="ubicacionIMG" style="width: 58px; height: 55px;  margin-top: 8px;">
+                </div>
+                <div class="textoUbi">
+                  <h6><strong>Ubicación</strong></h6>
+                </div>
+                
+              </div>
+              
+            </div>
+          </div>
+          <div class="estado">
+            <div class="contenido">
+              <img *ngIf="data.estado === 'Activo'" src="assets/imagenes/Tabla/active.png" alt="Activo" style="width: 20px; height: 20px; margin-right: 5px;">
+              <img *ngIf="data.estado === 'Cancelado'" src="assets/imagenes/Tabla/cancelado.png" alt="Cancelado" style="width: 20px; height: 20px; margin-right: 5px;">
+              <img *ngIf="data.estado === 'Finalizado'" src="assets/imagenes/Tabla/finalizado.png" alt="Finalizado" style="width: 20px; height: 20px; margin-right: 5px;">
+              <p><strong>Estado:</strong> {{ data.estado }}</p>
+            </div>
+          </div>
+        </div>
+        
+       
+      </div>
+      
+    </mat-dialog-content>
+  </div>
+
+
+

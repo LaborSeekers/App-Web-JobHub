@@ -1,12 +1,15 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-ofertantes',
   templateUrl: './ofertantes.component.html',
   styleUrl: './ofertantes.component.css'
 })
+
 export class OfertantesComponent implements OnInit {
   links = [
     { route: ['TablaOV'], image: "assets/imagenes/Nav-bar/capas2.png",selectedImage:"assets/imagenes/Nav-bar/capas.png", alt: "capa", id: "capaoverview", text: "Overview" },
@@ -41,5 +44,6 @@ export class OfertantesComponent implements OnInit {
   selectLink(index: number) {
     this.selectedIndex = index;
   }
+
 
 }
