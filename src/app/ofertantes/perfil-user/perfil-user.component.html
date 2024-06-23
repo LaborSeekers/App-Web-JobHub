@@ -1,0 +1,14 @@
+<div class="perfil">
+    <img [src]="imageUrl" alt="Foto de perfil" (click)="toggleMenu()">
+    <div class="menu-container"> 
+      <ul class="options-menu" *ngIf="showMenu">
+        <li>
+          <div class="PerfilSelector">
+            <img src="assets/imagenes/Header/Entrevista.png">
+            <a [routerLink]='["main-UI"]'>Entrevistas</a>
+          </div>
+      </li>
+      </ul>
+    </div>
+</div>
+  
