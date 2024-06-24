@@ -1,0 +1,433 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+/*main css*/
+main{
+    background-color: white;
+    display: flex;
+    border-top-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.izquierda{
+    flex: 1;
+    border-right-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    text-align: center;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+}
+.izquierda-superior{
+    flex:3;
+    background-color: white;
+}
+.izquierda-superior h2{
+    color: #000;
+    opacity: 0.6;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-superior ul{
+    list-style-type: none;
+    min-width: 190px;
+}
+.izquierda-superior ul li a{
+    text-decoration: none;
+    color: #000;
+    opacity: 0.7;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-superior ul li a:hover{
+    color: #27A5FF;
+}
+.izquierda-superior ul li:hover{
+    background: #E7F0FA;
+}
+.izquierda-superior ul li a:focus, .izquierda-superior ul li a:active {
+    color: #27A5FF; 
+
+}
+.izquierda-superior ul li:focus, .izquierda-superior ul li:active {
+    background-color: #E7F0FA;    
+}
+
+.izquierda-superior ul li a{
+   display: flex;
+   align-items: center;
+}
+.izquierda-superior ul li {
+    padding: 5% 0% 5% 10%;
+}
+
+.izquierda-superior ul li.selected {
+     background-color: #E7F0FA
+} 
+
+#capaoverview, #portafolio-overview,#marcador-overview{
+    width: 15%;
+    height: auto;
+    margin-right: 15px;
+}
+#config-overview{
+    width: 20%;
+    height: auto;
+    margin-right: 7px;
+    margin-left: -3px;
+}
+#campana-overview{
+    width: 19%;
+    height: auto;
+    margin-right: 10px;
+    margin-left: -4px;
+}
+
+.izquierda-superior ul  {
+    padding: 0px;
+ }
+
+.izquierda-inferior{
+    flex:1;
+    justify-content: center;
+    align-items: end;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.izquierda-inferior img{
+    width: 15%;
+    height: auto;
+}
+
+.derecha{
+    flex: 5;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+}
+.derecha-superior{
+    flex: 1;
+
+}
+.derecha-inferior{
+    flex: 3;
+
+    display: flex;
+    flex-direction: column;
+}
+.optionTabla{
+    display: flex;
+    gap: calc(512px - calc(512px - 32vw));
+}
+.optionTabla-izquierda{
+    flex: 1;
+    color: #000;
+
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.optionTabla-derecha{
+    flex: 1;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+}
+.optionTabla-derecha h4{
+   margin-left:45%;
+}
+.optionTabla-derecha img{
+    
+    max-width: 5%;
+}
+.tablaEmple{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.derecha-izquierda {
+    flex: 3; /* Ocupa el 30% del ancho */
+    background-color: blue;
+    border-right: 0.25px solid var(--Text_Icons-FadedGrey, #AFB8CF);
+background: #FFF;
+    
+}
+
+
+.MEN {
+    color: #000;
+    font-family: Epilogue;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+    padding-left: 10px; /* Espacio de 5 píxeles a la izquierda */
+}
+
+
+
+.MEN img {
+    margin-left: 2px; /* Espacio de 2 píxeles a la izquierda de la imagen */
+    width: 34px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 34px; /* Mantiene la proporción de la imagen */
+    
+}
+
+.buscar{
+display: flex;
+width: 310px;
+padding: 6px 16px;
+align-items: center;
+gap: 4px;
+border-radius: 8px;
+background: var(--Colors-BackGroundBlue_WhiteText, #F8F9FD);
+
+
+}
+
+.cuadrado1,.cuadrado2{
+    display: flex;
+    width: 353px;
+    padding: 16px 0px 16px 24px;
+    align-items: flex-start;
+    gap: 16px;
+    border-bottom: 0.25px solid var(--Text_Icons-FadedGrey, #AFB8CF);
+}
+
+.cuadrado1 h5,
+.cuadrado2 h5 {
+ /* Posiciona el elemento de forma absoluta */
+    top: 10px; /* Distancia de 10px desde la parte superior */
+    left: 10px; /* Distancia de 10px desde el lado izquierdo */
+    margin: 0; /* Elimina márgenes predeterminados */
+}
+
+m.cuadrado1{
+    width: 266px;
+height: 106px;
+flex-shrink: 0;
+}
+
+h5{
+    color: #000;
+    font-family: Epilogue;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+span.contenido1,span.contenido2{
+    color: var(--Text-TextGrey, #636363);
+    font-family: Epilogue;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+h4{
+    color: var(--Text_Icons-Grey, #9FA7BE);
+
+/* Text/SecondaryText */
+font-family: Inter;
+font-size: 11px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.img1 {
+    width: 35px;
+height: 35px;
+flex-shrink: 0;
+}
+
+.Men1 {
+    display: flex; /* Aplica un modelo de caja flexible */
+    align-items: center; /* Alinea verticalmente los elementos al centro */
+    color: var(--Text_Icons-Grey, #9FA7BE); /* Color del texto */
+    font-family: Inter; /* Fuente del texto */
+    font-size: 11px; /* Tamaño de fuente */
+    font-style: normal; /* Estilo de fuente */
+    font-weight: 400; /* Peso de la fuente */
+    line-height: normal; /* Altura de línea normal */
+}
+
+.Men1 img {
+    margin-right: 5px; /* Espacio de 5 píxeles a la derecha de la imagen */
+    width: 34px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 34px; /* Mantiene la proporción de la imagen */
+}
+
+.derecha-derecha {
+    display: flex;
+    flex-direction: column;
+    flex: 7; /* Esto asegura que ocupe todo el espacio disponible verticalmente */
+  
+}
+
+.derecha-derecha-arriba {
+    flex: 1; /* Ocupa el 10% del alto de .derecha-derecha */
+
+}
+
+.derecha-derecha-centro {
+    flex: 7; /* Ocupa el 70% del alto de .derecha-derecha */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: flex-start; /* Alinea el contenido al inicio del contenedor */
+    padding-top: 20px; /* Agrega un poco de espacio en la parte superior */
+    position: relative; 
+}
+
+
+
+.fecha {
+    color: var(--Text_Icons-FadedGrey, #AFB8CF);
+
+/* Text/SecondaryText */
+font-family: Inter;
+font-size: 11px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.mensaje1 {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px; /* Ajusta el padding superior e inferior */
+    gap: 8px; /* Reduce el espacio entre los elementos internos */
+    border-radius: 32px 32px 32px 0px;
+    background: #2F9BFF;
+    max-height: 200px; /* Altura máxima */
+    overflow: auto; /* Añade scroll si el contenido excede la altura máxima */
+    position: absolute;
+    top: 0;
+}
+
+.mensaje2 {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px; /* Ajusta el padding superior e inferior */
+    gap: 8px; /* Reduce el espacio entre los elementos internos */
+    border-radius: 32px 32px 0px 32px;
+    background: #2F9BFF;
+    max-height: 200px; /* Altura máxima */
+    overflow: auto; /* Añade scroll si el contenido excede la altura máxima */
+    position: absolute;
+    top: 0;
+    right: 20px; /* Coloca el elemento a 20px de la esquina derecha */
+    align-self: flex-end; /* Alinea mensaje2 en la esquina derecha */
+    margin-top: 20px; /* Margen superior para separar de mensaje1 */
+}
+
+.mensaje1 {
+    margin-left: 30px; /* Margen izquierdo para mensaje1 */
+    left: 0; /* Asegura que esté en la esquina izquierda */
+    margin-top: 20px; /* Margen superior para separar del elemento anterior */
+}
+
+.mensaje2 {
+    margin-left: 30px; /* Margen izquierdo para mensaje2 */
+    align-self: flex-end; /* Alinea mensaje2 en la esquina derecha */
+    margin-top: 70px; /* Margen superior para separar de mensaje1 */
+}
+
+.mensaje3 {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px; /* Ajusta el padding superior e inferior */
+    gap: 8px; /* Reduce el espacio entre los elementos internos */
+    border-radius: 32px 32px 32px 0px;
+    background: #2F9BFF;
+    max-height: 200px; /* Altura máxima */
+    overflow: auto; /* Añade scroll si el contenido excede la altura máxima */
+    position: absolute;
+    top: 0;
+}
+
+.mensaje3 {
+    align-self: flex-start; /* Alinea mensaje3 a la izquierda */
+    margin-left: 30px; /* Margen izquierdo para mensaje1 */
+    left: 0; /* Coloca mensaje3 en la esquina izquierda */
+    margin-top: 120px; /* Margen superior adicional de 50px desde mensaje2 */
+}
+
+
+.mensaje4{
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px; /* Ajusta el padding superior e inferior */
+    gap: 8px; /* Reduce el espacio entre los elementos internos */
+    border-radius: 32px 32px 0px 32px;
+    background: #2F9BFF;
+    max-height: 200px; /* Altura máxima */
+    overflow: auto; /* Añade scroll si el contenido excede la altura máxima */
+    position: absolute;
+    top: 0;
+    right: 20px; /* Coloca el elemento a 20px de la esquina derecha */
+    align-self: flex-end; /* Alinea mensaje2 en la esquina derecha */
+    margin-top: 20px; /* Margen superior para separar de mensaje1 */
+}
+.mensaje4 {
+    align-self: flex-end; /* Alinea mensaje4 en la esquina derecha */
+    right: 20px; /* Coloca el elemento a 20px de la esquina derecha */
+    margin-top: calc(100px + 70px); /* Margen superior para separar de mensaje2 y 70px más abajo que mensaje2 */
+}
+
+
+.chat {
+    color: var(--Text_Icons-Black, #1A1A1B);
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4; /* Ajusta el espaciado entre líneas */
+    margin: 0; /* Elimina el margen interno por defecto */
+    align-self: flex-end; /* Alinea el texto del chat a la derecha */
+}
+
+.derecha-derecha-abajo {
+    flex: 2; /* Ocupa el 20% del alto de .derecha-derecha */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 106px;
+}
+

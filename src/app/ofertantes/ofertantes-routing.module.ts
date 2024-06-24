@@ -15,6 +15,7 @@ const routes: Routes = [{path: '', component: OfertantesComponent,
     ]
 },
     {path: 'entrevistas', loadChildren: () => import('./entrevistas/entrevistas.module').then(m => m.EntrevistasModule) },
+    { path: 'Ofertantes_Mensajeria', loadChildren: () => import('./ofertantes-mensajeria/ofertantes-mensajeria.module').then(m => m.OfertantesMensajeriaModule) },
     
 ];
 

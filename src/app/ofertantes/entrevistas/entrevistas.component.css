@@ -173,7 +173,7 @@ main{
     justify-content: center;
 }
 
-h6 {
+h6.ME{
     display: flex;
     width: 796px;
     height: 45px;
@@ -188,10 +188,11 @@ h6 {
     line-height: normal;
     font-variant: all-small-caps;
     text-align: left; 
-    margin-left: 20px; 
+    margin-left: 30px;
+    margin-top: -5px; 
 }
 
-h3 {
+h3.EN {
     color: #000;
     font-family: Roboto;
     font-size: 24px;
@@ -201,6 +202,7 @@ h3 {
     font-variant: all-small-caps;
     text-align: left; 
     padding-left: 20px; 
+    margin-top: -10px; 
 }
 .derecha {
     display: flex;
@@ -210,12 +212,12 @@ h3 {
 .Derecha-Arriba,
 .Derecha-Centro {
     height: 8vh; 
-    background-color: #27A5FF;
+    
 }
 
 .Derecha-Abajo {
     height: 80vh; 
-    background-color: orange;
+  
 }
 
 .Derecha-Abajo-Arr, .Derecha-Abajo-Abb {
@@ -225,11 +227,11 @@ h3 {
 }
 
 .Derecha-Abajo-Arr {
-    background-color: lightblue;
+  
 }
 
 .Derecha-Abajo-Abb {
-    background-color: lightgreen;
+  
 }
 
 
@@ -267,8 +269,8 @@ h3 {
 .img1 {
     top: -3.5vh; /* Ajustar la posición desde arriba */
     right: 13vh; /* Ajustar la posición desde la derecha */
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     z-index: 10; /* Ajustar el z-index si es necesario */
     position: absolute; /* Usar posición absoluta para posicionar libremente */
 }
@@ -277,7 +279,7 @@ h3 {
 h2 {
     color: #000;
     font-family: Roboto;
-    font-size: 18px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -287,7 +289,7 @@ h2 {
 h1 {
     color: #000;
     font-family: Roboto, sans-serif;
-    font-size: 12px;
+    font-size: 8px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -303,65 +305,65 @@ h1.Habilidades {
 
 h1.Hora {
     position:absolute; 
-    top: 39vh; /* Ajusta según sea necesario */
-    right: 94vh; /* Ajusta según sea necesario */
+    top: 45vh; /* Ajusta según sea necesario */
+    right: 100vh; /* Ajusta según sea necesario */
 }
 h1.Hora1 {
     position:absolute; 
-    top: 41vh; /* Ajusta según sea necesario */
-    right: 95vh; /* Ajusta según sea necesario */
+    top: 47vh; /* Ajusta según sea necesario */
+    right: 100vh; /* Ajusta según sea necesario */
 }
 
 
 h1.Hora2{
     position:absolute;
-    top: 39vh;
-    right: 26vh; /* Ajusta según sea necesario */
+    top: 45vh;
+    right: 32vh; /* Ajusta según sea necesario */
 }
 
 h1.Hora3{
     position:absolute;
-    top: 41vh;
-    right: 26vh; /* Ajusta según sea necesario */
+    top: 47vh;
+    right: 32vh; /* Ajusta según sea necesario */
 }
 
 
 
 h1.Hora4{
     position:absolute;
-    top:68vh;
-    right: 94vh; /* Ajusta según sea necesario */
+    top:75vh;
+    right: 101vh; /* Ajusta según sea necesario */
 }
 h1.Hora5{
     position:absolute;
-    top:70vh;
-    right: 94vh; /* Ajusta según sea necesario */
+    top:77vh;
+    right: 101vh; /* Ajusta según sea necesario */
 }
 
 
 
 h1.Hora6{
     position:absolute;
-    top:68vh;
-    right: 26vh; /* Ajusta según sea necesario */
+    top:75vh;
+    right: 32vh; /* Ajusta según sea necesario */
 }
 h1.Hora7{
     position:absolute;
-    top:70vh;
-    right: 26vh; /* Ajusta según sea necesario */
+    top:77vh;
+    right: 32vh; /* Ajusta según sea necesario */
 }
 
 
 .btn1{
     border-radius: 12px;
     background: #046BA5;
-    width: 110px;
-    height: 47px;
+    width: 45px;
+    height: 30px;
     flex-shrink: 0;
     color: #FFF;
     text-align: center;
     font-family: Roboto;
-    font-size: 18px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
@@ -371,13 +373,13 @@ h1.Hora7{
 .btn2{
     border-radius: 12px;
     background: #046BA5;
-    width: 110px;
-    height: 47px;
+    width: 49px;
+    height: 30px;
     flex-shrink: 0;
     color: #FFF;
     text-align: center;
     font-family: Roboto;
-    font-size: 18px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
@@ -389,16 +391,16 @@ h1.Hora7{
     position:absolute;
     border-radius: 12px;
     background: #046BA5;
-    width: 110px;
-    height: 47px;
+    width: 49px;
+    height: 30px;
     flex-shrink: 0;
     color: #FFF;
     text-align: center;
     font-family: Roboto;
-    font-size: 18px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
-    margin-left: 300px; /* Ajusta este valor según sea necesario */
-    margin-top: 150px;
+    margin-left: 210px; /* Ajusta este valor según sea necesario */
+    margin-top: 100px;
 }
