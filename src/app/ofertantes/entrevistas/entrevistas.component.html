@@ -1,0 +1,99 @@
+
+<app-header></app-header>
+<main>
+    <div class="izquierda">
+        <div class="izquierda-superior">
+          <h2>Panel de Candidato</h2>
+          <ul>
+            <li *ngFor="let link of links; let i = index"
+                (click)="selectLink(i)"
+                [ngClass]="{ 'selected': selectedIndex === i }"> 
+              <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <img 
+                  [src]="selectedIndex === i ? link.selectedImage : link.image" 
+                  [alt]="link.alt" 
+                  [id]="link.id"> 
+                {{ link.text }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="izquierda-inferior">
+          <img src="assets/imagenes/Nav-bar/CerrarSesion.png">
+          <h3 id="logout">Cerrar Sesión</h3>
+        </div>
+        
+      </div>
+
+<div class="derecha">
+  <div class="Derecha-Arriba" >
+    <h6 class="ME">MIS ENTREVISTAS</h6>
+  </div>
+  <div class="Derecha-Centro">
+    <h3 class="EN">Entrevistas programadas para hoy</h3>
+  </div>
+ <div class="Derecha-Abajo">
+    <div class="Derecha-Abajo-Arr">
+      <div class="Cuadrado1">
+      <h1 class="Hora">15 de Octubre 2024</h1>
+      <h1 class="Hora1">15:00 PM</h1>
+      <button class="btn3">Unirse</button>
+        <div class="Derecha-Abajo-Arr-1">
+          <img src="assets/imagenes/FotosPerfil/img1.png" alt="img1" class="img1">
+          <h2>Jhadir Riveros</h2>
+           <h1 class="Profesion">. Ingenieria de Software</h1>
+          <h1 class="CentroEstudio">. UPC</h1>
+          <h1 class="Habilidades">. Se puede adaptar</h1>
+          <button class="btn1">Ver CV</button>
+          <button class="btn2">Ver Perfil</button>
+        </div>
+      </div>
+      <div class="Cuadrado2">
+      <h1 class="Hora2">25 de Octubre 2024</h1>
+      <h1 class="Hora3">15:00 PM</h1>
+      <button class="btn3">Unirse</button>
+        <div class="Derecha-Abajo-Arr-2">
+          <img src="assets/imagenes/FotosPerfil/img2.png" alt="img2" class="img1">
+          <h2>Karim Samanamud</h2>
+          <h1 class="Profesion">. Ciencias de la Computación</h1>
+          <h1 class="CentroEstudio">. UPC</h1>
+          <h1 class="Habilidades">. Buena memoria</h1>
+          <button class="btn2">Ver Perfil</button>
+        </div>
+      </div>
+    </div>
+    <div class="Derecha-Abajo-Abb">
+      <div class="Cuadrado3">
+        <h1 class="Hora4">29 de Octubre 2024</h1>
+        <h1 class="Hora5">15:00 PM</h1>
+        <button class="btn3">Unirse</button>
+        <div class=" Derecha-Abajo-Abb-1">
+          <img src="assets/imagenes/FotosPerfil/img3.png" alt="img3" class="img1">
+          <h2>Arturo Pingo</h2>
+          <h1 class="Profesion">. Ingenieria de Software</h1>
+          <h1 class="CentroEstudio">. UPC</h1>
+          <h1 class="Habilidades">. Habil con los codigos</h1>
+          <button class="btn2">Ver Perfil</button>
+        </div>
+      </div>
+      <div class="Cuadrado4">
+        <h1 class="Hora6">1 de Noviembre 2024</h1>
+        <h1 class="Hora7">15:00 PM</h1>
+        <button class="btn3">Unirse</button>
+        <div class="Derecha-Abajo-Abb-2">
+          <img src="assets/imagenes/FotosPerfil/img4.png" alt="img4" class="img1">
+          <h2>Rodrigo Quispe</h2>
+          <h1 class="Profesion">. Ingenieria de Sistemas</h1>
+          <h1 class="CentroEstudio">. UPC</h1>
+          <h1 class="Habilidades">. Responsable</h1>
+          <button class="btn2">Ver Perfil</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <router-outlet></router-outlet>
+</div>
+
+
+</main>
+<app-footer></app-footer>

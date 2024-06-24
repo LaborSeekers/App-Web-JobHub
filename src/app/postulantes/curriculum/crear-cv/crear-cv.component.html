@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Trabajo</title>
+    <link rel="stylesheet" href="crear-cv.component.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="templates-section">
+            <h2 class="section-title">PLANTILLAS</h2>
+            <div class="templates-grid">
+                <img src="assets/Cvs/Plantilla 1.png" alt="Template 1" class="template-image">
+                <img src="assets/Cvs/Plantilla 2.png" alt="Template 2" class="template-image">
+                <img src="assets/Cvs/Plantilla 3.png" alt="Template 3" class="template-image">
+                <img src="assets/Cvs/Plantilla 4.png" alt="Template 4" class="template-image">
+            </div>
+            
+            <p class="section-subtitle">
+                SELECCIONA UNO DE LOS COLORES DISPONIBLES PARA LA CREACIÓN DE TU CV
+            </p>
+            <div class="color-options">
+                <div class="color-swatch blue"></div>
+                <div class="color-swatch red"></div>
+                <div class="color-swatch green"></div>
+                <div class="color-swatch yellow"></div>
+                <div class="color-swatch gray"></div>
+            </div>
+            <div class="buttons-group">
+                <button class="btn-outline">Descargar CV</button>
+                <button class="btn-primary">Imprimir CV</button>
+            </div>
+        </div>
+
+        <div class="cv-image-section">
+            <img src="assets/Cvs/cv ejemplo.PNG" alt="CV Preview" class="cv-preview-image">
+            <div class="cv-buttons-group">
+                <button class="btn-outline" mat-raised-button color="primary" (click)="verDetalles($event)"> Visualizar CV</button>
+                <div class="actions-group">
+                    <button class="btn-primary">Guardar cambios</button>
+                    <button class="btn-danger">Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

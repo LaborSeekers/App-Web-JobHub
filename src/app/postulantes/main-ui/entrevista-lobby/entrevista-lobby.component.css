@@ -1,0 +1,267 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+/*main css*/
+main{
+    background-color: white;
+    display: flex;
+    border-top-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.izquierda{
+    flex: 1;
+    border-right-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    text-align: center;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+}
+.izquierda-superior{
+    flex:3;
+    background-color: white;
+}
+.izquierda-superior h2{
+    color: #000;
+    opacity: 0.6;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-superior ul{
+    list-style-type: none;
+    min-width: 190px;
+}
+.izquierda-superior ul li a{
+    text-decoration: none;
+    color: #000;
+    opacity: 0.7;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-superior ul li a:hover{
+    color: #27A5FF;
+}
+.izquierda-superior ul li:hover{
+    background: #E7F0FA;
+}
+.izquierda-superior ul li a:focus, .izquierda-superior ul li a:active {
+    color: #27A5FF; 
+
+}
+.izquierda-superior ul li:focus, .izquierda-superior ul li:active {
+    background-color: #E7F0FA;    
+}
+
+.izquierda-superior ul li a{
+   display: flex;
+   align-items: center;
+}
+.izquierda-superior ul li {
+    padding: 5% 0% 5% 10%;
+}
+
+.izquierda-superior ul li.selected {
+     background-color: #E7F0FA
+} 
+
+#capaoverview, #portafolio-overview,#marcador-overview{
+    width: 15%;
+    height: auto;
+    margin-right: 15px;
+}
+#config-overview{
+    width: 20%;
+    height: auto;
+    margin-right: 7px;
+    margin-left: -3px;
+}
+#campana-overview{
+    width: 19%;
+    height: auto;
+    margin-right: 10px;
+    margin-left: -4px;
+}
+
+.izquierda-superior ul  {
+    padding: 0px;
+ }
+
+.izquierda-inferior{
+    flex:1;
+    justify-content: center;
+    align-items: end;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.izquierda-inferior img{
+    width: 15%;
+    height: auto;
+    cursor: pointer;
+}
+#logout a{
+    text-decoration: none;
+    color: #000;
+}
+
+/* Estilos de la tabla */
+.table-container {
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 20px;
+}
+
+.job-table {
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+    padding: 12px;
+    background-color: #f3f4f6;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #d1d5db;
+}
+
+.table-row {
+    border-bottom: 1px solid #d1d5db;
+}
+
+.table-row-alt {
+    background-color: #f9fafb;
+    border-bottom: 1px solid #d1d5db;
+}
+
+.table-data {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.delete-button {
+    color: #ff0000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 12px;
+}
+
+.company-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+.job-title {
+    font-weight: bold;
+}
+
+.job-location,
+.job-salary {
+    color: #666666;
+}
+
+.job-type {
+    margin-left: auto;
+    background-color: #bbbbba;
+    color: #0d68a0;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Otros estilos */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    padding: 0;
+}
+
+.profiles {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 9999px;
+}
+
+.profile-label {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 9999px;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7rem;
+    border-top: 1px solid #3f3f46;
+    padding-top: 5rem;
+}
+
+.exit-button {
+    background-color: #84baf0;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+}
+
+.icon-button {
+    background-color: white;
+    color: black;
+    padding: 1.5rem;
+    border-radius: 9999px;
+}
+

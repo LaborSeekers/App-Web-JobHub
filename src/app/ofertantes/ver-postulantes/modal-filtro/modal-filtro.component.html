@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Sección de filtrado</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <mat-label>Profesión</mat-label>
+      <input matInput [(ngModel)]="profession" name="profession">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Universidad</mat-label>
+      <input matInput [(ngModel)]="studyCenter" name="studyCenter">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Flexibilidad de horario</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of ['Sí', 'No']" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Experiencia con ...</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of ['Option 1', 'Option 2']" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- Add more fields as needed -->
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Limpiar</button>
+  <button mat-button (click)="applyFilters()">Aplicar filtros</button>
+</div>
