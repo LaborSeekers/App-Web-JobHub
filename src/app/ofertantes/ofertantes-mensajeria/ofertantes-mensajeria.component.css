@@ -306,8 +306,11 @@ flex-shrink: 0;
 }
 
 .derecha-derecha-centro {
-    flex: 7; /* Ocupa el 70% del alto de .derecha-derecha */
 
+
+    
+    flex: 7; /* Ocupa el 70% del alto de .derecha-derecha */
+    
     display: flex;
     flex-direction: column;
     align-items: center; /* Centra el contenido verticalmente */
