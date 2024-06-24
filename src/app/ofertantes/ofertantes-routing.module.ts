@@ -10,7 +10,8 @@ const routes: Routes = [{path: '', component: OfertantesComponent,
 
       {path: 'ofertas-publicadas', component: OfertasPublicadasComponent},
       {path: 'ver-postulantes/:offerId', component: VerPostulantesComponent},
-      {path: '',component:InicioComponent}
+      {path: '',component:InicioComponent},
+      {path:'inicio',component:InicioComponent }
 
     ]
 },

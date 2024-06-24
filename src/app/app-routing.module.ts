@@ -4,6 +4,7 @@ import { ForgotPasswordComponent } from './login/forgot-password/forgot-password
 import { ChangePasswordComponent } from './login/change-password/change-password.component';
 import { CrearCvComponent } from './postulantes/curriculum/crear-cv/crear-cv.component';
 import { EditarCurriculumComponent } from './postulantes/curriculum/editar-curriculum/editar-curriculum.component';
+import { EntrevistasComponent } from './postulantes/main-ui/entrevistas/entrevistas.component';
 
 
 const routes: Routes = [

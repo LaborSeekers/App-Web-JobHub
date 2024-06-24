@@ -5,6 +5,7 @@ import { TablaEmpleoComponent } from './tabla-empleo/tabla-empleo.component';
 import { TablaEmpleoFavComponent } from './tabla-empleo-fav/tabla-empleo-fav.component';
 import { AlertasTrabajoComponent } from './alertas-trabajo/alertas-trabajo.component';
 
+
 const routes: Routes = [
   { path: '', component: PostulantesComponent,
     children:[

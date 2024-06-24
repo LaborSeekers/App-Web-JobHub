@@ -16,6 +16,7 @@ import { OfertantesModule } from './ofertantes/ofertantes.module';
   declarations: [
     AppComponent,
     RegisterComponent
+
    
   
   ],

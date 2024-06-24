@@ -2,7 +2,7 @@ body{
     display: flex;
     flex-direction: column;
 }
-/*main css*/
+
 main{
     background-color: white;
     display: flex;
@@ -115,10 +115,6 @@ main{
     width: 15%;
     height: auto;
     cursor: pointer;
-}
-#logout a{
-    text-decoration: none;
-    color: #000;
 }
 
 .derecha{

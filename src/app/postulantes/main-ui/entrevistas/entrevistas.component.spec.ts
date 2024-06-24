@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialog } from '@angular/material/dialog';
-import { CrearCvComponent } from './crear-cv.component';
 
-describe('CrearCvComponent', () => {
-  let component: CrearCvComponent;
-  let fixture: ComponentFixture<CrearCvComponent>;
+import { EntrevistasComponent } from './entrevistas.component';
+
+describe('EntrevistasComponent', () => {
+  let component: EntrevistasComponent;
+  let fixture: ComponentFixture<EntrevistasComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CrearCvComponent]
+      declarations: [EntrevistasComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CrearCvComponent);
+    fixture = TestBed.createComponent(EntrevistasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
