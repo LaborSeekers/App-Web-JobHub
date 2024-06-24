@@ -2,6 +2,9 @@ import { Component, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 
+import { LoginService } from './../services/login.service';
+import { UserResponse } from '../interfaces/user-response.interface';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,13 +14,15 @@ export class RegisterComponent implements AfterViewInit {
   registerForm: FormGroup;
   showmodal: boolean = false;
 
+  userResponse: UserResponse | null = null;
+
   constructor(
     private router:Router,
     private el: ElementRef,
     private renderer: Renderer2,
-    private fb: FormBuilder
+    private fb: FormBuilder,
     
-
+    private loginser: LoginService,
   ) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
@@ -30,6 +35,7 @@ export class RegisterComponent implements AfterViewInit {
       type_user: ['postulant', Validators.required],
       check_terms: [false, Validators.requiredTrue]
     }, { validator: this.passwordMatchValidator });
+
   }
 
   passwordMatchValidator(form: FormGroup) {
@@ -61,15 +67,39 @@ export class RegisterComponent implements AfterViewInit {
     });
   }
 
-  onSubmit() {
-    if (this.registerForm && this.registerForm.valid) {
-      // Lógica de registro aquí
-      console.log('Creación de cuenta correctamente', this.registerForm.value);
-      this.showmodal = true;
-    } else {
-      // Marcar todos los campos como tocados para mostrar errores
+  onSubmit(): void {
+    if (this.registerForm.invalid){
       this.registerForm?.markAllAsTouched();
+      return;
     }
+
+    const formValue = this.registerForm.value;
+
+    const newAccount = {
+      id : 0,
+      name: formValue.name,
+      lastname: formValue.lastname,
+      correo: formValue.email,
+      password: formValue.password,
+      type_user: formValue.type_user,
+      number: formValue.cel,
+      date: formValue.date
+    };
+
+
+    this.loginser.register(newAccount).subscribe({
+      next: (response: UserResponse) => {       
+        this.userResponse = response;
+        console.log('Creación de cuenta correctamente', this.registerForm.value);
+        this.showmodal = true;
+      },
+      
+      error: (error) =>{
+        console.error('Error al crear cuenta', error);
+      }
+    });
+      
+   
   }
 
 
