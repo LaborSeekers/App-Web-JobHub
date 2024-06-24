@@ -1,60 +1,32 @@
 <body>
   <app-header></app-header>
   <main>
-      <div class="izquierda">
-        <div class="izquierda-superior">
-          <h2>Panel de Candidato</h2>
-          <ul>
-            <li *ngFor="let link of links; let i = index"
-                (click)="selectLink(i)"
-                [ngClass]="{ 'selected': selectedIndex === i }"> 
-              <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <img 
-                  [src]="selectedIndex === i ? link.selectedImage : link.image" 
-                  [alt]="link.alt" 
-                  [id]="link.id"> 
-                {{ link.text }}
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="izquierda-inferior">
-          <img src="assets/imagenes/Nav-bar/CerrarSesion.png">
-          <h3 id="logout"><a routerLink="/login">Cerrar Sesión</a></h3>
-        </div>
-        
+    <div class="izquierda">
+      <div class="izquierda-superior">
+        <h2>Panel de Candidato</h2>
+        <ul>
+          <li *ngFor="let link of links; let i = index"
+              (click)="selectLink(i)"
+              [ngClass]="{ 'selected': selectedIndex === i }"> 
+            <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <img 
+                [src]="selectedIndex === i ? link.selectedImage : link.image" 
+                [alt]="link.alt" 
+                [id]="link.id"> 
+              {{ link.text }}
+            </a>
+          </li>
+        </ul>
       </div>
-
-      <div class="derecha">
-        <div class="container">
-          <div class="profiles">
-              <div class="profile">
-                  <img class="profile-image" src="assets/imagenes/Entrevistas/FotoPerfil.png" alt="Postulante" crossorigin="anonymous">
-                  <div class="profile-label">
-                      POSTULANTE
-                  </div>
-              </div>
-              <div class="profile">
-                  <img class="profile-image" src="assets/imagenes/Entrevistas/perfil.png" alt="Entrevistador" crossorigin="anonymous">
-                  <div class="profile-label">
-                      ENTREVISTADOR
-                  </div>
-              </div>
-          </div>
-          <div class="controls">
-              <button class="exit-button">SALIR</button>
-              <button class="icon-button">
-                  <img aria-hidden="true" alt="video" src="assets/imagenes/Entrevistas/camera.png" crossorigin="anonymous">
-              </button>
-              <button class="icon-button">
-                  <img aria-hidden="true" alt="microphone" src="assets/imagenes/Entrevistas/micro.png" crossorigin="anonymous">
-              </button>
-              <button class="icon-button">
-                  <img aria-hidden="true" alt="upload" src="assets/imagenes/Entrevistas/share.png" crossorigin="anonymous">
-              </button>
-          </div>
-      </div>          
+      <div class="izquierda-inferior">
+        <img src="assets/imagenes/Nav-bar/CerrarSesion.png">
+        <h3 id="logout"><a routerLink="/login">Cerrar Sesión</a></h3>
+      </div>
+      
     </div>
-    </main>
+      <div class="derecha">
+          <router-outlet></router-outlet>
+      </div>
+  </main>
   <app-footer></app-footer>
 </body>

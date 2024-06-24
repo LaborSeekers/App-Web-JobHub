@@ -7,7 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -24,9 +24,10 @@ import {MatInputModule} from '@angular/material/input';
     MatBadgeModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule,ReactiveFormsModule
+    MatInputModule,ReactiveFormsModule,
+    MatTabsModule
   ],
-  exports:[MatExpansionModule,MatTableModule,MatIconModule,MatButtonModule,MatBadgeModule,MatFormFieldModule,MatInputModule,MatDialogModule,ReactiveFormsModule
+  exports:[MatExpansionModule,MatTableModule,MatIconModule,MatButtonModule,MatBadgeModule,MatFormFieldModule,MatInputModule,MatDialogModule,MatTabsModule,ReactiveFormsModule
    ]
 })
 export class MaterialModule { }

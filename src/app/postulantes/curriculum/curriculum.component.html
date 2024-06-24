@@ -4,6 +4,11 @@
         <div class="izquierda">
             <div class="izquierda-superior">
                 <h2>Configuración de Curriculum</h2>
+                <mat-tab-group>
+                    <mat-tab label="Primero"> Crea tu CV </mat-tab>
+                    <mat-tab label="Segundo"> Editalo </mat-tab>
+                    <mat-tab label="Tercero"> Visualizalo </mat-tab>
+                  </mat-tab-group>
             </div>
             <div class="izquierda-inferior">
                 <h3>izquierda-inferior</h3>
@@ -11,16 +16,7 @@
         </div>
 
         <div class="derecha">
-            <div class="container">
-                <div class="card">
-                    <p>¿Es tu primera vez dentro de una plataforma de trabajo y te falta tu CV?</p>
-                    <button class="btn-primary" routerLink="/crear-cv">Crear CV</button>
-                </div>
-                <div class="card">
-                    <p>¿Ya tienes tu CV preparado y solo quieres subir a nuestra plataforma?</p>
-                    <button class="btn-secondary">Importar CV</button>
-                </div>
-            </div>
+              <router-outlet></router-outlet> 
         </div>
     </main>
     <app-footer></app-footer>

@@ -7,17 +7,21 @@ import { CurriculumComponent } from './curriculum.component';
 import { CrearCvComponent } from './crear-cv/crear-cv.component'; 
 import { PostulantesModule } from '../postulantes.module';
 import { EditarCurriculumComponent } from './editar-curriculum/editar-curriculum.component';
+import { CurriculumLobbyComponent } from './curriculum-lobby/curriculum-lobby.component';
+import { MaterialModule } from '../../material/material.module';
 
 @NgModule({
   declarations: [
     CurriculumComponent,
     CrearCvComponent,
-    EditarCurriculumComponent
+    EditarCurriculumComponent,
+    CurriculumLobbyComponent
   ],
   imports: [
     CommonModule,
     CurriculumRoutingModule,
-    PostulantesModule
+    PostulantesModule,
+    MaterialModule /*Borrar en caso se encuentren problemas*/
   ]
 })
 export class CurriculumModule { }

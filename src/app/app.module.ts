@@ -19,10 +19,12 @@ import { OfertantesModule } from './ofertantes/ofertantes.module';
 import { CrearCvComponent } from './postulantes/curriculum/crear-cv/crear-cv.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent
+
    
   
   ],
