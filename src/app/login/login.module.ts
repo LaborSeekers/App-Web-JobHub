@@ -9,6 +9,7 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
 import { LoginUiComponent } from './login-ui/login-ui.component';
 import { MaterialModule } from '../material/material.module';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { MaterialModule } from '../material/material.module';
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule,MaterialModule
+    LoginRoutingModule,MaterialModule,
+    HttpClientModule,
+    
   ],exports: [
     LoginComponent,
     ForgotPasswordComponent,
