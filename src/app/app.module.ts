@@ -12,7 +12,6 @@ import { PostulantesModule } from './postulantes/postulantes.module';
 import { OfertantesModule } from './ofertantes/ofertantes.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
