@@ -1,13 +1,14 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-entrevistas',
-  templateUrl: './entrevistas.component.html',
-  styleUrl: './entrevistas.component.css'
+  selector: 'app-ofertantes-mensajeria',
+  templateUrl: './ofertantes-mensajeria.component.html',
+  styleUrl: './ofertantes-mensajeria.component.css'
 })
-export class EntrevistasComponent implements OnInit {
+export class OfertantesMensajeriaComponent  implements OnInit {
+  
   links = [
     { route: ['TablaOV'], image: "assets/imagenes/Nav-bar/capas2.png",selectedImage:"assets/imagenes/Nav-bar/capas.png", alt: "capa", id: "capaoverview", text: "Overview" },
     { route: ['ofertas-publicadas'], image: "assets/imagenes/Nav-bar/portafolio.png",selectedImage:"assets/imagenes/Nav-bar/portafolio2.png", alt: "portafolio", id: "portafolio-overview", text: "Ofertas publicadas" },
@@ -16,6 +17,7 @@ export class EntrevistasComponent implements OnInit {
     { route: ['/route/path'], image: "assets/imagenes/Nav-bar/Engranajes.png",selectedImage:"assets/imagenes/Nav-bar/Engranajes2.png", alt: "config", id: "config-overview", text: "Configuración" },
  
   ];
+
   selectedIndex: number | null = null;
 
   constructor(private router: Router) {}
@@ -29,7 +31,7 @@ export class EntrevistasComponent implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => this.updateSelectedIndex());
   }
-  
+
   updateSelectedIndex() {
     // Find the index of the link that matches the current route
     this.selectedIndex = this.links.findIndex(link => {

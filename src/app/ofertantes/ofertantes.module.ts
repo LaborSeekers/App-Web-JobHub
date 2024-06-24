@@ -37,5 +37,6 @@ import { InicioComponent } from './inicio/inicio.component';
     MatSelectModule,
     FormsModule
   ],
+  exports:[HeaderComponent,FooterComponent]
 })
 export class OfertantesModule { }
