@@ -3,18 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { OfertantesComponent } from './ofertantes.component';
 import { OfertasPublicadasComponent } from './ofertas-publicadas/ofertas-publicadas.component';
 import { VerPostulantesComponent } from './ver-postulantes/ver-postulantes.component';
+import { InicioComponent } from './inicio/inicio.component';
 
+const routes: Routes = [{path: '', component: OfertantesComponent,
+    children:[
 
-const routes: Routes = [
-    /*testeo*/
-    {path: '', component: OfertantesComponent,},
-    {path: 'ofertas-publicadas', component: OfertasPublicadasComponent,},
-    {path: 'ver-postulantes/:offerId', component: VerPostulantesComponent,},
-  
-  
+      {path: 'ofertas-publicadas', component: OfertasPublicadasComponent},
+      {path: 'ver-postulantes/:offerId', component: VerPostulantesComponent},
+      {path: '',component:InicioComponent},
+      {path:'inicio',component:InicioComponent }
 
-  
-
+    ]
+},
+    {path: 'entrevistas', loadChildren: () => import('./entrevistas/entrevistas.module').then(m => m.EntrevistasModule) },
+    
 ];
 
 @NgModule({

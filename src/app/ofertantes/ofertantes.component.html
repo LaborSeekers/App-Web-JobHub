@@ -1,21 +1,34 @@
-<body>
-    <main>
-        <div class="izquierda">
-            
-            <div class="izquierda-superior">
-                <h1>div-izquierda-superior</h1>
-            </div>
-
+<app-header></app-header>
+<main>
+    <div class="izquierda">
+        <div class="izquierda-superior">
+          <h2>Panel de Candidato</h2>
+          <ul>
+            <li *ngFor="let link of links; let i = index"
+                (click)="selectLink(i)"
+                [ngClass]="{ 'selected': selectedIndex === i }"> 
+              <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <img 
+                  [src]="selectedIndex === i ? link.selectedImage : link.image" 
+                  [alt]="link.alt" 
+                  [id]="link.id"> 
+                {{ link.text }}
+              </a>
+            </li>
+          </ul>
+        </div>
         <div class="izquierda-inferior">
-          <h1>div_izquierda-inferior</h1>
+          <img src="assets/imagenes/Nav-bar/CerrarSesion.png">
+          <h3 id="logout">Cerrar Sesión</h3>
         </div>
         
-       
-       
-        </div>
-        <div class= "derecha">
-            <app-ofertas-publicadas></app-ofertas-publicadas>
-        </div>
-    </main>
+      </div>
 
-  </body>
+    <div class="derecha">
+        <router-outlet></router-outlet> 
+    </div>
+
+
+</main>
+<app-footer></app-footer>
+

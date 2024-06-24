@@ -10,9 +10,9 @@ import { EntrevistasComponent } from './postulantes/main-ui/entrevistas/entrevis
 const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: 'Postulantes', loadChildren: () => import('./postulantes/postulantes.module').then(m => m.PostulantesModule) },
-  { path: 'Ofertantes', loadChildren: () => import('./ofertantes/ofertantes.module').then(m => m.OfertantesModule) }]
-
-
+  { path: 'Ofertantes', loadChildren: () => import('./ofertantes/ofertantes.module').then(m => m.OfertantesModule) },
+  {path: 'crear-cv', component: CrearCvComponent },
+{path: 'editar-curriculum' , component: EditarCurriculumComponent}];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

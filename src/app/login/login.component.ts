@@ -1,4 +1,7 @@
-import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Renderer2, inject } from '@angular/core';
+import { LoginService } from './services/login.service';
+import { UserResponse } from './interfaces/user-response.interface';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-login',
@@ -6,7 +9,11 @@ import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements AfterViewInit {
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  
+
+  dataSource = new MatTableDataSource<UserResponse>();
+
+  constructor(private loginService: LoginService, private el: ElementRef, private renderer: Renderer2) {}
   ngAfterViewInit(): void {
     const linkedinLogin = this.el.nativeElement.querySelector('#linkedinLogin');
     const githubLogin = this.el.nativeElement.querySelector('#githubLogin');
@@ -30,6 +37,12 @@ export class LoginComponent implements AfterViewInit {
       const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
       this.renderer.setAttribute(password, 'type', type);
       this.renderer.setAttribute(togglePassword, 'src', type === 'password' ? 'assets/imagenes/Eye.png' : 'assets/imagenes/Eye.png');
+    });
+  }
+
+  loadUsers(): void {
+    this.loginService.getUser().subscribe(users => {
+      this.dataSource.data = users;
     });
   }
 }

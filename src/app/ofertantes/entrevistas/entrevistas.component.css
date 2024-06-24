@@ -1,0 +1,404 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+/*main css*/
+main{
+    background-color: white;
+    display: flex;
+    border-top-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.izquierda{
+    flex: 1;
+    border-right-width: 2px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    text-align: center;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+}
+.izquierda-superior{
+    flex:3;
+    background-color: white;
+}
+.izquierda-superior h2{
+    color: #000;
+    opacity: 0.6;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-superior ul{
+    list-style-type: none;
+    min-width: 190px;
+}
+.izquierda-superior ul li a{
+    text-decoration: none;
+    color: #000;
+    opacity: 0.7;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.izquierda-superior ul li a:hover{
+    color: #27A5FF;
+}
+.izquierda-superior ul li:hover{
+    background: #E7F0FA;
+}
+.izquierda-superior ul li a:focus, .izquierda-superior ul li a:active {
+    color: #27A5FF; 
+
+}
+.izquierda-superior ul li:focus, .izquierda-superior ul li:active {
+    background-color: #E7F0FA;    
+}
+
+.izquierda-superior ul li a{
+   display: flex;
+   align-items: center;
+}
+.izquierda-superior ul li {
+    padding: 5% 0% 5% 10%;
+}
+
+.izquierda-superior ul li.selected {
+     background-color: #E7F0FA
+} 
+
+#capaoverview, #portafolio-overview,#marcador-overview{
+    width: 15%;
+    height: auto;
+    margin-right: 15px;
+}
+#config-overview{
+    width: 20%;
+    height: auto;
+    margin-right: 7px;
+    margin-left: -3px;
+}
+#campana-overview{
+    width: 19%;
+    height: auto;
+    margin-right: 10px;
+    margin-left: -4px;
+}
+
+.izquierda-superior ul  {
+    padding: 0px;
+ }
+
+.izquierda-inferior{
+    flex:1;
+    justify-content: center;
+    align-items: end;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.izquierda-inferior img{
+    width: 15%;
+    height: auto;
+}
+
+.derecha{
+    flex: 5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.derecha-superior{
+    flex: 1;
+    background-color: blueviolet;
+}
+.derecha-inferior{
+    flex: 3;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+}
+.optionTabla{
+    display: flex;
+    gap: calc(512px - calc(512px - 32vw));
+}
+.optionTabla-izquierda{
+    flex: 1;
+    color: #000;
+
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.optionTabla-derecha{
+    flex: 1;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+}
+.optionTabla-derecha h4{
+   margin-left:45%;
+}
+.optionTabla-derecha img{
+    
+    max-width: 5%;
+}
+.tablaEmple{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h6 {
+    display: flex;
+    width: 796px;
+    height: 45px;
+    flex-direction: column;
+    justify-content: center; 
+    flex-shrink: 0;
+    color: #000;
+    font-family: Roboto;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-variant: all-small-caps;
+    text-align: left; 
+    margin-left: 20px; 
+}
+
+h3 {
+    color: #000;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-variant: all-small-caps;
+    text-align: left; 
+    padding-left: 20px; 
+}
+.derecha {
+    display: flex;
+    height: 80vh; 
+}
+
+.Derecha-Arriba,
+.Derecha-Centro {
+    height: 8vh; 
+    background-color: #27A5FF;
+}
+
+.Derecha-Abajo {
+    height: 80vh; 
+    background-color: orange;
+}
+
+.Derecha-Abajo-Arr, .Derecha-Abajo-Abb {
+    height: 30vh; 
+    padding: 10px; 
+    box-sizing: border-box; 
+}
+
+.Derecha-Abajo-Arr {
+    background-color: lightblue;
+}
+
+.Derecha-Abajo-Abb {
+    background-color: lightgreen;
+}
+
+
+/* Estilos para los elementos .Derecha-Abajo-Arr-1, .Derecha-Abajo-Arr-2, .Derecha-Abajo-Abb-1, .Derecha-Abajo-Abb-2 */
+.Derecha-Abajo-Arr-1,.Derecha-Abajo-Arr-2,.Derecha-Abajo-Abb-1,.Derecha-Abajo-Abb-2{
+    width: 35vh; /* Ancho fijo, aumentado a 35vh */
+    height: 25vh; /* Alto fijo, aumentado a 25vh */
+    flex-shrink: 0; /* Evita que se reduzca en tamaño */
+    border-radius: 30px; /* Borde redondeado */
+    border: 1px solid rgba(0, 0, 0, 0.19); /* Borde con transparencia */
+    background: #FFF; /* Fondo blanco */
+    box-shadow: 0px 10px 20px 0px rgba(0, 95, 183, 0.30); /* Sombra */
+    display: inline-block; /* Mostrar en línea */
+    vertical-align: top; /* Alinear verticalmente arriba */
+    margin-right: 20px; /* Margen derecho para separar los elementos */
+    position: relative; /* Asegura que se pueda controlar el z-index */
+    z-index: 2; /* Coloca estos elementos encima del .Cuadrado1 */
+    margin-right: 40%; /* Margen derecho del 40% para separar */
+}
+
+
+
+.Cuadrado1, .Cuadrado2, .Cuadrado3, .Cuadrado4 {
+    width: 50vh;
+    height: 25vh;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    background: #FFF;
+    box-shadow: 0px 10px 20px 0px rgba(0, 95, 183, 0.30);
+    display: inline-block;
+    margin-right: 10%;
+    vertical-align: top;
+}
+
+.img1 {
+    top: -3.5vh; /* Ajustar la posición desde arriba */
+    right: 13vh; /* Ajustar la posición desde la derecha */
+    width: 80px;
+    height: 80px;
+    z-index: 10; /* Ajustar el z-index si es necesario */
+    position: absolute; /* Usar posición absoluta para posicionar libremente */
+}
+
+
+h2 {
+    color: #000;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 6.5vh; /* Ajusta este valor según sea necesario */
+}
+
+h1 {
+    color: #000;
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 35vh; /* Ancho deseado para cada h1 */
+}
+
+
+h1.Profesion,
+h1.CentroEstudio,
+h1.Habilidades {
+    margin-bottom: 5px; /* Espacio inferior entre los elementos */
+}
+
+h1.Hora {
+    position:absolute; 
+    top: 39vh; /* Ajusta según sea necesario */
+    right: 94vh; /* Ajusta según sea necesario */
+}
+h1.Hora1 {
+    position:absolute; 
+    top: 41vh; /* Ajusta según sea necesario */
+    right: 95vh; /* Ajusta según sea necesario */
+}
+
+
+h1.Hora2{
+    position:absolute;
+    top: 39vh;
+    right: 26vh; /* Ajusta según sea necesario */
+}
+
+h1.Hora3{
+    position:absolute;
+    top: 41vh;
+    right: 26vh; /* Ajusta según sea necesario */
+}
+
+
+
+h1.Hora4{
+    position:absolute;
+    top:68vh;
+    right: 94vh; /* Ajusta según sea necesario */
+}
+h1.Hora5{
+    position:absolute;
+    top:70vh;
+    right: 94vh; /* Ajusta según sea necesario */
+}
+
+
+
+h1.Hora6{
+    position:absolute;
+    top:68vh;
+    right: 26vh; /* Ajusta según sea necesario */
+}
+h1.Hora7{
+    position:absolute;
+    top:70vh;
+    right: 26vh; /* Ajusta según sea necesario */
+}
+
+
+.btn1{
+    border-radius: 12px;
+    background: #046BA5;
+    width: 110px;
+    height: 47px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    margin-left: -20px; /* Ajusta este valor según sea necesario */
+}
+
+.btn2{
+    border-radius: 12px;
+    background: #046BA5;
+    width: 110px;
+    height: 47px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    margin-left: 20px; /* Ajusta este valor según sea necesario */
+}
+
+
+.btn3{
+    position:absolute;
+    border-radius: 12px;
+    background: #046BA5;
+    width: 110px;
+    height: 47px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    margin-left: 300px; /* Ajusta este valor según sea necesario */
+    margin-top: 150px;
+}
