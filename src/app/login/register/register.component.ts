@@ -79,7 +79,7 @@ export class RegisterComponent implements AfterViewInit {
       id : 0,
       name: formValue.name,
       lastname: formValue.lastname,
-      correo: formValue.email,
+      email: formValue.email,
       password: formValue.password,
       type_user: formValue.type_user,
       number: formValue.cel,
