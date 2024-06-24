@@ -12,8 +12,6 @@ const routes: Routes = [
   { path: 'Ofertantes', loadChildren: () => import('./ofertantes/ofertantes.module').then(m => m.OfertantesModule) },
   {path: 'crear-cv', component: CrearCvComponent },
 {path: 'editar-curriculum' , component: EditarCurriculumComponent}];
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
