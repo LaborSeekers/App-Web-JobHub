@@ -1,7 +1,7 @@
+import { UserRequest } from './../interfaces/user-request.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/enviroment';
-import { UserRequest } from '../interfaces/user-request.interface';
 import { UserResponse } from '../interfaces/user-response.interface';
 import { Observable } from 'rxjs';
 
@@ -24,6 +24,12 @@ export class LoginService {
   register(newAccount: UserResponse): Observable<UserResponse> {
     const url = `${this.apiUrl}/users`; // Endpoint del backend para registrar cuentas
     return this.http.post<UserResponse>(url, newAccount);
+  }
+
+
+  login(userRequest:UserRequest):Observable<UserResponse>{
+    const url =`${this.apiUrl}/login`;
+    return this.http.post<UserResponse>(url, userRequest);
   }
 
   

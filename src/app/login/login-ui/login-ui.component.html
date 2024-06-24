@@ -1,40 +1,54 @@
 <body>
-    <img src="assets/imagenes/JobHub.png" alt="Tu imagen" class="corner-image" />
-    <div class="container">
-      <div class="card">
-        <div class="avatar">
-          <img src="assets/imagenes/User.png" alt="User Avatar" class="rounded-full" />
+  <img src="assets/imagenes/JobHub.png" alt="Tu imagen" class="corner-image" />
+  <div class="container">
+    <div class="card">
+      <div class="avatar">
+        <img src="assets/imagenes/User.png" alt="User Avatar" class="rounded-full" />
+      </div>
+      <h2 class="title">Sign in to JobHub</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">CORREO ELECTRONICO</label>
+          <input class="input" type="email" id="email" formControlName="email" placeholder="Email" />
+          <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+            <span *ngIf="loginForm.get('email')?.errors?.['required']">El correo electrónico es requerido.</span>
+            <span *ngIf="loginForm.get('email')?.errors?.['email']">Correo electrónico inválido.</span>
+          </div>
         </div>
-        <h2 class="title">Sign in to JobHub</h2>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="email">CORREO ELECTRONICO</label>
-            <input class="input" type="email" id="email" placeholder="Email" />
+        <div class="form-group relative">
+          <label for="password">CONTRASEÑA</label>
+          <input class="input" type="password" id="password" formControlName="password" placeholder="Password" />
+          <img src="assets/imagenes/Eye.png" alt="You can see the password" class="show-password" id="togglePassword" />
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+            <span *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida.</span>
+            <span *ngIf="loginForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</span>
           </div>
-          <div class="form-group relative">
-            <label for="password">CONTRASEÑA</label>
-            <input class="input" type="password" id="password" placeholder="Password" />
-            <img src="assets/imagenes/Eye.png" alt="You can see the password" class="show-password" id="togglePassword"/>
-          </div>
-          <div class="forgot-password">
-            <a routerLink="forgot-password">¿Olvidó su contraseña?</a>
-          </div>
-          <button class="submit-btn">Sign in</button>
-        </form>
-        <div class="separator">
-          <hr class="border" />
-          <span>O</span>
-          <hr class="border" />
         </div>
-        <div class="social-icons">
-          <img src="assets/imagenes/GitHub.png" alt="GitHub" class="social-icon" id="githubLogin" />
-          <img src="assets/imagenes/Linkedin.png" alt="LinkedIn" class="social-icon" id="linkedinLogin" />
-          <img src="assets/imagenes/Google.png" alt="Google" class="social-icon" id="googleLogin" />
+
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        <div class="forgot-password">
+          <a routerLink="forgot-password">¿Olvidó su contraseña?</a>
         </div>
         <div class="create-account">
           <p>No tienes una cuenta?</p>
           <button class="create-account-btn" routerLink="/register"> Crear nueva cuenta </button>
         </div>
+        <button type="submit" class="submit-btn">Sign in</button>
+      </form>
+      <div class="separator">
+        <hr class="border" />
+        <span>O</span>
+        <hr class="border" />
+      </div>
+      <div class="social-icons">
+        <img src="assets/imagenes/GitHub.png" alt="GitHub" class="social-icon" id="githubLogin" />
+        <img src="assets/imagenes/Linkedin.png" alt="LinkedIn" class="social-icon" id="linkedinLogin" />
+        <img src="assets/imagenes/Google.png" alt="Google" class="social-icon" id="googleLogin" />
+      </div>
+      <div class="create-account">
+        <p>No tienes una cuenta?</p>
+        <button class="create-account-btn">Crear nueva cuenta</button>
       </div>
     </div>
-  </body>
+  </div>
+</body>
