@@ -9,19 +9,25 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
 import { LoginUiComponent } from './login-ui/login-ui.component';
 import { MaterialModule } from '../material/material.module';
 
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
-@NgModule({ declarations: [
-        LoginComponent,
-        ForgotPasswordComponent,
-        ChangePasswordComponent,
-        IniciarSesionComponent,
-        LoginUiComponent
-    ],
-    exports: [
-        LoginComponent,
-        ForgotPasswordComponent,
-        ChangePasswordComponent
-    ], imports: [CommonModule,
-        LoginRoutingModule, MaterialModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+  declarations: [
+    LoginComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent,
+    IniciarSesionComponent,
+    LoginUiComponent
+  ],
+  imports: [
+    CommonModule,
+    LoginRoutingModule,MaterialModule,
+    HttpClientModule,
+    
+  ],exports: [
+    LoginComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent
+  ]
+})
 export class LoginModule { }
