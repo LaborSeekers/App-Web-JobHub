@@ -16,6 +16,7 @@ import { MaterialModule } from '../material/material.module';
 import { DetalleDialogComponent } from './detalle-dialog/detalle-dialog.component';
 import { ReputacionDialogComponent } from './reputacion-dialog/reputacion-dialog.component';
 import { AlertasTrabajoComponent } from './alertas-trabajo/alertas-trabajo.component';
+import { TablaEmpleosPostuComponent } from './tabla-empleos-postu/tabla-empleos-postu.component';
 
 
 
@@ -30,6 +31,7 @@ import { AlertasTrabajoComponent } from './alertas-trabajo/alertas-trabajo.compo
     DetalleDialogComponent,
     ReputacionDialogComponent,
     AlertasTrabajoComponent,
+    TablaEmpleosPostuComponent,
   ],
   imports: [
     CommonModule,

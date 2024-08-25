@@ -10,7 +10,7 @@
 
     <mat-dialog-actions>
       <div class="botones">
-        <button id="postuButton">Postular</button>
+        <button id="postuButton" (click)="postularOferta(data.id)">Postular</button>
         <button id="perfilEButton">Perfil Empresarial</button>
         <mat-icon class="mat-icon" matBadgeColor="warn"><a [routerLink]='["routecomponente"]'>star</a></mat-icon>
       </div>
@@ -22,7 +22,13 @@
   <div class="info">
     <mat-dialog-content>
       <div class="contenido">
-
+        <div class="modal-backdrop" *ngIf="showmodal">
+          <div class="modal-content">
+            <h1>¡Postulación Exitosa!</h1>
+            <button class="btn_login" (click)="returnMainPage()">Cerrar</button>
+          </div>
+        </div>
+        
         <div class="izquierda">
           <div class="contenidoBox">
             <div class="titulo">

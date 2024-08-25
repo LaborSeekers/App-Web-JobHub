@@ -4,6 +4,7 @@ import { PostulantesComponent } from './postulantes.component';
 import { TablaEmpleoComponent } from './tabla-empleo/tabla-empleo.component';
 import { TablaEmpleoFavComponent } from './tabla-empleo-fav/tabla-empleo-fav.component';
 import { AlertasTrabajoComponent } from './alertas-trabajo/alertas-trabajo.component';
+import { TablaEmpleosPostuComponent } from './tabla-empleos-postu/tabla-empleos-postu.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
       {path: 'TablaFav', component: TablaEmpleoFavComponent},
       {path: 'AlertasTrabajo', component:AlertasTrabajoComponent},
       {path: 'appconfiguration', loadChildren: () => import('./appconfiguration/appconfiguration.module').then(m => m.AppconfigurationModule) },
+      {path: 'TablaTApli',component: TablaEmpleosPostuComponent},
       ]
    },
    {path: 'main-UI', loadChildren: () => import('./main-ui/main-ui.module').then(m => m.MainUIModule) },
