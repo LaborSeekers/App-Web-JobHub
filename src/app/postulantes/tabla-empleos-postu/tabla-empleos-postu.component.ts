@@ -1,16 +1,15 @@
-import { ofertalLaboral } from './../../models/ofertaLaboral.model';
-import { PostulantesService } from './../../services/postulantes.service';
 import { Component } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { DetalleDialogComponent } from '../detalle-dialog/detalle-dialog.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { ofertalLaboral } from '../../models/ofertaLaboral.model';
 import { MatDialog } from '@angular/material/dialog';
-
-
+import { PostulantesService } from '../../services/postulantes.service';
+import { DetalleDialogComponent } from '../detalle-dialog/detalle-dialog.component';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { UserService } from '../../services/user.service';
 @Component({
-  selector: 'app-tabla-empleo',
-  templateUrl: './tabla-empleo.component.html',
-  styleUrls: ['./tabla-empleo.component.css'],
+  selector: 'app-tabla-empleos-postu',
+  templateUrl: './tabla-empleos-postu.component.html',
+  styleUrl: './tabla-empleos-postu.component.css',  
   animations: [
     trigger('detailExpand', [
       state('collapsed, void', style({ height: '0px', minHeight: '0' })),
@@ -19,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
     ]),
   ],
 })
-export class TablaEmpleoComponent {
+export class TablaEmpleosPostuComponent {
   displayedColumns: string[] = ['puesto', 'reputacion', 'fecha', 'estado', 'accion'];
   
   dataSource: MatTableDataSource<ofertalLaboral> = new MatTableDataSource<ofertalLaboral>();
@@ -29,12 +28,19 @@ export class TablaEmpleoComponent {
   showUndoButton = false;
   progress = 0;
   progressInterval: any;
-  constructor(public dialog: MatDialog,private PostulantesService :PostulantesService) {}
+  constructor(public dialog: MatDialog,private PostulantesService :PostulantesService, private userService :UserService) {}
 
   loadOfertas():void{
-    this.PostulantesService.getAllOfertasLabo().subscribe(ofertalLaboral =>{
-      this.dataSource.data=ofertalLaboral;
-    })
+    const userId = this.userService.getUserId();
+    if(userId){
+      this.PostulantesService.getOfertasPostuladas(userId).subscribe(ofertalLaboral =>{
+        this.dataSource.data=ofertalLaboral;
+      });
+    }
+    else{
+      this.dataSource.data=[];
+    }
+    
   }
 
   ngOnInit(): void {
