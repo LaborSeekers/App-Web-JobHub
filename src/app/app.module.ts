@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { PostulantesModule } from './postulantes/postulantes.module';
 import { OfertantesModule } from './ofertantes/ofertantes.module';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { OfertantesModule } from './ofertantes/ofertantes.module';
     OfertantesModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

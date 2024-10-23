@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { UserService } from '../services/user.service';
+import { LoginService } from '../login/services/login.service';
 
 @Component({
   selector: 'app-postulantes',
@@ -17,7 +19,7 @@ export class PostulantesComponent implements OnInit {
   ];
   selectedIndex: number | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userS:UserService, private loginS:LoginService) {}
 
   ngOnInit() {
     // Initialize selectedIndex based on the initial route
@@ -39,5 +41,9 @@ export class PostulantesComponent implements OnInit {
 
   selectLink(index: number) {
     this.selectedIndex = index;
+  }
+  logout(){
+    this.userS.clearUserId();
+    this.loginS.logout();
   }
 }

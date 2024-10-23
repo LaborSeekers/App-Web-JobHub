@@ -13,8 +13,21 @@
             <img src="assets/imagenes/Header/cvPerso.png">
             <a [routerLink]='["curriculum"]'>Curriculum</a>
           </div>
-          
         </li>
+        @if(rol == 'ADMIN'){
+          <li>
+            <div class="PerfilSelector">
+              <img src="assets/imagenes/Header/cvPerso.png">
+              <a [routerLink]='["/register"]'>Registrar Usuarios (ADMIN)</a>
+            </div>
+          </li>
+          <li>
+            <div class="PerfilSelector">
+              <a [routerLink]='["/Ofertantes"]'>Ofertantes UI (ADMIN)</a>
+            </div>
+          </li>
+        }
+       
       </ul>
     </div>
 </div>

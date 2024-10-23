@@ -1,3 +1,4 @@
+import { UserInfo } from './interfaces/userInfo';
 import { Component, AfterViewInit, ElementRef, Renderer2, inject } from '@angular/core';
 import { LoginService } from './services/login.service';
 import { UserResponse } from './interfaces/user-response.interface';
@@ -11,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class LoginComponent implements AfterViewInit {
   
 
-  dataSource = new MatTableDataSource<UserResponse>();
+  dataSource : UserInfo | null = null;
 
   constructor(private loginService: LoginService, private el: ElementRef, private renderer: Renderer2) {}
   ngAfterViewInit(): void {
@@ -40,9 +41,9 @@ export class LoginComponent implements AfterViewInit {
     });
   }
 
-  loadUsers(): void {
-    this.loginService.getUser().subscribe(users => {
-      this.dataSource.data = users;
+  /*loadUsers(): void {
+    this.loginService.getUserbyEmail("").subscribe(users => {
+      this.dataSource = users;
     });
-  }
+  }*/
 }

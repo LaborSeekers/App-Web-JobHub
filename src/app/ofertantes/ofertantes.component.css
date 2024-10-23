@@ -116,6 +116,7 @@ main{
 .izquierda-inferior img{
     width: 15%;
     height: auto;
+    cursor: pointer;
 }
 
 #logout a{

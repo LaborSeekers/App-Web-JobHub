@@ -35,7 +35,7 @@
               <h2><strong>Presentación:</strong></h2>
             </div>
             <div class="texto">
-              <p>{{ data.descripcion }}</p>
+              <p>{{ data.description }}</p>
             </div>
           </div>
 
@@ -69,18 +69,18 @@
         <div class="derecha">
           <div class="logoEmpresa">
             <img [src]="data.logo" alt="logo" style="width: 84px; height: 84px; margin-right: 8px; margin-top: 8px;">
-            <p><strong>{{ data.puesto }}</strong> </p>
+            <p><strong>{{ data.title }}</strong> </p>
           </div>
           <div class="infoImportante">
             <div class="features">
 
               <div class="EmpleoFeature" id="EmpleoFeature1">
-                <div><p>{{ data.type }}</p></div>
+                <div><p>{{ data.jobModalityName }}</p></div>
                 <div><p>{{ data.salary }}</p></div>
               </div>
               <div class="EmpleoFeature" id="EmpleoFeature2">
-                <img [src]="data.jornadaIMG" alt="tipojornadaIMG" style="width: 26px; height: 26px;">
-                <img [src]="data.sueldoIMG" alt="sueldoIMG" style="width: 26px; height: 26px;">
+                <img src="assets/imagenes/Tabla/Detalles/Reloj.png" alt="tipojornadaIMG" style="width: 26px; height: 26px;">
+                <img src="assets/imagenes/Tabla/Detalles/sueldo.png" alt="sueldoIMG" style="width: 26px; height: 26px;">
               </div>
             </div>
            
@@ -91,7 +91,7 @@
               </div>
               <div class="derechUbi">
                 <div class="derechUbiimg">
-                  <img [src]="data.ubicacionIMG" alt="ubicacionIMG" style="width: 58px; height: 55px;  margin-top: 8px;">
+                  <img src="assets/imagenes/Tabla/Detalles/Ubicacion.png" alt="ubicacionIMG" style="width: 58px; height: 55px;  margin-top: 8px;">
                 </div>
                 <div class="textoUbi">
                   <h6><strong>Ubicación</strong></h6>
@@ -103,10 +103,10 @@
           </div>
           <div class="estado">
             <div class="contenido">
-              <img *ngIf="data.estado === 'Activo'" src="assets/imagenes/Tabla/active.png" alt="Activo" style="width: 20px; height: 20px; margin-right: 5px;">
-              <img *ngIf="data.estado === 'Cancelado'" src="assets/imagenes/Tabla/cancelado.png" alt="Cancelado" style="width: 20px; height: 20px; margin-right: 5px;">
-              <img *ngIf="data.estado === 'Finalizado'" src="assets/imagenes/Tabla/finalizado.png" alt="Finalizado" style="width: 20px; height: 20px; margin-right: 5px;">
-              <p><strong>Estado:</strong> {{ data.estado }}</p>
+              <img *ngIf="data.status === 'ACTIVE'" src="assets/imagenes/Tabla/active.png" alt="Activo" style="width: 20px; height: 20px; margin-right: 5px;">
+              <img *ngIf="data.status === 'CANCELLED'" src="assets/imagenes/Tabla/cancelado.png" alt="Cancelado" style="width: 20px; height: 20px; margin-right: 5px;">
+              <img *ngIf="data.status === 'INACTIVE'" src="assets/imagenes/Tabla/finalizado.png" alt="Finalizado" style="width: 20px; height: 20px; margin-right: 5px;">
+              <p><strong>Estado:</strong> {{ data.status }}</p>
             </div>
           </div>
         </div>

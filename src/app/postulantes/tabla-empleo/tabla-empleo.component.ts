@@ -5,7 +5,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DetalleDialogComponent } from '../detalle-dialog/detalle-dialog.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-tabla-empleo',
@@ -28,11 +28,25 @@ export class TablaEmpleoComponent {
   expandedElement: ofertalLaboral | null = null;
   showUndoButton = false;
   progress = 0;
+  requisitos: string[] =[];
+  beneficios: string[] =[];
   progressInterval: any;
-  constructor(public dialog: MatDialog,private PostulantesService :PostulantesService) {}
+  constructor(public dialog: MatDialog,private datePipe:DatePipe,private PostulantesService :PostulantesService) {}
 
   loadOfertas():void{
+
     this.PostulantesService.getAllOfertasLabo().subscribe(ofertalLaboral =>{
+    ofertalLaboral.forEach((element)=>{this.requisitos=element.requirements.split(',');
+      element.requisitos=this.requisitos;
+    });      
+    ofertalLaboral.forEach((element)=>{this.beneficios=element.benefits.split(',');
+      element.beneficios=this.beneficios;
+    });
+    ofertalLaboral.forEach((element)=>{
+      const fechaFormateada = this.datePipe.transform(element.scheduledPublishAt, 'MMMM d, y HH:mm');
+      element.scheduledPublishAt=fechaFormateada;
+    });
+
       this.dataSource.data=ofertalLaboral;
     })
   }

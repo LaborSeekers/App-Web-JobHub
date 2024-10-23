@@ -1,18 +1,22 @@
 import { environment } from './../../environments/enviroment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ofertalLaboral } from '../models/ofertaLaboral.model';
-
+import { LoginService } from '../login/services/login.service';
 @Injectable({
   providedIn: 'root'
 })
 export class PostulantesService {
-    private apiUrl = `${environment.apiUrl}/ofertasLaborales`;
-    constructor(private http: HttpClient) { }
+    private apiUrl = `${environment.apiUrl}/admin/joboffer`;
+    constructor(private http: HttpClient, private  loginService: LoginService) { }
 
     getAllOfertasLabo():Observable<ofertalLaboral[]>{
-        return this.http.get<ofertalLaboral[]>(this.apiUrl)
+        const token = this.loginService.getToken();
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`, 
+      });
+        return this.http.get<ofertalLaboral[]>(this.apiUrl,{headers});
     }
 
 
