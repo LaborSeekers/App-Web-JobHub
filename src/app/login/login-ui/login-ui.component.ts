@@ -5,6 +5,7 @@ import { UserRequest } from '../interfaces/user-request.interface';
 import { UserResponse } from '../interfaces/user-response.interface';
 import { LoginService } from '../services/login.service';
 import { UserService } from '../../services/user.service';
+import { UserInfo } from '../interfaces/userInfo';
 
 @Component({
   selector: 'app-login-ui',
@@ -29,21 +30,27 @@ export class LoginUiComponent {
       const userRequest: UserRequest = this.loginForm.value;
       this.loginService.login(userRequest).subscribe({
         next: (response: UserResponse) => {
-          this.userService.setUserId(response.id);
-          console.log("id de usuario",this.userService.getUserId())
-          if (response.type_user === 'postulant') {
-            this.router.navigate(['/Postulantes']);
-          } else if (response.type_user === 'ofertant') {
-
-            this.router.navigate(['/Ofertantes']);
-          }
+          
+          this.loginService.getUserbyEmail(userRequest.email).subscribe({
+            next: (userProfileDTO: UserInfo) => {
+            this.userService.setUserId(userProfileDTO.id);
+            console.log("id de usuario",this.userService.getUserId())
+          },
+          error : (error) => {
+          this.errorMessage = error.error.message;
+          }});
+          
         },
         error: (error) => {
-          this.errorMessage = 'Invalid email or password';
+          this.errorMessage = error.error.message;
         }
       });
-    } else {
+    }
+    else
+    {
       this.loginForm.markAllAsTouched();
     }
   }
+
+
 }

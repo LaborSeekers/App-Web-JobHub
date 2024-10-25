@@ -27,8 +27,8 @@
             </div>
             <div class="input_box">
               <label class="text_form">Apellidos:</label>
-              <input type="text" id="lastname" formControlName="lastname" placeholder="Ingrese su apellido">
-              <div class="error-message" *ngIf="registerForm && registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched">El apellido es requerido.</div>
+              <input type="text" id="lastname" formControlName="lastName" placeholder="Ingrese su apellido">
+              <div class="error-message" *ngIf="registerForm && registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">El apellido es requerido.</div>
             </div>
           </div>
 
@@ -59,32 +59,45 @@
           <div class="column_form">
             <div class="input_box">
               <label class="text_form">Teléfono:</label>
-              <input type="number" id="cel" formControlName="cel" placeholder="Ingrese su teléfono">
-              <div class="error-message" *ngIf="registerForm && registerForm.get('cel')?.invalid && registerForm.get('cel')?.touched">El teléfono es requerido.</div>
+              <input type="number" id="cel" formControlName="phone" placeholder="Ingrese su teléfono">
+              <div class="error-message" *ngIf="registerForm && registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">El teléfono es requerido.</div>
             </div>
             <div class="input_box">
               <label class="text_form">Fecha de nacimiento:</label>
-              <input type="date" id="date" formControlName="date" placeholder="dd/mm/yyyy">
-              <div class="error-message" *ngIf="registerForm && registerForm.get('date')?.invalid && registerForm.get('date')?.touched">La fecha de nacimiento es requerida.</div>
+              <input type="date" id="date" formControlName="birthday" placeholder="dd/mm/yyyy">
+              <div class="error-message" *ngIf="registerForm && registerForm.get('birthday')?.invalid && registerForm.get('birthday')?.touched">La fecha de nacimiento es requerida.</div>
             </div>
           </div>
-
-          <div class="type_user_option">
-            <div class="type_user">
-              <input type="radio" id="check_post" formControlName="type_user" value="postulant">
-              <label for="check_post" class="text_form">Soy Postulante</label>
+          @if (Rol == 'ADMIN') {
+            <div class="type_user_option">
+              <div class="type_user">
+                <input type="radio" id="check_post" formControlName="type_user" value="POSTULANTE" (change)="setSelecteRol('POSTULANTE')">
+                <label for="check_post" class="text_form">Soy Postulante</label>
+              </div>
+              <div class="type_user">
+                <input type="radio" id="check_ofert" formControlName="type_user" value="OFERTANTE" (change)="setSelecteRol('OFERTANTE')">
+                <label for="check_ofert" class="text_form">Soy Ofertante</label>
+              </div>
             </div>
-            <div class="type_user">
-              <input type="radio" id="check_ofert" formControlName="type_user" value="ofertant">
-              <label for="check_ofert" class="text_form">Soy Ofertante</label>
-            </div>
-          </div>
+          }
 
           <div class="input_checkbox">
             <input type="checkbox" id="check_terms" formControlName="check_terms">
             <label for="check_terms" class="text_form">Acepto los términos y condiciones</label>
             <div class="error-message" *ngIf="registerForm && registerForm.get('check_terms')?.invalid && registerForm.get('check_terms')?.touched">Debe aceptar los términos y condiciones.</div>
           </div>
+
+          @if(selectedRol == 'OFERTANTE'){
+
+            <div class="input_box">
+              <label class="text_form">Empresa:</label>
+              <select class="Empresa" formControlName="empresaDropBox" id="empresa">
+                <option *ngFor="let empresa of empresas; let i = index" [value]="empresa.id">{{empresa.name}}</option>
+              </select>
+              <div class="error-message" *ngIf="registerForm && registerForm.get('empresaDropBox')?.invalid && registerForm.get('empresaDropBox')?.touched">La empresa es obligatoria.</div>
+              <br><br>
+            </div>
+          }      
 
           <button type="submit" class="btn_register"> Registrarse</button>
         </form>

@@ -1,9 +1,12 @@
+import { UserRegistrationDTO } from './../interfaces/userRegistrationDTO';
 import { Component, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 
 import { LoginService } from './../services/login.service';
 import { UserResponse } from '../interfaces/user-response.interface';
+import { Empresa, UserInfo } from '../interfaces/userInfo';
+
 
 @Component({
   selector: 'app-register',
@@ -13,9 +16,11 @@ import { UserResponse } from '../interfaces/user-response.interface';
 export class RegisterComponent implements AfterViewInit {
   registerForm: FormGroup;
   showmodal: boolean = false;
-
+  empresas : Empresa  [] = [];
   userResponse: UserResponse | null = null;
-
+  userRegistrationDTO: UserRegistrationDTO | null = null;
+  userInfo: UserInfo | null = null;
+  
   constructor(
     private router:Router,
     private el: ElementRef,
@@ -26,23 +31,29 @@ export class RegisterComponent implements AfterViewInit {
   ) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
-      lastname: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeat_password: ['', Validators.required],
-      cel: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      date: ['', Validators.required],
-      type_user: ['postulant', Validators.required],
-      check_terms: [false, Validators.requiredTrue]
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      birthday: ['', Validators.required],
+      type_user: ['POSTULANTE', Validators.required],
+      check_terms: [false, Validators.requiredTrue],
+      empresaDropBox: ['',/*Validators.required*/] //posiblemente ocasione problemas (Agregar cuando descubra como hacer validador condicional)
+      
     }, { validator: this.passwordMatchValidator });
 
   }
 
+  Rol = this.loginser.getRole()
+  selectedRol : string| null = null;
   passwordMatchValidator(form: FormGroup) {
     return form.get('password')?.value === form.get('repeat_password')?.value
       ? null : { mismatch: true };
   }
-
+  setSelecteRol(rol: string): void {
+    this.selectedRol = rol;
+  }
   ngAfterViewInit(): void {
     const togglePassword = this.el.nativeElement.querySelector('#togglePassword');
     const password = this.el.nativeElement.querySelector('#password');
@@ -67,6 +78,12 @@ export class RegisterComponent implements AfterViewInit {
     });
   }
 
+  ngOnInit(): void {
+    if ( this.Rol=== 'ADMIN') {
+      this.LoadEmpresas();
+    }
+  }
+
   onSubmit(): void {
     if (this.registerForm.invalid){
       this.registerForm?.markAllAsTouched();
@@ -75,36 +92,74 @@ export class RegisterComponent implements AfterViewInit {
 
     const formValue = this.registerForm.value;
 
-    const newAccount = {
-      id : 0,
-      name: formValue.name,
-      lastname: formValue.lastname,
+    const newAccountPostulante = {
+      firstName: formValue.name,
+      lastName: formValue.lastName,
       email: formValue.email,
       password: formValue.password,
-      type_user: formValue.type_user,
-      number: formValue.cel,
-      date: formValue.date
+      phone: formValue.phone,
+      birthday: formValue.birthday,
     };
 
+    const newAccountOfertante = {
+      firstName: formValue.name,
+      lastName: formValue.lastName,
+      email: formValue.email,
+      password: formValue.password,
+      phone: formValue.phone,
+      birthday: formValue.birthday,
+      empresa: { id: parseInt(formValue.empresaDropBox,10)}
+    };
 
-    this.loginser.register(newAccount).subscribe({
-      next: (response: UserResponse) => {       
-        this.userResponse = response;
-        console.log('Creación de cuenta correctamente', this.registerForm.value);
-        this.showmodal = true;
-      },
-      
-      error: (error) =>{
-        console.error('Error al crear cuenta', error);
-      }
-    });
+    
+    if (formValue.type_user === 'POSTULANTE'){
+      this.loginser.registerPostulante(newAccountPostulante).subscribe({
+        next: (response: UserRegistrationDTO) => {       
+          this.userRegistrationDTO = response;
+          console.log('Creación de cuenta correctamente', this.registerForm.value);
+          this.showmodal = true;
+        },
+        
+        error: (error) =>{
+          console.error('Error al crear cuenta', error);
+        }
+      });
+    } 
+    else if (formValue.type_user === 'OFERTANTE'){
+      this.loginser.registerOfertante(newAccountOfertante).subscribe({
+        next: (response: UserRegistrationDTO) => {       
+          this.userRegistrationDTO = response;
+          console.log('Creación de cuenta correctamente', this.registerForm.value);
+          this.showmodal = true;
+        },
+        
+        error: (error) =>{
+          console.error('Error al crear cuenta', error);
+        }
+      });
+    }
       
    
   }
-
-
+ 
+  LoadEmpresas():void{
+    this.loginser.getEmpresa().subscribe({
+      next: (empresas: Empresa[]) => {
+        this.empresas = empresas;
+      },
+      error: (error) => {
+        console.error('Error al obtener las empresas', error);
+      }
+    })
+  }
   navigateToLogin(){
-    this.router.navigate(['']);
+    if(this.Rol === 'ADMIN'){
+      this.router.navigate(['Postulantes']); //regresa al "inicio"
+    }
+    else{
+      this.router.navigate(['']);
+    }
+    
   }
   
 }

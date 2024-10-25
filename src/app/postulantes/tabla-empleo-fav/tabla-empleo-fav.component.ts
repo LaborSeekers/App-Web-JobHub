@@ -7,14 +7,14 @@ import { DetalleDialogComponent } from '../detalle-dialog/detalle-dialog.compone
 
 export interface Empleo {
   logo: string;
-  puesto: string;
+  title: string;
   location: string;
   salary: string;
   type: string;
   reputacion: string;
   fecha: string;
-  estado: string;
-  descripcion: string;
+  status: string;
+  description: string;
   requisitos: string[];
   beneficios: string[];
   puestoIMG: string;
@@ -44,14 +44,14 @@ export class TablaEmpleoFavComponent implements OnInit {
   dataSource = new MatTableDataSource<Empleo>([
     {
       logo: 'assets/imagenes/Tabla/interbank.png',
-      puesto: 'Data Scientist Senior de Riesgos',
+      title: 'Data Scientist Senior de Riesgos',
       location: 'Javier Prado, Lima',
       salary: '$2k-5k al mes',
       type: 'Full Time',
       reputacion: 'Muy Alta',
       fecha: 'Abril 15, 2024 14:35',
-      estado: 'Activo',
-      descripcion: 'En Interbank estamos buscando sumar a nuestros equipos a los mejores talentos para seguir convirtiéndonos en el mejor banco a partir de las mejores personas y trabajar juntos por nuestro propósito de acompañar a los peruanos a cumplir sus sueños, hoy. Por ello, estamos en búsqueda de talentos que quieran sumarse a la Gerencia de Data Science asumiendo el rol Data Scientist de Riesgos.',
+      status: 'Activo',
+      description: 'En Interbank estamos buscando sumar a nuestros equipos a los mejores talentos para seguir convirtiéndonos en el mejor banco a partir de las mejores personas y trabajar juntos por nuestro propósito de acompañar a los peruanos a cumplir sus sueños, hoy. Por ello, estamos en búsqueda de talentos que quieran sumarse a la Gerencia de Data Science asumiendo el rol Data Scientist de Riesgos.',
       requisitos: [
         "Profesional de Estadística, Ingeniería, Económicas o afines.",
         "5 años de experiencia habiendo llevado proyectos de modelamiento de datos de principio a fin, de preferencia experiencia en sector Banca, Finanzas, Retail, Telecomunicaciones, Consumo Masivo u otros.",
@@ -73,14 +73,14 @@ export class TablaEmpleoFavComponent implements OnInit {
     },
     {
       logo: 'assets/imagenes/Tabla/tlogo.png',
-      puesto: 'Desarrollador Java',
+      title: 'Desarrollador Java',
       location: 'San Isidro, Lima',
       salary: '$1k-3k al mes',
       type: 'Full Time Remoto',
       reputacion: 'Baja',
       fecha: 'Abril 2, 2024 20:18',
-      estado: 'Cancelado',
-      descripcion: 'Desarrolla aplicaciones Java en un entorno de trabajo remoto.',
+      status: 'Cancelado',
+      description: 'Desarrolla aplicaciones Java en un entorno de trabajo remoto.',
       requisitos: [],
       beneficios: [],
       puestoIMG:'assets/imagenes/Tabla/Detalles/Puesto.png',
@@ -90,14 +90,14 @@ export class TablaEmpleoFavComponent implements OnInit {
     },
     {
       logo: 'assets/imagenes/Tabla/delsofi.png',
-      puesto: 'Data Engineer - Gestión',
+      title: 'Data Engineer - Gestión',
       location: 'Miraflores, Lima',
       salary: '$1k-3k al mes',
       type: 'Full Time',
       reputacion: 'Media',
       fecha: 'Mar 2 , 2023 15:30',
-      estado: 'Finalizado',
-      descripcion: 'Encargado de la gestión y el procesamiento de datos.',
+      status: 'Finalizado',
+      description: 'Encargado de la gestión y el procesamiento de datos.',
       requisitos: [],
       beneficios: [],
       puestoIMG:'assets/imagenes/Tabla/Detalles/Puesto.png',
@@ -107,14 +107,14 @@ export class TablaEmpleoFavComponent implements OnInit {
     },
     {
       logo: 'assets/imagenes/Tabla/bbva.png',
-      puesto: 'Data Advanced Analytics',
+      title: 'Data Advanced Analytics',
       location: 'Javier Prado, Lima',
       salary: '$5k-7k al mes',
       type: 'Full-Time Híbrido',
       reputacion: 'Alta',
       fecha: 'Mar 27 , 2023 11:45',
-      estado: 'Activo',
-      descripcion: 'Analiza datos avanzados para obtener insights empresariales.',
+      status: 'Activo',
+      description: 'Analiza datos avanzados para obtener insights empresariales.',
       requisitos: [],
       beneficios: [],
       puestoIMG:'assets/imagenes/Tabla/Detalles/Puesto.png',
@@ -135,10 +135,10 @@ export class TablaEmpleoFavComponent implements OnInit {
 
   constructor(private fb: FormBuilder, public dialog: MatDialog) {
     this.filterForm = this.fb.group({
-      puesto: [''],
+      title: [''],
       reputacion: [''],
       fecha: [''],
-      estado: [''],
+      status: [''],
       location:['']
     });
   }
