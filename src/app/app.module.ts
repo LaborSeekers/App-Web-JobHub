@@ -1,30 +1,28 @@
-
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core'; // Add this line
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
+import { AuthModule } from './pages/auth/auth.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { RegisterComponent } from './login/register/register.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from './material/material.module';
-import { PostulantesModule } from './postulantes/postulantes.module';
-import { OfertantesModule } from './ofertantes/ofertantes.module';
+import { MaterialModule } from './shared/material/material.module';
+import { PostulantesModule } from './pages/postulantes/postulantes.module';
+import { OfertantesModule } from './pages/ofertantes/ofertantes.module';
 import { DatePipe } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UserInterceptor } from './core/interceptors/user.interceptor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent
-
-   
-  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule,
+    AuthModule,
     ReactiveFormsModule,
     MaterialModule,
     PostulantesModule,
@@ -32,8 +30,15 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [
     provideAnimationsAsync(),
-    DatePipe
+    DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserInterceptor,
+      multi: true 
+    }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+  ]
 })
 export class AppModule { }
