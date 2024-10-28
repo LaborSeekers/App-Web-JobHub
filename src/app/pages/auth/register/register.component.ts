@@ -20,7 +20,7 @@ export class RegisterComponent implements AfterViewInit {
   userResponse: UserResponse | null = null;
   userRegistrationDTO: UserRegistrationDTO | null = null;
   userInfo: UserInfo | null = null;
-  
+  Rol : string | null = null;
   constructor(
     private router:Router,
     private el: ElementRef,
@@ -44,8 +44,6 @@ export class RegisterComponent implements AfterViewInit {
     }, { validator: this.passwordMatchValidator });
 
   }
-
-  Rol = this.loginser.getRole()
   selectedRol : string| null = null;
   passwordMatchValidator(form: FormGroup) {
     return form.get('password')?.value === form.get('repeat_password')?.value
@@ -79,6 +77,7 @@ export class RegisterComponent implements AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.Rol = this.loginser.getRole()
     if ( this.Rol=== 'ADMIN') {
       this.LoadEmpresas();
     }

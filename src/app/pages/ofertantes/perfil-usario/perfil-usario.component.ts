@@ -9,11 +9,14 @@ import { AuthService } from '../../../core/services/auth.service';
 export class PerfilUsarioComponent {
   imageUrl = 'assets/imagenes/Header/Persona1.jpg'; // Reemplaza con la ruta correcta
   showMenu = false;
-  toggleMenu() {
-    this.showMenu = !this.showMenu;
-  }
   rol : string | null = null;
   constructor(loginser :AuthService){
     this.rol = loginser.getRole();
+  }
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
+  closeMenu() {
+    this.showMenu = false;
   }
 }

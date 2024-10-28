@@ -31,8 +31,14 @@ export class AuthService {
   getToken(): string | null {return localStorage.getItem(this.tokenKey);}
 
   getRole(): string | null { 
-    console.log(this.getUserInfo())
-    return this.getUserInfo().role; }
+    try{
+      return this.getUserInfo().role;
+    }
+    catch{
+      if(environment.producction==false){console.log("Rol nulo");}      
+      return null;
+    }
+  }
 
   getUserInfo(): UserInfo{
     const storedInfo = localStorage.getItem("UserInfo");    
