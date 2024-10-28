@@ -1,0 +1,349 @@
+body{
+    background-color:  #42D2FF;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 100vh;
+
+}
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    width: 184px;
+    height: 75px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: rgba(217, 217, 217, 0.53);
+    margin-left: 37px;
+}
+
+.text_logo{
+    color: #05B4FF;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke-width: 2;
+    -webkit-text-stroke-color: #000;
+    font-family: Lalezar;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0px;
+}
+/* Box register*/
+.register_box{
+    padding-top: 30px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* box Left */
+/*
+.box_left{
+    width: 60;
+    height: 624px;
+   
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.32);
+    margin-left:100px;
+    margin-top: 75px;
+}
+
+.title_box_left{
+    color: #000;
+    text-align: center;
+    font-family: Lalezar;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    display: flex;
+    width: 372px;
+    height: 104px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    margin-left: 122px;
+}
+
+.img_left{
+    width: 597px;
+    height: 394px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    margin-left: 12px;
+}
+*/
+.box_left {
+    width: 35%; /* Usa un porcentaje */
+    max-width: 420px; /* Limita el ancho máximo para evitar que se expanda demasiado */
+    min-width: 300px;
+    height: max-content; /* O define un valor que se ajuste al contenido */
+    /*min-height: 624px; /* Mantén una altura mínima si es necesario */
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.32);
+    /*
+    margin-left: auto;
+    margin-right: 5%;
+    margin-top: 75px;
+    */
+    padding: 20px;
+}
+.title_box_left {
+    color: #000;
+    text-align: center;
+    font-family: Lalezar;
+    font-size: clamp(1rem, 4vw, 2rem); /* Usa unidades relativas para un tamaño de fuente adaptable */
+    font-weight: 400;
+    line-height: normal;
+
+    display: flex;
+    width: 100%; /* Asegúrate de que ocupe todo el ancho de su contenedor */
+    height: auto; /* Permite que la altura se ajuste al contenido */
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto; /* Centra el texto */
+}
+.img_left {
+    width: 100%; /* O un porcentaje que se ajuste */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    max-width: 597px; /* Limita el tamaño máximo si es necesario */
+    border-radius: 20px;/* Centra la imagen */
+}
+
+
+/* box right */
+.box_right{
+    width: 45%;
+    height: auto;
+    /*margin: 30px auto 30px 0;*/
+    min-width: 260px;
+    max-width: 600px;
+    padding: 30px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    
+    background: rgba(255, 255, 255, 0.56);    
+}
+
+.box_right .circle_img{
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Formulario */
+
+.box_right .form_user{
+    width: auto;
+}
+
+.form_user .input_box{
+    width: 100%;
+    margin-top:10px;
+}
+
+.form_user .input_box input{
+    position: relative;
+    height: 36px;
+    width: 100%;
+    min-width: 200px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    padding: 0 10px;
+    font-family: Amaranth;
+    
+}
+
+.column_form{
+    display:flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+}
+
+.column_form .input_box{
+    flex: 1;
+}
+
+.text_form{
+    color: #000;
+    font-family: Amaranth;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-style: bold;
+}
+
+
+.form_user .type_user_option{
+    display: flex;
+    align-items: center;
+    column-gap: 150px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.type_user input{
+
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.input_checkbox{
+    display: flex;
+    align-items: center;
+    margin-top:20px;
+}
+
+.input_checkbox input{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.btn_register{
+    margin-top: 10px;
+    width: 100%;
+    height: 49px;
+    background-color: darkblue;
+    color:white;
+    border-radius: 10px;
+    font-family: Amaranth;
+    pointer-events: cursor;
+}
+
+.btn_register:hover{
+    background-color: white;
+    color:black;
+}
+
+
+.line_o{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.line_o hr{
+    width: 247.798px;
+    height: 1px;
+    background:black;
+}
+
+
+.btn_google{
+    width: 75px;
+    height: 74px;
+    background-color: white;
+    border-radius:50px;
+}
+
+.external_register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    column-gap: 15px;
+}
+
+.inicio_login{
+    color: #000;
+    font-family: Amaranth;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-style: bold;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+}
+
+/* password ver*/
+
+.password_wrapper{
+    position: relative;
+    align-items: center;
+    display: flex;
+    
+}
+
+.password_wrapper input{
+    flex: 1;
+}
+
+.password_wrapper .eye_icon{
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    margin-top: 5px;
+}
+
+
+.error-message{
+    color: red;
+    font-size: 12px;
+    margin-top: 1px;
+    font-family: Amaranth;
+}
+
+
+
+
+
+  /* modal content¨*/
+/* Fondo oscuro semi-transparente para el modal */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Contenido del modal */
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 80%; /* Ancho máximo del modal */
+    font-family: Amaranth;
+  }
+  
+  /* Botón dentro del modal */
+  .btn_login {
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Amaranth;
+  }
+  
+  .btn_login:hover {
+    background-color: #315931;
+  }
+  

@@ -1,0 +1,34 @@
+<div class="perfil">
+    <img [src]="imageUrl" alt="Foto de perfil" (click)="toggleMenu()">
+    <div class="menu-container"> 
+      <ul class="options-menu" *ngIf="showMenu">
+        <li>
+          <div class="PerfilSelector"  [routerLink]='["main-UI"]' (click)="closeMenu()">
+            <img src="assets/imagenes/Header/Entrevista.png">
+            <a>Entrevistas</a>
+          </div>
+      </li>
+        <li>
+          <div class="PerfilSelector"  [routerLink]='["curriculum"]' (click)="closeMenu()">
+            <img src="assets/imagenes/Header/cvPerso.png">
+            <a>Curriculum</a>
+          </div>
+        </li>
+        @if(rol == 'ADMIN'){
+          <li>
+            <div class="PerfilSelector"  [routerLink]='["/auth/register"]' (click)="closeMenu()">
+              <img src="assets/imagenes/Header/cvPerso.png">
+              <a>Registrar Usuarios (ADMIN)</a>
+            </div>
+          </li>
+          <li>
+            <div class="PerfilSelector"  [routerLink]='["/Ofertantes"]' (click)="closeMenu()">
+              <a>Ofertantes UI (ADMIN)</a>
+            </div>
+          </li>
+        }
+       
+      </ul>
+    </div>
+</div>
+  
