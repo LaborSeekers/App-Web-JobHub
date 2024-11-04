@@ -96,11 +96,11 @@ export class AuthService {
 
   login(userRequest:UserRequest):Observable<UserResponse>{
     const url =`${this.apiUrl}/auth/login`;
-    return this.http.post<UserResponse>(url, userRequest).pipe(
+    return this.http.post<UserResponse>(url, userRequest , { withCredentials: true }).pipe(
       tap(response => {
         // Almacena el token en el localStorage
         this.setToken(response.token);
-        
+
         
         this.getUserbyEmail(userRequest.email).subscribe({
           next: (userProfileDTO: UserInfo) => {
@@ -112,6 +112,5 @@ export class AuthService {
       })
     );
   }
-  
-  
+
 }

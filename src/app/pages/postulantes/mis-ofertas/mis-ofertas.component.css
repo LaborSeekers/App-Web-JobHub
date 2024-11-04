@@ -1,0 +1,21 @@
+.menuSuperior{
+    display: flex;
+    justify-content: space-around
+}
+
+.option{
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option:hover, .selected {
+    background-color: #E7F0FA;
+    color: #27A5FF; 
+}
+
+hr{
+    margin-top: 0;
+}

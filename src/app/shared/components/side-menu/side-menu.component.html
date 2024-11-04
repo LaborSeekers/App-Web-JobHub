@@ -1,22 +1,45 @@
-
-    <div class="izquierda-superior">
-        <h2>Panel de Candidato</h2>
-        <ul>
+<div class="izquierda-superior" #navbar>
+    <h2>Panel de Candidato</h2>
+    <a class="dropdown-btn" (click)="toggleDropdown()" *ngIf="isDropdownVisible">&#9776;</a>
+    <ul #navLinks *ngIf="!isDropdownVisible">
         <li *ngFor="let link of links; let i = index"
             (click)="selectLink(i)"
-            [ngClass]="{ 'selected': selectedIndex === i }"> 
-            <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-            <img 
+            [ngClass]="{ 'selected': selectedIndex === i }"
+            [routerLink]="link.route"> 
+            <a  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <img 
                 [src]="link.image"
                 [ngStyle]="{ filter: selectedIndex === i ? 'brightness(0) saturate(100%) invert(24%) sepia(81%) saturate(3932%) hue-rotate(193deg) brightness(100%) contrast(100%)' : 'none' }" 
                 [alt]="link.alt" 
                 [id]="link.id"> 
-            {{ link.text }}
+                {{ link.text }}
             </a>
         </li>
-        </ul>
-    </div>
-    <div class="izquierda-inferior">
-        <img src="assets/imagenes/Nav-bar/CerrarSesion.png" (click)="logout()">
-        <h3 id="logout"><a routerLink="" (click)="logout()">Cerrar Sesión</a></h3>
-    </div>
+        <li id="logout">
+            <a routerLink="" (click)="logout()">
+                <img src="assets/imagenes/Nav-bar/CerrarSesion.png" (click)="logout()">
+                Cerrar Sesión
+            </a>
+        </li>
+    </ul>
+    <ul class="dropdown" *ngIf="dropdownVisible" (click)="toggleDropdown()">
+        <li *ngFor="let link of links; let i = index"
+            (click)="selectLink(i)"
+            [ngClass]="{ 'selected': selectedIndex === i }"> 
+            <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <img 
+                [src]="link.image"
+                [ngStyle]="{ filter: selectedIndex === i ? 'brightness(0) saturate(100%) invert(24%) sepia(81%) saturate(3932%) hue-rotate(193deg) brightness(100%) contrast(100%)' : 'none' }" 
+                [alt]="link.alt" 
+                [id]="link.id"> 
+                {{ link.text }}
+            </a>
+        </li>
+        <li id="logout">
+            <a routerLink="" (click)="logout()">
+                <img src="assets/imagenes/Nav-bar/CerrarSesion.png" (click)="logout()">
+                Cerrar Sesión
+            </a>
+        </li>
+    </ul>
+</div>

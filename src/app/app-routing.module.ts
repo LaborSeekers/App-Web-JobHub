@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule) },
   { path: 'Postulantes', loadChildren: () => import('./pages/postulantes/postulantes.module').then(m => m.PostulantesModule) },
   { path: 'Ofertantes', loadChildren: () => import('./pages/ofertantes/ofertantes.module').then(m => m.OfertantesModule) },
-  { path: 'hub', redirectTo: '', pathMatch:'full'}
+  { path: 'hub', redirectTo: '', pathMatch:'full'},
+  { path: '**', redirectTo:"", pathMatch:'full'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

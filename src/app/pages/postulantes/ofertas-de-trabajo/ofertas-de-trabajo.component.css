@@ -1,0 +1,45 @@
+.derecha-inferior{
+    flex: 3;
+    
+    display: flex;
+    flex-direction: column;
+  }
+  .optionTabla{
+    display: flex;
+    gap: calc(512px - calc(512px - 32vw));
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .optionTabla-izquierda{
+    flex: 1;
+    color: #000;
+  
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .optionTabla-derecha{
+    flex: 1;
+    text-align: center;
+    font-family: Epilogue;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+  }
+  .optionTabla-derecha h4{
+   margin-left:45%;
+  }
+  .optionTabla-derecha img{
+    
+    max-width: 5%;
+  }
+ 
+  

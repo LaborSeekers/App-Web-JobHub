@@ -2,27 +2,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PostulantesComponent } from './postulantes.component';
 import { TablaEmpleoComponent } from './tabla-empleo/tabla-empleo.component';
-import { TablaEmpleoFavComponent } from './tabla-empleo-fav/tabla-empleo-fav.component';
 import { AlertasTrabajoComponent } from './alertas-trabajo/alertas-trabajo.component';
-import { TablaEmpleosPostuComponent } from './tabla-empleos-postu/tabla-empleos-postu.component';
+import { OfertasDeTrabajoComponent } from './ofertas-de-trabajo/ofertas-de-trabajo.component';
+import { MisOfertasComponent } from './mis-ofertas/mis-ofertas.component';
 
 
 const routes: Routes = [
   { path: 'hub', component: PostulantesComponent,
     children:[
       {path: '', redirectTo: 'TablaOV', pathMatch: 'full'},
+      {path: 'ofertas-laborales', component: OfertasDeTrabajoComponent},
       {path: 'TablaOV', component: TablaEmpleoComponent},
-      {path: 'TablaFav', component: TablaEmpleoFavComponent},
       {path: 'AlertasTrabajo', component:AlertasTrabajoComponent},
+      {path: 'mis-ofertas', component:MisOfertasComponent},
       {path: 'appconfiguration', loadChildren: () => import('./appconfiguration/appconfiguration.module').then(m => m.AppconfigurationModule) },
-      {path: 'TablaTApli',component: TablaEmpleosPostuComponent},
       {path: 'main-UI', loadChildren: () => import('./main-ui/main-ui.module').then(m => m.MainUIModule) },
       {path: 'curriculum', loadChildren: () => import('./curriculum/curriculum.module').then(m => m.CurriculumModule) },
       ]
    },
    {path: '', redirectTo:'hub', pathMatch:'full'}
-    /*Aqui debe ir el componente Curriculum en el futuro */
-
 ];
 
 @NgModule({

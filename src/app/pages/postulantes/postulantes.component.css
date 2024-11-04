@@ -6,79 +6,51 @@ body{
 main{
     background-color: white;
     display: flex;
-    border-top-width: 2px;
+    flex-wrap: wrap;
+    border-top-width: 1px;
     border-style: solid;
     border-color: rgb(137, 137, 137);
     border-bottom: none;
     border-left: none;
     border-right: none;
 }
-
 .izquierda{
     flex: 1;
-    border-right-width: 2px;
+    border-width: 1px;
     border-style: solid;
     border-color: rgb(137, 137, 137);
     text-align: center;
-    border-bottom: none;
-    border-left: none;
-    border-top: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 .derecha{
     flex: 5;
+    min-width: 80%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
     text-align: center;
     display: flex;
     flex-direction: column;
 }
-.derecha-superior{
-    flex: 1;
-    background-color: blueviolet;
-}
-.derecha-inferior{
-    flex: 3;
-    background-color: lightblue;
-    display: flex;
-    flex-direction: column;
-}
-.optionTabla{
-    display: flex;
-    gap: calc(512px - calc(512px - 32vw));
-}
-.optionTabla-izquierda{
-    flex: 1;
-    color: #000;
 
-    text-align: center;
-    font-family: Epilogue;
-    font-size: 14px !important;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-.optionTabla-derecha{
-    flex: 1;
-    text-align: center;
-    font-family: Epilogue;
-    font-size: 14px !important;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.loading {
     display: flex;
-    align-items: center;
-    gap: 5px;
-    
-}
-.optionTabla-derecha h4{
-   margin-left:45%;
-}
-.optionTabla-derecha img{
-    
-    max-width: 5%;
-}
-.tablaEmple{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    height: 100vh; /* Ocupa toda la altura de la vista */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    position: fixed; /* Mantiene el contenedor en la posición */
+    top: 0; /* Alinea al principio de la vista */
+    left: 0; /* Alinea al principio de la vista */
+    right: 0; /* Alinea al final de la vista */
+    bottom: 0; /* Alinea al final de la vista */
+    z-index: 9999; /* Asegura que esté por encima de otros elementos */
+  }
+  
+  .loading p {
+    margin-top: 16px; /* Espacio entre el spinner y el texto */
+    font-size: 18px; /* Ajusta el tamaño del texto si es necesario */
+    color: #333; /* Cambia el color del texto */
+  }
