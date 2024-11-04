@@ -21,6 +21,7 @@
 
 .perfil{
   display: flex;
+  z-index: 20;
   flex-direction: column;
   position: relative; 
   border-style: solid ;

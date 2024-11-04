@@ -1,9 +1,9 @@
+import { AuthService } from './../../core/services/auth.service';
 
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { UserService } from '../../core/services/user.service';
-import { AuthService } from '../../core/services/auth.service';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class OfertantesComponent implements OnInit {
     { route: ['/route/path'], image: "assets/imagenes/Nav-bar/Engranajes.png", alt: "config", id: "config-overview", text: "Configuración" },
  
   ];
+
   selectedIndex: number | null = null;
 
   constructor(private router: Router, private userS:UserService, private loginS:AuthService) {}
@@ -28,7 +29,7 @@ export class OfertantesComponent implements OnInit {
   ngOnInit() {
     // Initialize selectedIndex based on the initial route
     this.updateSelectedIndex();
-
+    //this.loginS.obtenerCookie();
     // Subscribe to route changes to update selectedIndex
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))

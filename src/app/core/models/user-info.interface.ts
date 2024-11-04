@@ -12,6 +12,7 @@ export interface UserInfo {
     firstName: string;
     lastName: string;
     phone: string;
+    userRoleId: number;
     birthday: string;
     empresa?: Empresa | null;
 }

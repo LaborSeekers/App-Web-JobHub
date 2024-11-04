@@ -1,164 +1,149 @@
-<div class="derecha">
-    <div class="derecha-superior">
-      <h2>Trabajos Aplicados</h2>
-      <div class="derecha-superior-arriba">
-        <p>Hola, José Pérez</p>
+
+<div class="derecha-superior">
+  <h2>Trabajos Aplicados</h2>
+  <div class="derecha-superior-arriba">
+    <p>Hola, José Pérez</p>
+  </div>
+  <div class="derecha-superior-abajo">
+    <div class="item blue">
+
+      <div class="color-izqui">
+        <span class="number">100</span>
+        <span class="text">Trabajos aplicados</span>
       </div>
-      <div class="derecha-superior-abajo">
-        <div class="item blue">
-  
-          <div class="color-izqui">
-            <span class="number">100</span>
-            <span class="text">Trabajos aplicados</span>
-          </div>
-          <div class="color-dere">
-            <img src="assets/imagenes/Overview/portafolio2.png" alt="portafolio">
-          </div>
-  
-        </div>
-  
-        <div class="item yellow">
-  
-          <div class="color-izqui">
-            <span class="number">20</span>
-            <span class="text">Ofertas Favoritas</span>
-          </div>
-          <div class="color-dere">
-            <img src="assets/imagenes/Overview/marcador2.png" alt="portafolio">
-          </div>
-        </div>
-  
-  
-        <div class="item green">
-          <div class="color-izqui">
-            <span class="number">250</span>
-            <span class="text">Alertas de trabajo</span>
-          </div>
-          <div class="color-dere">
-            <img src="assets/imagenes/Overview/campanasicon3.png" alt="portafolio">
-          </div>
-        </div>
+      <div class="color-dere">
+        <img src="assets/imagenes/Overview/portafolio2.png" alt="portafolio">
       </div>
-      
-      
-  
+
     </div>
-    <div class="derecha-inferior">
-      <div class="optionTabla">
-        <div class="optionTabla-izquierda">
-          <h4>Puestos recientemente Aplicados</h4>
-        </div>
-        <div class="optionTabla-derecha">
-          <h4>Mostrar Todo</h4>
-          <img src="assets/imagenes/flecha.png" alt="Flecha">
-        </div>
+
+    <div class="item yellow">
+
+      <div class="color-izqui">
+        <span class="number">20</span>
+        <span class="text">Ofertas Favoritas</span>
       </div>
-      <div class="tablaEmple">
-  
-          <div class="TablaEmpleos">
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
-  
-              <ng-container matColumnDef="puesto">
-                <th mat-header-cell *matHeaderCellDef> Puestos </th>
-                <td mat-cell *matCellDef="let element; let i = index" >
-                  <div class="filatabla">
-                    <div class="taizquierda">
-                      <img [src]="element.logo" alt="logo" style="width: 54px; height: 54px; margin-right: 8px; margin-top: 8px;">
-                    </div>
-                    <div class="taderecha">
-                      <div class="puestotitulo">{{element.puesto}}</div>
-                      <div class="puestolocation"><img src="assets/imagenes/Tabla/UbiSimbolo.png" alt="logo" style="width: 19px; height: 19px;">
-                        <p>{{element.location}}</p>
-                      </div>
-                      <div class="salario-tipo">
-                           <img src="assets/imagenes/Tabla/SueldoSimbolo.png" alt="logo" style="width: 18px; height: 18px;">
-                           <p>{{element.salary}}</p>
-                      </div>
-                    </div>
-                    <div class="tipoE">
-                      <div class="tipoTrabajo">{{element.type}}</div>
-                    </div>
-                  </div>
-                </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="reputacion">
-                <th mat-header-cell *matHeaderCellDef> Reputación </th>
-                <td mat-cell *matCellDef="let element">
-                  <div style="display: flex; justify-content: center;">
-                    <span [ngClass]="{'Muy Alta': element.reputacion === 'Muy Alta','Alta': element.reputacion === 'Alta', 'Media': element.reputacion === 'Media', 'Baja': element.reputacion === 'Baja'}">
-                      <div style="margin: 0px 0px 0px 0px; text-align: center;">
-                        <img *ngIf="element.reputacion === 'Muy Alta'" src="assets/imagenes/Tabla/medidorMuyAlto.png" alt="repMuyAlta" style="width: 50px; height: 30px;">
-                        <img *ngIf="element.reputacion === 'Alta'" src="assets/imagenes/Tabla/medidorAlto.png" alt="repAlta" style="width: 50px; height: 30px;">
-                        <img *ngIf="element.reputacion === 'Media'" src="assets/imagenes/Tabla/medidorMedio.png" alt="repMedia" style="width: 50px; height: 30px;">
-                        <img *ngIf="element.reputacion === 'Baja'" src="assets/imagenes/Tabla/medidorBajo.png" alt="repBaja" style="width: 50px; height: 30px;">
-                        <div style="margin: 0px; text-align: center;">{{element.reputacion}}</div>
-                      </div>
-                    </span>
-                  </div>
-                </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="fecha">
-                <th mat-header-cell *matHeaderCellDef> Fecha de Aplicación </th>
-                <td mat-cell *matCellDef="let element">
-                  <div style="text-align: center;">{{element.fecha}}</div>
-                </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="estado">
-                <th mat-header-cell *matHeaderCellDef> Estado </th>
-                <td mat-cell *matCellDef="let element">
-                  <span [ngClass]="{'active': element.estado === 'Activo', 'cancelado': element.estado === 'Cancelado', 'finalizado': element.estado === 'Finalizado'}">
-                    <div style="margin: 0px 0px 0px 0px; text-align: center;">
-                      <img *ngIf="element.estado === 'Activo'" src="assets/imagenes/Tabla/active.png" alt="Activo" style="width: 20px; height: 20px; margin-right: 5px;">
-                      <img *ngIf="element.estado === 'Cancelado'" src="assets/imagenes/Tabla/cancelado.png" alt="Cancelado" style="width: 20px; height: 20px; margin-right: 5px;">
-                      <img *ngIf="element.estado === 'Finalizado'" src="assets/imagenes/Tabla/finalizado.png" alt="Finalizado" style="width: 20px; height: 20px; margin-right: 5px;">
-                      <div style="margin: 0px; text-align: center;">{{element.estado}}</div>
-                    </div>
-                  </span>
-                </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="accion">
-                <th mat-header-cell *matHeaderCellDef> Acción </th>
-                <td mat-cell *matCellDef="let element; let i = index">
-                  <div style="display: flex; justify-content: center; z-index: 3;"> 
-                    <button mat-raised-button color="primary" (click)="verDetalles(element, $event)">Ver detalles</button>
-                  </div>
-                </td>
-              </ng-container>
-          
-              <ng-container matColumnDef="expandedDetail">
-                <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-                  <div class="example-element-detail"
-                       [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                    {{element.descripcion}}
-                  </div>
-                </td>
-              </ng-container>
-          
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let element; columns: displayedColumns;"
-                  class="element-row"
-                  [class.expanded-row]="expandedElement === element"
-                  (click)="expandedElement = expandedElement === element ? null : element">
-              </tr>
-              <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
-            </table>
-          </div>
+      <div class="color-dere">
+        <img src="assets/imagenes/Overview/marcador2.png" alt="portafolio">
+      </div>
+    </div>
+
+
+    <div class="item green">
+      <div class="color-izqui">
+        <span class="number">250</span>
+        <span class="text">Alertas de trabajo</span>
+      </div>
+      <div class="color-dere">
+        <img src="assets/imagenes/Overview/campanasicon3.png" alt="portafolio">
       </div>
     </div>
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+</div>
+
+<div class="derecha-inferior">
+  <div class="optionTabla">
+    <div class="optionTabla-izquierda">
+      <h4>Puestos recientemente Aplicados</h4>
+    </div>
+    <div class="optionTabla-derecha">
+      <h4>Mostrar Todo</h4>
+      <img src="assets/imagenes/flecha.png" alt="Flecha">
+    </div>
+  </div>
+  <div class="tablaEmple">
+    <div class="TablaEmpleos">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+
+        <ng-container matColumnDef="puesto">
+          <th mat-header-cell *matHeaderCellDef> Puestos </th>
+          <td mat-cell *matCellDef="let element; let i = index" >
+            <div class="filatabla">
+              <div class="taizquierda">
+                <img [src]="element.logo" alt="logo" style="width: 54px; height: 54px; margin-right: 8px; margin-top: 8px;">
+              </div>
+              <div class="taderecha">
+                <div class="puestotitulo">{{element.puesto}}</div>
+                <div class="puestolocation"><img src="assets/imagenes/Tabla/UbiSimbolo.png" alt="logo" style="width: 19px; height: 19px;">
+                  <p>{{element.location}}</p>
+                </div>
+                <div class="salario-tipo">
+                      <img src="assets/imagenes/Tabla/SueldoSimbolo.png" alt="logo" style="width: 18px; height: 18px;">
+                      <p>{{element.salary}}</p>
+                </div>
+              </div>
+              <div class="tipoE">
+                <div class="tipoTrabajo">{{element.type}}</div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="reputacion">
+          <th mat-header-cell *matHeaderCellDef> Reputación </th>
+          <td mat-cell *matCellDef="let element">
+            <div style="display: flex; justify-content: center;">
+              <span [ngClass]="{'Muy Alta': element.reputacion === 'Muy Alta','Alta': element.reputacion === 'Alta', 'Media': element.reputacion === 'Media', 'Baja': element.reputacion === 'Baja'}">
+                <div style="margin: 0px 0px 0px 0px; text-align: center;">
+                  <img *ngIf="element.reputacion === 'Muy Alta'" src="assets/imagenes/Tabla/medidorMuyAlto.png" alt="repMuyAlta" style="width: 50px; height: 30px;">
+                  <img *ngIf="element.reputacion === 'Alta'" src="assets/imagenes/Tabla/medidorAlto.png" alt="repAlta" style="width: 50px; height: 30px;">
+                  <img *ngIf="element.reputacion === 'Media'" src="assets/imagenes/Tabla/medidorMedio.png" alt="repMedia" style="width: 50px; height: 30px;">
+                  <img *ngIf="element.reputacion === 'Baja'" src="assets/imagenes/Tabla/medidorBajo.png" alt="repBaja" style="width: 50px; height: 30px;">
+                  <div style="margin: 0px; text-align: center;">{{element.reputacion}}</div>
+                </div>
+              </span>
+            </div>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Aplicación </th>
+          <td mat-cell *matCellDef="let element">
+            <div style="text-align: center;">{{element.fecha}}</div>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
+          <td mat-cell *matCellDef="let element">
+            <span [ngClass]="{'active': element.estado === 'Activo', 'cancelado': element.estado === 'Cancelado', 'finalizado': element.estado === 'Finalizado'}">
+              <div style="margin: 0px 0px 0px 0px; text-align: center;">
+                <img *ngIf="element.estado === 'Activo'" src="assets/imagenes/Tabla/active.png" alt="Activo" style="width: 20px; height: 20px; margin-right: 5px;">
+                <img *ngIf="element.estado === 'Cancelado'" src="assets/imagenes/Tabla/cancelado.png" alt="Cancelado" style="width: 20px; height: 20px; margin-right: 5px;">
+                <img *ngIf="element.estado === 'Finalizado'" src="assets/imagenes/Tabla/finalizado.png" alt="Finalizado" style="width: 20px; height: 20px; margin-right: 5px;">
+                <div style="margin: 0px; text-align: center;">{{element.estado}}</div>
+              </div>
+            </span>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="accion">
+          <th mat-header-cell *matHeaderCellDef> Acción </th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            <div style="display: flex; justify-content: center; z-index: 3;"> 
+              <button mat-raised-button color="primary" (click)="verDetalles(element, $event)">Ver detalles</button>
+            </div>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <div class="example-element-detail"
+                  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              {{element.descripcion}}
+            </div>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+            class="element-row"
+            [class.expanded-row]="expandedElement === element"
+            (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+      </table>
+    </div>
+  </div>
+</div>
   

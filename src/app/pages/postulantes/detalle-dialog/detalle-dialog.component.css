@@ -1,19 +1,20 @@
 
 .opciones{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 .reputacion{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 .reputacion img{
      cursor: pointer;
 }
 .botones{
     display: flex;
-    gap:20px;
+    gap:5px;
     align-items: center;
 }
 .botones button{
@@ -22,12 +23,36 @@
     display: flex;
     align-items: center;
 }
-#postuButton{
-    background-color: #4A86FF;
+#postuButton, #remPostuButton {
+    background-color: #4A86FF; /* Color base */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+}
+
+#postuButton:hover, #remPostuButton:hover {
+    background-color: #357AE8; /* Color al pasar el mouse */
+}
+
+#postuButton:active, #remPostuButton:active {
+    transform: scale(0.95); /* Efecto de presionar */
+}
+
+#remPostuButton {
+    background-color: #FF4A4A; /* Un color diferente para el botón de retiro */
+}
+
+#remPostuButton:hover {
+    background-color: #E63939; /* Color al pasar el mouse */
 }
 #perfilEButton{
     background-color: #FFDA7A;
 }
+
+
 .mat-icon a{
     text-decoration: none;
     color: white;
@@ -37,6 +62,11 @@
     -1px  1px 0 #000,
     1px  1px 0 #000; 
 }
+.mat-icon a.favorite {
+    color: gold;
+    text-shadow: none;
+}
+
 .info{
     background-color: rgb(228, 228, 228);
 }
@@ -148,6 +178,10 @@
     align-items: center;
 }
 
+mat-dialog-actions{
+    padding: 8px 0px;
+}
+
 .modal-backdrop {
     position: fixed;
     top: 0;
@@ -162,7 +196,7 @@
   /* Contenido del modal */
   .modal-content {
     background-color: white;
-    padding: 20px;
+    padding: 0px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
