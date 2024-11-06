@@ -4,11 +4,13 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ofertalLaboral } from '../models/ofertaLaboral.interface';
 import { AuthService } from '../../core/services/auth.service';
+import { PostulanteCurriculum } from '../models/postulante-curriculum.interface';
 @Injectable({
   providedIn: 'root'
 })
 export class PostulantesService {
     private apiUrl = `${environment.apiUrl}/admin/joboffer`;
+    private apiUrl2 =`${environment.apiUrl}/admin`;
     constructor(private http: HttpClient, private  authService: AuthService) { }
 
     getAllOfertasLabo():Observable<ofertalLaboral[]>{
@@ -31,6 +33,9 @@ export class PostulantesService {
     return this.http.get<ofertalLaboral[]>(url, { params });
 }
     
+getCurriculum(userId: number): Observable<PostulanteCurriculum> {
+  return this.http.get<PostulanteCurriculum>(`${this.apiUrl2}/curriculums/${userId}`);
+}
 /*
     createTrip(tripData: Trip):Observable<Trip>{
         return this.http.post<Trip>(this.apiUrl,tripData);
