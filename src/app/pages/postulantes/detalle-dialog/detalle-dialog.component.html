@@ -1,18 +1,22 @@
   <div class="opciones">
-    <h2 mat-dialog-title>Detalles del Puesto</h2>
     <div class="reputacion">
-      <p><strong>{{data.reputacion}}:</strong></p>
-      <img (click)="setRepu(data,$event)" *ngIf="data.reputacion === 'Muy Alta'" src="assets/imagenes/Tabla/medidorMuyAlto.png" alt="repMuyAlta" style="width: 50px; height: 30px;">
-      <img (click)="setRepu(data,$event)" *ngIf="data.reputacion === 'Alta'" src="assets/imagenes/Tabla/medidorAlto.png" alt="repAlta" style="width: 50px; height: 30px;">
-      <img (click)="setRepu(data,$event)" *ngIf="data.reputacion === 'Media'" src="assets/imagenes/Tabla/medidorMedio.png" alt="repMedia" style="width: 50px; height: 30px;">
-      <img (click)="setRepu(data,$event)" *ngIf="data.reputacion === 'Baja'" src="assets/imagenes/Tabla/medidorBajo.png" alt="repBaja" style="width: 50px; height: 30px;">
+      <p><strong>{{data.reputation}}:</strong></p>
+      <img (click)="setRepu(data,$event)" *ngIf="data.reputation === 'MUY ALTA'" src="assets/imagenes/Tabla/medidorMuyAlto.png" alt="repMuyAlta" style="width: 50px; height: 30px;">
+      <img (click)="setRepu(data,$event)" *ngIf="data.reputation === 'ALTA'" src="assets/imagenes/Tabla/medidorAlto.png" alt="repAlta" style="width: 50px; height: 30px;">
+      <img (click)="setRepu(data,$event)" *ngIf="data.reputation === 'MEDIA'" src="assets/imagenes/Tabla/medidorMedio.png" alt="repMedia" style="width: 50px; height: 30px;">
+      <img (click)="setRepu(data,$event)" *ngIf="data.reputation === 'BAJA'" src="assets/imagenes/Tabla/medidorBajo.png" alt="repBaja" style="width: 50px; height: 30px;">
     </div>
 
     <mat-dialog-actions>
-      <div class="botones">
-        <button id="postuButton" (click)="postularOferta(data.id)">Postular</button>
+      <div class="botones" >
+        <button id="postuButton" (click)="postularOferta()" *ngIf="data.status == 'ACTIVE' && !data.isApplied">Postular</button>
+        <button id="remPostuButton" (click)="retirarPostulacion()" *ngIf="data.status == 'ACTIVE' && data.isApplied">Retirarse</button>
         <button id="perfilEButton">Perfil Empresarial</button>
-        <mat-icon aria-hidden="false" class="mat-icon" matBadgeColor="warn"><a [routerLink]='["routecomponente"]'>star</a></mat-icon>
+        <mat-icon aria-hidden="false" 
+                  class="mat-icon"
+                  matBadgeColor="warn">
+          <a (click)="toggleFavorite()" [ngClass]="{'favorite': data.isFavorite}">star</a>
+        </mat-icon>
       </div>
       <button mat-button mat-dialog-close>X</button>
     </mat-dialog-actions>

@@ -1,0 +1,14 @@
+<div class="menuSuperior">
+    <div class="option aplicados"
+    (click)="changeIndex(true)"
+    [ngClass]="{ 'selected': selectedIndex}">Aplicados</div>
+    <div class="option favoritos"
+    (click)="changeIndex(false)"   
+    [ngClass]="{ 'selected': !selectedIndex}">Favoritos</div>
+</div>
+<hr/>
+<app-tabla-ofertas 
+    [data]="data" 
+    [isLoading]="isLoading" 
+    (filtersChanged) = "recieveFilters($event)" 
+    (pageChanged) = "pageChanged($event)"/>

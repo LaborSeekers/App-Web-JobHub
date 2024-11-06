@@ -1,0 +1,9 @@
+<div class="derecha-inferior">
+
+    <div class="optionTabla">
+      <div class="optionTabla-izquierda">
+        <h4>Ofertas laborales</h4>
+      </div>
+    </div>
+    <app-tabla-ofertas [data]="data" [isLoading]="isLoading" (filtersChanged) = "recieveFilters($event)" (pageChanged) = "pageChanged($event)" ></app-tabla-ofertas>
+</div>

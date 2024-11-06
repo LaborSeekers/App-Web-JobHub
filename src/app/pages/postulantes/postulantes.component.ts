@@ -1,8 +1,12 @@
+import { ApplicationsService } from './../../core/services/applications.service';
+import { FavoritesService } from './../../core/services/favorites.service';
+import { PostulantesService } from './../../core/services/postulantes.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { UserService } from '../../core/services/user.service';
 import { AuthService } from '../../core/services/auth.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-postulantes',
@@ -11,20 +15,32 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class PostulantesComponent implements OnInit {
   links = [
-    { route: ['TablaOV'], image: "assets/imagenes/Nav-bar/capas2.png",selectedImage:"assets/imagenes/Nav-bar/capas.png", alt: "capa", id: "capaoverview", text: "Descripción General" },
-    { route: ['TablaTApli'], image: "assets/imagenes/Nav-bar/portafolio.png",selectedImage:"assets/imagenes/Nav-bar/portafolio2.png", alt: "portafolio", id: "portafolio-overview", text: "Trabajos Aplicados" },
-    { route: ['TablaFav'], image: "assets/imagenes/Nav-bar/marcador.png",selectedImage:"assets/imagenes/Nav-bar/marcador3.png", alt: "marcador", id: "marcador-overview", text: "Ofertas Favoritas" },
-    { route: ['AlertasTrabajo'], image: "assets/imagenes/Nav-bar/campanasicon.png",selectedImage:"assets/imagenes/Nav-bar/campanasicon2.png", alt: "campana", id: "campana-overview", text: "Alertas de Trabajo" },
-    { route: ['appconfiguration'], image: "assets/imagenes/Nav-bar/Engranajes.png",selectedImage:"assets/imagenes/Nav-bar/Engranajes2.png", alt: "config", id: "config-overview", text: "Configuración" },
+    { route: ['TablaOV'], image: "assets/imagenes/Nav-bar/capas2.png", alt: "capa", id: "capaoverview", text: "Descripción General" },
+    { route: ['ofertas-laborales'], image: "assets/imagenes/Nav-bar/portafolio.png", alt:"trabajo", id: "ofertas", text: "Ofertas de Trabajo"},
+    { route: ['mis-ofertas'], image: "assets/imagenes/Nav-bar/marcador.png", alt: "marcador", id: "marcador-overview", text: "Mis Ofertas" },
+    { route: ['AlertasTrabajo'], image: "assets/imagenes/Nav-bar/campanasicon.png", alt: "campana", id: "campana-overview", text: "Alertas de Trabajo" },
+    { route: ['appconfiguration'], image: "assets/imagenes/Nav-bar/Engranajes.png", alt: "config", id: "config-overview", text: "Configuración" },
   ];
   selectedIndex: number | null = null;
-
-  constructor(private router: Router, private userS:UserService, private loginS:AuthService) {}
+  isLoading : boolean = true;
+  constructor(private router: Router, private loginS:AuthService,
+    private FavoritesService: FavoritesService,
+    private ApplicationsService: ApplicationsService) {}
 
   ngOnInit() {
-    // Initialize selectedIndex based on the initial route
-    this.updateSelectedIndex();
+    forkJoin({
+      favorites: this.FavoritesService.loadFavoriteJobOffersIds(this.loginS.getUserInfo().userRoleId),
+      applied: this.ApplicationsService.loadAppliedJobOffersIds(this.loginS.getUserInfo().userRoleId)
+    }).subscribe({
+      error: (err) => {
+        console.error('Error loading offers:', err);
+      },
+      complete: () => {
+        this.isLoading = false; // Cambiar a false al finalizar la carga
+      }
+    });
 
+    this.updateSelectedIndex();
     // Subscribe to route changes to update selectedIndex
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -42,8 +58,8 @@ export class PostulantesComponent implements OnInit {
   selectLink(index: number) {
     this.selectedIndex = index;
   }
+
   logout(){
-    this.userS.clearUserId();
     this.loginS.logout();
   }
 }

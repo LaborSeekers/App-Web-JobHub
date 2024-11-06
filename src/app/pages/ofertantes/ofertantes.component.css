@@ -6,34 +6,29 @@ body{
 main{
     background-color: white;
     display: flex;
-    border-top-width: 2px;
+    flex-wrap: wrap;
+    border-top-width: 1px;
     border-style: solid;
     border-color: rgb(137, 137, 137);
     border-bottom: none;
     border-left: none;
     border-right: none;
 }
-
 .izquierda{
     flex: 1;
-    border-right-width: 2px;
+    border-width: 1px;
     border-style: solid;
     border-color: rgb(137, 137, 137);
     text-align: center;
-    border-bottom: none;
-    border-left: none;
-    border-top: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
-
-#logout a{
-    text-decoration: none;
-    color: #000;
-}
-
 .derecha{
     flex: 5;
+    min-width: 80%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
     text-align: center;
     display: flex;
     flex-direction: column;

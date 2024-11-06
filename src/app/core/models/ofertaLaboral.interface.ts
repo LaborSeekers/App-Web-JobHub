@@ -7,12 +7,16 @@ export interface ofertalLaboral{
   salary: string;
   benefits: string; //[]
   logo: string;
+  createdAt: string;
   scheduledPublishAt: string|null;
   jobModalityName: string;
   status: string;
   ofertanteName:string;
-  reputacion: string;
+  reputation: string;
   
+  isFavorite: boolean | null; // para angular, no necesita el api
+  isApplied: boolean | null;
+
   requisitos: string[]; //para el frontend (posiblemente temporal ya que hay mejores maneras de hacer esto sin necesidad de crear esta variable en el modelo. El backend deberia enviar una lista de requisitos en lugar de un solo string)
   beneficios: string[]; //para el frontend (posiblemente temporal
 }
