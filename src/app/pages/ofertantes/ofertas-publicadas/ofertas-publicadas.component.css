@@ -1,180 +1,98 @@
-.derecha{
-    flex: 5;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+.job-offers-container {
+  padding: 10px;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
-.derecha-superior{
-    flex: 1;
-    align-items: center;
-    display: flex;
-    gap:40%
+.header {
+  display: flex;
+  justify-content: space-between; /* Alinea el título y el botón */
+  align-items: center; /* Centra verticalmente */
+  margin-bottom: 5px; /* Espacio debajo del encabezado */
 }
 
-.derecha-superior h1{
-    color:black;
-    font-family: Roboto;
-    margin-left:5%;
-}
-.derecha-inferior{
-    flex: 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.create-offer-button {
+  margin-left: auto; /* Alinea el botón a la derecha */
+  text-align: center; /* Centra el texto dentro del botón */
+  line-height: 1.2; /* Ajusta el espaciado entre líneas */
+  padding: 8px 16px; /* Ajusta el padding para el botón */
 }
 
-.btn-crear-oferta{
-    border-radius: 5px;
-    border: 1px solid #06F;
-    background: #0C72BB;
-    display: flex;
-    flex:column;
-    justify-content: center;
-    flex-shrink: 0;
-    word-break: break-all;
-    color:white;
-    font-family: Epilogue;
+.button-text {
+  display: flex;
+  flex-direction: column; /* Coloca el texto en columnas */
+  align-items: center; /* Centra el texto horizontalmente */
+  
 }
 
-.btn-crear-oferta :hover  {
-    color: black;
-    cursor: pointer;
+.filter-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-.line{
-    border: 1px solid #000;
-    width: 95%;
+.filter-controls mat-form-field {
+  width: 100%;
 }
 
-
-/* Structure */
-  
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-
-
-/* test */
-.tablaEmple-ofer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1%;
-    margin-bottom: 5%;
-    width: 90%;
-    
+.offers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
 }
-.filter-container {
-    margin-bottom: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-spacing: 20px;
-  }
-  
-  td {
-    width: 100%;
-    padding: 0;
-  }
-  
-  .tb-offer {
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .card-1 {
-    background-color: #ffe0b2; /* Color amarillo */
-  }
-  
-  .card-2 {
-    background-color: #ffcdd2; /* Color rosa */
-  }
-  
-  .card-3 {
-    background-color: #c8e6c9; /* Color verde */
-  }
-  
-  .offer-header h2 {
-    margin: 0;
-  }
-  
-  .offer-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .offer-body{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-  }
 
-  .offer-btn {
-    margin: 0 10px;
-  }
-  
-  .offer-btn:last-child {
-    background-color: black;
-    color: white;
-  }
-  
+.offer-card {
+  width: 100%;
+  transition: transform 0.3s ease;
+  border-radius: 24px;
+  border: 2px solid #585858; /* Color del borde */
+  padding: 15px
+}
 
-  .offer-btn-1{
-    margin: 0 10px;
-    background-color: white;
-    color: black;
-  }
-  
+.offer-card:hover {
+  transform: translateY(-5px);
+}
 
-  /*busqueda*/
-  .search-container {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 25px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-    padding: 10px;
-    width: 500px;
-    margin: 0 auto;
-  }
-  
-  .country {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-  }
-  
-  .country img {
-    width: 24px;
-    height: 16px;
-    margin-right: 5px;
-  }
+.offer-card mat-card-header {
+  margin-bottom: 0px; /* Reduce el espacio entre el título y el contenido */
+}
 
-  
-  .search-input {
-    flex-grow: 1;
-  }
-  
-  mat-form-field {
-    width: 100%;
-    margin: 0;
-  }
-  
-  input[matInput] {
-    border-radius: 25px;
-  }
-  
-  mat-icon-button {
-    margin-right: -16px;
-  }
-  
+.offer-card mat-card-content {
+  margin-top: 0; /* Asegúrate de que no haya margen adicional al principio */
+}
+
+.offer-card mat-card-content p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px; /* Reduce el espacio entre los párrafos */
+}
+
+.offer-card mat-card-content mat-icon {
+  margin-right: 8px;
+}
+
+.content-with-buttons {
+  display: flex;
+  justify-content: space-between; /* Espacio entre detalles y botones */
+  align-items: center; /* Centra verticalmente */
+}
+
+.job-details {
+  flex-grow: 1; /* Permite que esta sección use el espacio disponible */
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px; /* Espacio entre botones */
+}
+
+.outline-button {
+  border: 2px solid #585858; /* Agrega borde al botón */
+  background: whitesmoke; /* Fondo transparente */
+}
+
+mat-paginator {
+  margin-top: 20px;
+}
