@@ -15,6 +15,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [],
@@ -31,9 +33,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTabsModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSidenavModule
   ],
-  exports:[MatExpansionModule,MatPaginatorModule,MatProgressSpinnerModule,MatTableModule,MatIconModule,MatButtonModule,MatBadgeModule,MatFormFieldModule,MatInputModule,MatDialogModule,MatTabsModule,ReactiveFormsModule, MatSelectModule
+  exports:[MatExpansionModule,MatSidenavModule,MatPaginatorModule,MatProgressSpinnerModule,MatTableModule,MatIconModule,MatButtonModule,MatBadgeModule,MatFormFieldModule,MatInputModule,MatDialogModule,MatTabsModule,ReactiveFormsModule, MatSelectModule
    ]
 })
 export class MaterialModule { }

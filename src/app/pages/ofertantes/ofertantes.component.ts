@@ -27,10 +27,7 @@ export class OfertantesComponent implements OnInit {
   constructor(private router: Router, private userS:UserService, private loginS:AuthService) {}
 
   ngOnInit() {
-    // Initialize selectedIndex based on the initial route
     this.updateSelectedIndex();
-    //this.loginS.obtenerCookie();
-    // Subscribe to route changes to update selectedIndex
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => this.updateSelectedIndex());
@@ -42,6 +39,8 @@ export class OfertantesComponent implements OnInit {
       const routeUrl = this.router.serializeUrl(this.router.createUrlTree(link.route));
       return this.router.url.includes(routeUrl);
     });
+
+    
   }
 
   selectLink(index: number) {
