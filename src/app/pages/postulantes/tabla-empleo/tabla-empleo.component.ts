@@ -1,3 +1,4 @@
+import { AlertasService } from './../../../core/services/alertas.service';
 import { ApplicationsService } from './../../../core/services/applications.service';
 import { FavoritesService } from './../../../core/services/favorites.service';
 import { ofertalLaboral } from '../../../core/models/ofertaLaboral.interface';
@@ -21,9 +22,11 @@ export class TablaEmpleoComponent {
 
   favorites_num : number = 0;
   applied_num : number = 0;
+  alertas_num : number = 0;
   constructor(private postulantesService :PostulantesService,
     private FavoritesService: FavoritesService,
-    private ApplicationsService: ApplicationsService
+    private ApplicationsService: ApplicationsService,
+    private AlertasService: AlertasService
   ) {}
 
   loadOfertas():void{
@@ -43,6 +46,11 @@ export class TablaEmpleoComponent {
     this.ApplicationsService.getAppliedIds().subscribe({
       next: (applications) => {
         this.applied_num = applications.length;
+      }
+    })
+    this.AlertasService.getFeedbacks().subscribe({
+      next: (feedbacks)=>{
+        this.alertas_num = feedbacks.length;
       }
     })
     this.loadOfertas();

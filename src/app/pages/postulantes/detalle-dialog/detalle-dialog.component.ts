@@ -2,10 +2,8 @@ import { ApplicationsService } from './../../../core/services/applications.servi
 import { FavoritesService } from './../../../core/services/favorites.service';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { Data, Router } from '@angular/router';
+import { Data } from '@angular/router';
 import { ReputacionDialogComponent } from '../reputacion-dialog/reputacion-dialog.component';
-import { PostulantesService } from '../../../core/services/postulantes.service';
-import { UserService } from '../../../core/services/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../../core/services/auth.service';
 import { ofertalLaboral } from '../../../core/models/ofertaLaboral.interface';
@@ -20,7 +18,6 @@ export class DetalleDialogComponent {
       private ApplicationsService: ApplicationsService,
       private FavoritesService: FavoritesService,
       private AuthService: AuthService,
-      private router:Router,
       public dialogRef: MatDialogRef<DetalleDialogComponent>
   ) {}
 

@@ -117,8 +117,10 @@ li.selected a{
     background-color: #E7F0FA;    
 } 
 
-img {
+img, mat-icon {
     height: 40px;
     width: auto;
+}
+mat-icon{
     margin: 0 15px;
 }
