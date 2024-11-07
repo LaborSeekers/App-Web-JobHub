@@ -17,7 +17,7 @@ export class AlertasService {
     private AuthService: AuthService,
     private http: HttpClient) {}
 
-  private stompClient: Stomp.Client | null = null;
+  private stompClient: any | null = null;
   
   connect(){
     const socket = new SockJS(`${environment.apiUrl}/ws`)
