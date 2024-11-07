@@ -22,7 +22,7 @@ export class AlertasService {
   connect(){
     const socket = new SockJS(`${environment.apiUrl}/ws`)
     this.stompClient = Stomp.over(socket); 
-    //this.stompClient.debug = null
+    this.stompClient.debug = null
     let userId = this.AuthService.getRole() + this.AuthService.getUserInfo().userRoleId
     const jwtToken = localStorage.getItem('auth_token'); 
 
@@ -32,7 +32,6 @@ export class AlertasService {
       this.feedbacks.unshift(feedback);
       this.feedbackSubject.next(this.feedbacks);
       this.newFeedbackSubject.next(true);
-      console.log(feedback);
     });
     })
   }
