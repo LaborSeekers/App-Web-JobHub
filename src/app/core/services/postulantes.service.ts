@@ -42,6 +42,11 @@ export class PostulantesService {
     return this.http.get<Postulante>(url); // Retorna un Observable de tipo Postulante
   }
 
+  getPostulantesByIds(ids: number[]): Observable<Postulante[]>{
+    const url = `${environment.apiUrl}/auth/Postulantes/get`; 
+    return this.http.post<Postulante[]>(url, ids);
+  }
+
   getAllOfertasLaboPage(page: number, size: number, location: string, modality: string, status: string, title : string):Observable<any>{
     const params = new HttpParams()
     .set("page", page.toString())

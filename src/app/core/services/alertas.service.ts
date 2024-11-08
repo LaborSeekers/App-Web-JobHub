@@ -17,7 +17,7 @@ export class AlertasService {
     private AuthService: AuthService,
     private http: HttpClient) {}
 
-  private stompClient: Stomp.Client | null = null;
+  private stompClient: any| null = null;
   
   connect(){
     const socket = new SockJS(`${environment.apiUrl}/ws`)
@@ -55,5 +55,12 @@ export class AlertasService {
         this.feedbackSubject.next(this.feedbacks);
       }
     }))
+  }
+
+  enviarFeedback(postulantId: number, ): Observable<any>{ 
+    let params = new HttpParams()
+    
+
+    return this.http.post<any>(`${this.apiFeedbackUrl}/add`, null, {params});
   }
 }

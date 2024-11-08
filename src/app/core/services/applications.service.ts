@@ -61,6 +61,10 @@ export class ApplicationsService {
     );
   }
 
+  logout(){
+    //this.appliedJobs.
+  }
+
   getAppliedIds(){
     return this.appliedSubject.asObservable();
   }

@@ -26,6 +26,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetailsDialogComponent } from './details-dialog/details-dialog.component';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { SubscriptionsModalComponent } from './subscriptions-modal/subscriptions-modal.component';
+import { SubscriptionCheckComponent } from './subscription-check/subscription-check.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { DetailsDialogComponent } from './details-dialog/details-dialog.componen
     ModalFiltroComponent,
     InicioComponent,
     CrearOfertaComponent,
-    DetailsDialogComponent
+    DetailsDialogComponent,
+    SubscriptionsComponent,
+    SubscriptionsModalComponent,
+    SubscriptionCheckComponent
   ],
   imports: [
     MatCardModule,

@@ -39,27 +39,7 @@ export class VerPostulantesComponent implements OnInit {
       const offerIdParam = params.get('offerId');
       if (offerIdParam) {
         const offerId = +offerIdParam;
-        
-        // Llama al servicio para obtener la oferta laboral
-        this.ofertantesService.getJobOfferById(offerId).subscribe({
-          next: (offer) => {
-            const userInfo = this.authService.getUserInfo();
-            const userId = userInfo?.firstName + " " + userInfo?.lastName;
-
-            if (offer.ofertanteName !== userId) {
-              this.router.navigate(['Ofertantes/hub/inicio']);
-              this.showSnackBar('No tienes permisos para ver los postulantes de esta oferta');
-              return;
-            }
-
-            // Si el usuario tiene permiso, llama al servicio para obtener postulantes
-            this.loadCandidates(offerId);
-          },
-          error: (error) => {
-            console.error('Error al obtener la oferta laboral:', error);
-            this.router.navigate(['Ofertantes/hub/inicio']);
-          }
-        });
+        this.loadCandidates(offerId);          
       }
     });
   }
@@ -68,17 +48,20 @@ export class VerPostulantesComponent implements OnInit {
   private loadCandidates(offerId: number): void {
     this.applicationsService.loadApplicationsByJobId(offerId).subscribe({
       next: (applications) => {
-        const candidateIds = applications.map(application => application.postulante_id);
-        console.log('IDs de candidatos: ', candidateIds);
-        
-        // Usar forkJoin para realizar las solicitudes en paralelo
-        const candidateRequests = candidateIds.map(id => this.postulantesService.getPostulanteById(id));
-        console.log('Solicitudes de postulantes: ', candidateRequests);
+        const candidateApplicationMap = new Map<number, number>();
+        applications.forEach(application => candidateApplicationMap.set(application.postulante_id, application.id));
 
-        // Realizar todas las solicitudes en paralelo
-        forkJoin(candidateRequests).subscribe({
+        const candidateIds = Array.from(candidateApplicationMap.keys());
+
+        this.postulantesService.getPostulantesByIds(candidateIds).subscribe({
           next: (candidates: Postulante[]) => {
-            this.filteredCandidates = candidates;  // Almacenar los postulantes obtenidos
+            // Añadir applicationId a cada candidato
+            this.filteredCandidates = candidates.map(candidate => ({
+              ...candidate,
+              applicationId: candidateApplicationMap.get(candidate.id) // Asignar applicationId al candidato
+            }));
+
+            console.log(this.filteredCandidates)
             this.applyFilters();  // Aplicar los filtros si es necesario
           },
           error: (error) => {
