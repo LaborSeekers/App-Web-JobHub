@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetailsDialogComponent } from './details-dialog/details-dialog.component';
+import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DetailsDialogComponent } from './details-dialog/details-dialog.componen
     ModalFiltroComponent,
     InicioComponent,
     CrearOfertaComponent,
-    DetailsDialogComponent
+    DetailsDialogComponent,
+    
   ],
   imports: [
     MatCardModule,

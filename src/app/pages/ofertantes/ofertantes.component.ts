@@ -13,11 +13,12 @@ import { UserService } from '../../core/services/user.service';
 })
 
 export class OfertantesComponent implements OnInit {
+  empresaId: number = 0; // Variable para almacenar el id de la empresa
   links = [
     { route: ['inicio'], image: "assets/imagenes/Nav-bar/capas2.png", alt: "capa", id: "capaoverview", text: "Descripción General" },
     { route: ['ofertas-publicadas'], image: "assets/imagenes/Nav-bar/portafolio.png", alt: "portafolio", id: "portafolio-overview", text: "Ofertas publicadas" },
     { route: ['/route/path'], image: "assets/imagenes/Nav-bar/subscription.png", alt: "image18", id: "marcador-overview", text: "Ver Suscripción" },
-    { route: ['/route/path'], image: "assets/imagenes/Nav-bar/campanasicon.png", alt: "campana", id: "campana-overview", text: "Notificaciones" },
+    { route: ['ver-empresa/'+this.loginS.getUserInfo().empresa?.id], image: "assets/imagenes/Nav-bar/campanasicon.png", alt: "campana", id: "campana-overview", text: "Ver Empresa" },
     { route: ['/route/path'], image: "assets/imagenes/Nav-bar/Engranajes.png", alt: "config", id: "config-overview", text: "Configuración" },
  
   ];
@@ -27,6 +28,7 @@ export class OfertantesComponent implements OnInit {
   constructor(private router: Router, private userS:UserService, private loginS:AuthService) {}
 
   ngOnInit() {
+    this.getUserEmpresaId();
     this.updateSelectedIndex();
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -43,6 +45,15 @@ export class OfertantesComponent implements OnInit {
     
   }
 
+  // Función para obtener el id de la empresa del usuario logueado
+  getUserEmpresaId() {
+    const userInfo = this.loginS.getUserInfo(); // Obtener la información del usuario
+    if (userInfo && userInfo.empresa) {
+      this.empresaId = userInfo.empresa.id; // Asignar el id de la empresa a la variable
+      console.log(this.empresaId)
+    }
+    //this.loginS.getUserInfo().empresa.id
+  }
   selectLink(index: number) {
     this.selectedIndex = index;
   }

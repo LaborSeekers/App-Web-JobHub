@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/enviroment';
 import { ofertalLaboral } from '../models/ofertaLaboral.interface';
 import { OfertaLaboralRequest } from '../models/ofertaLaboral-request-interface';
+import { OfertanteDTO } from '../models/ofertante-dto.response';
 
 @Injectable({
   providedIn: 'root'
@@ -98,4 +99,9 @@ export class OfertantesService {
     updateJobOfferStatus(jobOfferId: number, status: string): Observable<ofertalLaboral> {
       return this.http.patch<ofertalLaboral>(`${this.apiUrl}/${jobOfferId}/status`, { status });
     }
+
+    getOfertanteById(id: number): Observable<OfertanteDTO> {
+      return this.http.get<OfertanteDTO>(`${environment.apiUrl}/auth/Ofertantes/${id}`);
+    }
+
   }

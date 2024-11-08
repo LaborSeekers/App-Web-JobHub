@@ -127,6 +127,7 @@ export class TablaOfertasComponent {
 
   verDetalles(element: ofertalLaboral, event: MouseEvent) {
     event.stopPropagation();
+    console.log("holaaa" , element)
     this.openDialog(element);
   }
 
