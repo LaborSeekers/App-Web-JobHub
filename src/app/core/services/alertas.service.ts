@@ -2,7 +2,7 @@ import { AuthService } from './auth.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import SockJS from 'sockjs-client';
-import Stomp from 'stompjs'
+import { Client } from '@stomp/stompjs';
 import { environment } from '../../../environments/enviroment';
 import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 
@@ -17,24 +17,30 @@ export class AlertasService {
     private AuthService: AuthService,
     private http: HttpClient) {}
 
-  private stompClient: any | null = null;
+    private stompClient: Client | null = null;
   
-  connect(){
-    const socket = new SockJS(`${environment.apiUrl}/ws`)
-    this.stompClient = Stomp.over(socket); 
-    this.stompClient.debug = null
-    let userId = this.AuthService.getRole() + this.AuthService.getUserInfo().userRoleId
-    const jwtToken = localStorage.getItem('auth_token'); 
-
-    this.stompClient.connect({'X-Authorization': `Bearer ${jwtToken}`}, ()=> {
-      this.stompClient?.subscribe(`/user/${userId}/notifications`, (message: any) => {
-      const feedback = JSON.parse(message.body);
-      this.feedbacks.unshift(feedback);
-      this.feedbackSubject.next(this.feedbacks);
-      this.newFeedbackSubject.next(true);
-    });
-    })
-  }
+    connect() {
+      const socket = new SockJS(`${environment.apiUrl}/ws`);
+      this.stompClient = new Client({
+        webSocketFactory: () => socket,
+        connectHeaders: { 'X-Authorization': `Bearer ${localStorage.getItem('auth_token')}` },
+        debug: (str) => console.log(str),
+        reconnectDelay: 5000,
+      });
+    
+      const userId = this.AuthService.getRole() + this.AuthService.getUserInfo().userRoleId;
+    
+      this.stompClient.onConnect = () => {
+        this.stompClient?.subscribe(`/user/${userId}/notifications`, (message) => {
+          const feedback = JSON.parse(message.body);
+          this.feedbacks.unshift(feedback);
+          this.feedbackSubject.next(this.feedbacks);
+          this.newFeedbackSubject.next(true);
+        });
+      };
+    
+      this.stompClient.activate();
+    }
 
   getFeedbacks() {
     return this.feedbackSubject.asObservable();
