@@ -1,6 +1,7 @@
 import { UserService } from './../../../core/services/user.service';
 import { PostulantesService } from './../../../core/services/postulantes.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-curriculum',
@@ -8,14 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './curriculum.component.css'
 })
 export class CurriculumComponent {
-  userID = this.userS.getUserId()
-  constructor(private postulantesService: PostulantesService, private userS: UserService) { }
+  constructor(private postulantesService: PostulantesService, private AuthService: AuthService ) { }
 
-  ngOnInit(): void{
+  /*ngOnInit(): void{
     
-    this.postulantesService.getCurriculum(1).subscribe(curriculum => {
-      console.log(curriculum);
-  });}
+    this.postulantesService.getCurriculum(this.AuthService.getUserInfo().userRoleId).subscribe(curriculum => {
+      console.log(curriculum);//retorna correctamente el curriculum
+  });}*/
 
-  
+
 }

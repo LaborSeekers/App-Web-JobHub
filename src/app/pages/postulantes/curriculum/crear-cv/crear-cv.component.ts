@@ -18,7 +18,8 @@ export class CrearCvComponent {
 
   openDialog(): void {
     this.dialog.open(EditarCurriculumComponent, {
-      width: '700px',
+      width: 'auto',
+      maxHeight: '80vh'
     });
   }
 }
