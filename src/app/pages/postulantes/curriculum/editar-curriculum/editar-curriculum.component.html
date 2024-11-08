@@ -1,0 +1,100 @@
+<body>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>X</button>
+    </mat-dialog-actions>
+    <div class="contenedor">
+        <form [formGroup]="curriculumForm" (ngSubmit)="onSubmit()">
+            <!-- Información de perfil -->
+            <div class="centrado">
+                <div class="perfil">
+                    <img alt="Foto de Perfil" src="assets/imagenes/Entrevistas/perfil.png" class="imagen-perfil"/>
+                </div>
+                <div class="perfil2">
+                    <h3>Nombre</h3>
+                    <input formControlName="nombre" type="text" placeholder="Ingrese su nombre" />
+          
+                    <h3>Apellido</h3>
+                    <input formControlName="apellido" type="text" placeholder="Ingrese su apellido" />
+                </div>
+            </div>
+              
+            <!-- Acerca de -->
+            <div class="container-derecho">
+                <div class="seccion">
+                    <h3 class="seccion-titulo">ACERCA DE</h3>
+                    <textarea class="input-texto" formControlName="acercaDe" placeholder="Ingrese información sobre usted"></textarea>
+                </div>
+            </div>
+
+          
+            <!-- Experiencia Laboral -->
+            <div class="seccion">
+              <h3 class="seccion-titulo">EXPERIENCIA LABORAL</h3>
+              <div class="experiencia-laboral" formArrayName="experienciaLaboral">
+                <div *ngFor="let experiencia of experienciaLaboral.controls; let i = index" [formGroupName]="i" class="experiencia-item">
+                  <input formControlName="puesto" type="text" placeholder="Nombre del puesto" />
+                  <input formControlName="empresa" type="text" placeholder="Nombre de la empresa" />
+                  <textarea formControlName="descripcion" placeholder="Descripción"></textarea>
+                  <input formControlName="fechaInicio" type="date" placeholder="Fecha de inicio" />
+                  <input formControlName="fechaFin" type="date" placeholder="Fecha de fin" />
+                  <button type="button" (click)="eliminarExperiencia(i)" style="margin-top: 2%;">Eliminar Experiencia</button>
+                </div>
+                <button type="button" (click)="agregarExperiencia()">Agregar Experiencia</button>
+              </div>
+            </div>
+          
+            <!-- Educación -->
+            <div class="seccion">
+              <h3 class="seccion-titulo">EDUCACIÓN</h3>
+              <div class="educacion" formArrayName="educacion">
+                <div *ngFor="let educacion of educacion.controls; let i = index" [formGroupName]="i" class="educacion-item">
+                  <input formControlName="institucion" type="text" placeholder="Institución" />
+
+                  <select class="grado" formControlName="grado" id="grado">
+                    <option *ngFor="let grado of grados; let i = index" [value]="grado.id">{{grado.name}}</option>
+                  </select>
+
+                  <input formControlName="fechaInicio" type="date" placeholder="Fecha de inicio" />
+                  <input formControlName="fechaFin" type="date" placeholder="Fecha de fin" />
+                  <button type="button" (click)="eliminarEducacion(i)">Eliminar Educación</button>
+                </div>
+                <button type="button" (click)="agregarEducacion()">Agregar Educación</button>
+              </div>
+            </div>
+          
+            <!-- Habilidades 
+            <div class="seccion">
+              <h3 class="seccion-titulo">HABILIDADES</h3>
+              <div class="habilidades" formArrayName="habilidades">
+                <div *ngFor="let habilidad of habilidades.controls; let i = index" class="habilidad-item">
+                  <input [formControlName]="i" type="text" placeholder="Nombre de la habilidad" />
+                  <button type="button" (click)="eliminarHabilidad(i)">Eliminar Habilidad</button>
+                </div>
+                <button type="button" (click)="agregarHabilidad()">Agregar Habilidad</button>
+              </div>
+            </div>
+          -->
+
+          
+            <!-- Idiomas -->
+            <div class="seccion">
+              <h3 class="seccion-titulo">IDIOMAS</h3>
+              <div class="idiomas" formArrayName="idiomas">
+                <div *ngFor="let idioma of idiomas.controls; let i = index" [formGroupName]="i" class="idioma-item">
+                  <input formControlName="idioma" type="text" placeholder="Idioma" />
+
+                  <select class="nivel" formControlName="nivel" id="nivel" >
+                    <option *ngFor="let nivel of niveles; let i = index" [value]="nivel.id">{{nivel.languageLevel}}</option>
+                  </select>
+
+                  <button type="button" (click)="eliminarIdioma(i)">Eliminar Idioma</button>
+                </div>
+                <button type="button" (click)="agregarIdioma()">Agregar Idioma</button>
+              </div>
+            </div>
+          
+            <!-- Botón de Envío -->
+            <button type="submit">Enviar Curriculum</button>
+          </form>          
+    </div>
+</body>

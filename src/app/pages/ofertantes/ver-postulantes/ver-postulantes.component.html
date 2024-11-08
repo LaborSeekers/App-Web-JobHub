@@ -1,0 +1,38 @@
+<div class="derecha">
+  <div class="container">
+    <div class="a">
+      <!-- Botón de vuelta -->
+      <button mat-button (click)="gotoBack()" class="back-button">
+        <img src="../../../assets/imagenes/Card/flecha.png" alt="Atrás">
+      </button>
+
+      <!-- Botón de filtros -->
+      <button mat-button (click)="openFilterDialog()" class="filter-button">
+        <img src="../../../assets/imagenes/Card/filtro.png" alt="Filtros">
+      FILTROS
+      </button>
+
+      <!-- Título de la oferta -->
+      <h1 class="title"></h1>
+    </div>
+
+    <div class="cards">
+      <!-- Mostrar cada candidato -->
+      <div class="card" *ngFor="let candidato of filteredCandidates">
+        <div class="details">
+          <img src="../../../assets/imagenes/Entrevistas/perfil.png" class="profile-pic">
+          <h2>{{ candidato.firstName }} {{ candidato.lastName }}</h2>
+          <li><strong>Teléfono:</strong> {{ candidato.phone }}</li>
+          <li><strong>Fecha de nacimiento:</strong> {{ candidato.birthday | date:'shortDate' }}</li>
+        </div>
+
+        <div class="actions">
+          <!-- Botones para ver CV y perfil -->
+          <button class="cv-button">Ver CV</button>
+          <button class="profile-button">Ver perfil</button>
+          <button class="feedback-button">Enviar Feedback</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

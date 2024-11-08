@@ -1,0 +1,54 @@
+
+  <div class="derecha-superior">
+    <h2>Descripción General</h2>
+    <div class="derecha-superior-arriba">
+      <p>Hola, José Pérez</p>
+      <p>Aquí tienes un resumen de tus actividades diarias y alertas de trabajo</p>
+    </div>
+    <div class="derecha-superior-abajo">
+      <div class="item blue">
+
+        <div class="color-izqui">
+          <span class="number">{{applied_num}}</span>
+          <span class="text">Trabajos aplicados</span>
+        </div>
+        <div class="color-dere">
+          <img src="assets/imagenes/Overview/portafolio2.png" alt="portafolio">
+        </div>
+
+      </div>
+
+      <div class="item yellow">
+        <div class="color-izqui">
+          <span class="number">{{favorites_num}}</span>
+          <span class="text">Ofertas Favoritas</span>
+        </div>
+        <div class="color-dere">
+          <img src="assets/imagenes/Overview/marcador2.png" alt="portafolio">
+        </div>
+      </div>
+
+
+      <div class="item green">
+        <div class="color-izqui">
+          <span class="number">{{alertas_num}}</span>
+          <span class="text">Alertas de trabajo</span>
+        </div>
+        <div class="color-dere">
+          <img src="assets/imagenes/Overview/campanasicon3.png" alt="portafolio">
+        </div>
+      </div>
+    </div>
+    
+    
+
+  </div>
+  <div class="derecha-inferior">
+
+    <div class="optionTabla">
+      <div class="optionTabla-izquierda">
+        <h4>Ofertas laborales recomendadas</h4>
+      </div>
+    </div>
+    <app-tabla-ofertas [data]="data" [isLoading]="isLoading" [recomendations]="true"></app-tabla-ofertas>   
+  </div>

@@ -1,0 +1,23 @@
+<header>
+    <div class="logo">
+      <img src="assets/imagenes/Header/logoJobHub.png" alt="logo" id="logoImg">
+      <h1><a id="logoTxt" [routerLink]='["/Postulantes/hub"]' >JobHub</a></h1>
+    </div>
+    <!--
+      <div class="buscador">
+        <div class="pais">
+          <img src="assets/imagenes/Header/peruflag.png" alt="Peru">
+          <select>
+            <option value="peru">Peru</option>
+          </select>
+        </div>
+        <img id='lupa' src="assets/imagenes/Header/lupa.png" alt="lupa">
+        <input type="text" placeholder="Título, palabra clave, empresa">
+        <button type="submit"></button>
+      </div>
+    -->
+    <div class="perfil">
+      <mat-icon class="mat-icon"  matBadge="1" matBadgeColor="warn" aria-hidden="false"><a [routerLink]='["/Postulantes"]'>chat_bubble</a></mat-icon>
+      <app-perfil-user></app-perfil-user>
+    </div>
+</header>

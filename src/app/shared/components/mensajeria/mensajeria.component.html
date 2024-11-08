@@ -1,0 +1,39 @@
+<!-- app.component.html -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" [opened]="true" class="sidenav">
+      <div class="chat-list">
+        <h3>Chats</h3>
+        <!-- Aquí agregamos una lista simple de chats -->
+        <div *ngFor="let chat of chats" (click)="selectChat(chat)" class="chat-card">
+            <div class="chat-card-header">
+              <h4>{{ chat.name }}</h4>
+            </div>
+            <div class="chat-card-body">
+              <p class="last-message">{{ chat.lastMessage }}</p>
+              <p class="last-message-time">{{ chat.lastMessageTime }}</p>
+            </div>
+          </div>
+      </div>
+    </mat-sidenav>
+  
+    <mat-sidenav-content class="chat-window">
+        <button mat-icon-button (click)="sidenav.toggle()" class="sidenav-toggle">
+            <mat-icon>menusdas</mat-icon>
+          </button>
+      <div class="chat-header">
+        <h3>{{ selectedChat?.name }}</h3>
+      </div>
+      <div class="messages">
+        <p *ngFor="let message of selectedChat?.messages">
+          {{ message }}
+        </p>
+      </div>
+      <div class="message-input">
+        <input type="text" [(ngModel)]="newMessage" placeholder="Escribe un mensaje...">
+        <button (click)="sendMessage()">Enviar</button>
+      </div>
+    </mat-sidenav-content>
+  
+    
+  </mat-sidenav-container>
+  

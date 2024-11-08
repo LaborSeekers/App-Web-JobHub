@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background-color: #2e2e2e;
+}
+
+.contenedor {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    color: #000;
+    background-color: #f9f9f9;
+}
+
+.centrado {
+    display: flex;
+    /*flex-direction: column;*/
+    align-items: center;
+    gap: 20px;
+}
+
+.perfil {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border-radius: 50%;
+    
+}
+
+.perfil2 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;/*Hace que cresca todo el div y ocupe todo el espacio que pueda*/
+    
+}
+
+.imagen-perfil {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.titulo {
+    font-size: 15px;
+    font-weight: solid;
+    font-family: Epiloge;
+}
+
+.subtitulo {
+    font-size: 15px;
+    font-weight: solid;
+    font-family: Epiloge;
+}
+
+.input-texto {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-texto:focus {
+    outline: none;
+    border-bottom-color: #555;
+}
+
+.contenedores {
+    display: flex;
+    gap: 20px;
+}
+
+.container-izquierdo,
+.container-derecho {
+    flex: 1;
+}
+
+.contacto,
+.seccion {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.seccion-titulo{
+    text-align: center;
+}
+.seccion h3 {
+    font-weight: normal;
+}
+
+.input-texto {
+    width: 100%;
+    resize: none;
+}
+
+.experiencia-item{
+    margin: 2%;
+    display: flex;
+}

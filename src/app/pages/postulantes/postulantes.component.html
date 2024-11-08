@@ -1,0 +1,16 @@
+<app-postulante-header *ngIf="!isLoading"></app-postulante-header>
+
+<div *ngIf="isLoading" class="loading">
+  <mat-spinner></mat-spinner>
+  <p>Cargando...</p>
+</div>
+
+<main *ngIf="!isLoading">
+  <div class="izquierda">
+    <app-side-menu [links]="links"></app-side-menu>
+  </div>
+  <div class="derecha">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+<app-footer *ngIf="!isLoading"></app-footer>

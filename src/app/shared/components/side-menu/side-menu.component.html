@@ -1,0 +1,50 @@
+<div class="izquierda-superior" #navbar>
+    <h2>Panel de Candidato</h2>
+    <a class="dropdown-btn" (click)="toggleDropdown()" *ngIf="isDropdownVisible">&#9776;</a>
+    <ul #navLinks *ngIf="!isDropdownVisible">
+        <li *ngFor="let link of links; let i = index"
+            (click)="selectLink(i)"
+            [ngClass]="{ 'selected': selectedIndex === i }"
+            [routerLink]="link.route"> 
+            <a  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <mat-icon class="custom-icon"
+                    [matBadge]="link.badge != null && link.badge > 0 ? link.badge : null"
+                    [matBadgeColor]="link.badge != null && link.badge > 0 ? 'warn' : 'primary'"
+                    aria-hidden="false">
+                    <img 
+                    [src]="link.image"
+                    [ngStyle]="{ filter: selectedIndex === i ? 'brightness(0) saturate(100%) invert(24%) sepia(81%) saturate(3932%) hue-rotate(193deg) brightness(100%) contrast(100%)' : 'none' }" 
+                    [alt]="link.alt" 
+                    [id]="link.id">
+                </mat-icon>
+                {{ link.text }}
+            </a>
+        </li>
+        <li id="logout">
+            <a routerLink="" (click)="logout()">
+                <img src="assets/imagenes/Nav-bar/CerrarSesion.png" (click)="logout()">
+                Cerrar Sesión
+            </a>
+        </li>
+    </ul>
+    <ul class="dropdown" *ngIf="dropdownVisible" (click)="toggleDropdown()">
+        <li *ngFor="let link of links; let i = index"
+            (click)="selectLink(i)"
+            [ngClass]="{ 'selected': selectedIndex === i }"> 
+            <a [routerLink]="link.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <img 
+                [src]="link.image"
+                [ngStyle]="{ filter: selectedIndex === i ? 'brightness(0) saturate(100%) invert(24%) sepia(81%) saturate(3932%) hue-rotate(193deg) brightness(100%) contrast(100%)' : 'none' }" 
+                [alt]="link.alt" 
+                [id]="link.id"> 
+                {{ link.text }}
+            </a>
+        </li>
+        <li id="logout">
+            <a routerLink="" (click)="logout()">
+                <img src="assets/imagenes/Nav-bar/CerrarSesion.png" (click)="logout()">
+                Cerrar Sesión
+            </a>
+        </li>
+    </ul>
+</div>

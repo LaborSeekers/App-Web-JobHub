@@ -1,0 +1,98 @@
+.job-offers-container {
+  padding: 10px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Alinea el título y el botón */
+  align-items: center; /* Centra verticalmente */
+  margin-bottom: 5px; /* Espacio debajo del encabezado */
+}
+
+.create-offer-button {
+  margin-left: auto; /* Alinea el botón a la derecha */
+  text-align: center; /* Centra el texto dentro del botón */
+  line-height: 1.2; /* Ajusta el espaciado entre líneas */
+  padding: 8px 16px; /* Ajusta el padding para el botón */
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column; /* Coloca el texto en columnas */
+  align-items: center; /* Centra el texto horizontalmente */
+  
+}
+
+.filter-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.filter-controls mat-form-field {
+  width: 100%;
+}
+
+.offers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.offer-card {
+  width: 100%;
+  transition: transform 0.3s ease;
+  border-radius: 24px;
+  border: 2px solid #585858; /* Color del borde */
+  padding: 15px
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+}
+
+.offer-card mat-card-header {
+  margin-bottom: 0px; /* Reduce el espacio entre el título y el contenido */
+}
+
+.offer-card mat-card-content {
+  margin-top: 0; /* Asegúrate de que no haya margen adicional al principio */
+}
+
+.offer-card mat-card-content p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px; /* Reduce el espacio entre los párrafos */
+}
+
+.offer-card mat-card-content mat-icon {
+  margin-right: 8px;
+}
+
+.content-with-buttons {
+  display: flex;
+  justify-content: space-between; /* Espacio entre detalles y botones */
+  align-items: center; /* Centra verticalmente */
+}
+
+.job-details {
+  flex-grow: 1; /* Permite que esta sección use el espacio disponible */
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px; /* Espacio entre botones */
+}
+
+.outline-button {
+  border: 2px solid #585858; /* Agrega borde al botón */
+  background: whitesmoke; /* Fondo transparente */
+}
+
+mat-paginator {
+  margin-top: 20px;
+}

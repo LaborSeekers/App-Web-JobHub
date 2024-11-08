@@ -1,0 +1,67 @@
+/* src/app/modules/ofertantes/pages/ver-empresa/ver-empresa.component.css */
+
+.empresa-container {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;  /* Ocupa toda la altura de la página */
+    background-color: #f5f5f5;  /* Fondo suave */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;  /* Centra todo el contenido dentro de la empresa-container */
+
+
+    align-items: center;  /* Centrado de los elementos dentro del contenedor */
+    justify-content: flex-start; /* Alinea los elementos desde la parte superior */
+  }
+  
+  .empresa-container img {
+    width: 250px;  /* Tamaño de la imagen */
+    height: 200px;
+    border-radius: 15px;  /* Bordes curvos */
+    object-fit: cover;
+    margin-bottom: 25px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);  /* Sombra */
+    
+  }
+  
+  .empresa-container h1 {
+    font-size: 2.8em;
+    color: #333;
+    margin: 0 0 15px;
+    text-align: left;  /* El texto se alinea a la izquierda */
+  }
+  
+  .empresa-container p {
+    font-size: 1.3em;
+    color: #666;
+    max-width: 700px;
+    text-align: left;  /* El texto se alinea a la izquierda */
+  }
+  
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-size: 1.5em;
+    color: #666;
+    text-align: center;
+  }
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin-bottom: 20px;  /* Agrega espacio debajo del botón */
+    align-self: flex-start; /* Alinea el botón hacia la izquierda dentro del contenedor */
+  }
+  
+  .back-button img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 15px;
+    padding: 5px;
+  }
