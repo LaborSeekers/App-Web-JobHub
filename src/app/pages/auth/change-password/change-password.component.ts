@@ -1,4 +1,6 @@
 import { Component, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -11,7 +13,7 @@ export class ChangePasswordComponent {
   @ViewChild('newEyeIcon') newEyeIcon!: ElementRef<HTMLImageElement>;
   @ViewChild('confirmEyeIcon') confirmEyeIcon!: ElementRef<HTMLImageElement>;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private router: Router, private authService: AuthService, private renderer: Renderer2) {}
 
   togglePasswordVisibility(inputElement: HTMLInputElement, eyeIconElement: HTMLImageElement): void {
     const inputType = inputElement.getAttribute('type');
@@ -25,13 +27,37 @@ export class ChangePasswordComponent {
   onSubmit(): void {
     const newPassword = this.newPasswordInput.nativeElement.value;
     const confirmPassword = this.confirmPasswordInput.nativeElement.value;
+    const email = localStorage.getItem('email'); // Recupera el correo de localStorage
+
+    console.log('Intentando actualizar la contraseña');
+    console.log('Nueva contraseña:', newPassword);
+    console.log('Confirmar contraseña:', confirmPassword);
+
+    if (!email) {
+      console.error('No se encontró el correo en localStorage.');
+      alert('Hubo un problema. Por favor, intenta nuevamente.');
+      return;
+    }
 
     if (newPassword !== confirmPassword) {
-      // Handle password mismatch error
       console.log('Las contraseñas no coinciden');
-    } else {
-      // Proceed with password change
-      console.log('Contraseñas coinciden. Procesar cambio de contraseña.');
+      alert('Las contraseñas no coinciden. Intente nuevamente.');
+      return;
     }
+
+    // Llamada al servicio para actualizar la contraseña
+    this.authService.setPassword(email, newPassword).subscribe({
+      next: (response) => {
+        console.log('Contraseña actualizada con éxito', response);
+        alert('Contraseña actualizada. Ahora puede iniciar sesión con la nueva contraseña.');
+        // Redirigir al login o a la página correspondiente
+        this.router.navigate(['/auth/login']);
+
+      },
+      error: (error) => {
+        console.error('Error al actualizar la contraseña', error);
+        alert('Hubo un problema al actualizar la contraseña. Intenta nuevamente.');
+      }
+    });
   }
 }

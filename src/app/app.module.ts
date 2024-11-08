@@ -12,12 +12,16 @@ import { OfertantesModule } from './pages/ofertantes/ofertantes.module';
 import { DatePipe } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserInterceptor } from './core/interceptors/user.interceptor';
+import { FormsModule } from '@angular/forms'; 
+import { OtpVerificationComponent } from './pages/auth/OTP/otp-verification.component';
+import { ForgotPasswordComponent } from './pages/auth/forgot-password/forgot-password.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    OtpVerificationComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,7 @@ import { UserInterceptor } from './core/interceptors/user.interceptor';
     MaterialModule,
     PostulantesModule,
     OfertantesModule,
+    FormsModule, 
   ],
   providers: [
     provideAnimationsAsync(),
