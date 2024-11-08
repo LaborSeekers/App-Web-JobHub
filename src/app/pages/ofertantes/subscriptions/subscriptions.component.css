@@ -1,0 +1,96 @@
+.subscription-details, .subscription-benefits, .subscription-actions {
+    margin-bottom: 20px;
+  }
+  
+  .loading {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .pay-button{
+    float: left;
+  }
+
+  /* Contenedor principal */
+.subscription-container {
+    background-color: white;
+    position: relative;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título principal */
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  /* Detalles de la suscripción */
+  .subscription-details {
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .subscription-details p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  .subscription-details strong {
+    color: #007BFF;
+  }
+  
+  /* Opciones de gestión - botones */
+  .subscription-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .subscription-actions button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .subscription-actions button:hover {
+    background-color: #0056b3;
+  }
+  
+  .subscription-actions button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  

@@ -32,14 +32,8 @@ export class AuthService {
 
   getToken(): string | null {return localStorage.getItem(this.tokenKey);}
 
-  getRole(): string | null { 
-    try{
-      return this.getUserInfo().role;
-    }
-    catch{
-      if(environment.producction==false){console.log("Rol nulo");}      
-      return null;
-    }
+  getRole(): string { 
+      return this.getUserInfo()?.role;
   }
 
   getUserInfo(): UserInfo{

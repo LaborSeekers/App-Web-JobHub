@@ -4,11 +4,10 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Data, Router } from '@angular/router';
 import { ReputacionDialogComponent } from '../reputacion-dialog/reputacion-dialog.component';
-import { PostulantesService } from '../../../core/services/postulantes.service';
-import { UserService } from '../../../core/services/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../../core/services/auth.service';
 import { ofertalLaboral } from '../../../core/models/ofertaLaboral.interface';
+import { EmpresasService } from '../../../core/services/empresa.service';
 @Component({
   selector: 'app-detalle-dialog',
   templateUrl: './detalle-dialog.component.html',
@@ -20,8 +19,10 @@ export class DetalleDialogComponent {
       private ApplicationsService: ApplicationsService,
       private FavoritesService: FavoritesService,
       private AuthService: AuthService,
+      private EmpresaService: EmpresasService,
+      public dialogRef: MatDialogRef<DetalleDialogComponent>,
       private router:Router,
-      public dialogRef: MatDialogRef<DetalleDialogComponent>
+
   ) {}
 
   isLoadingFav: boolean = false;
@@ -31,6 +32,21 @@ export class DetalleDialogComponent {
   setRepu(element: Data, event: MouseEvent){  
     event.stopPropagation();
     this.openDialog(element);
+  }
+  verEmpresa(idOferta: number){
+    this.showmodal = false;
+    this.dialogRef.close();
+  // Suscripción al servicio para obtener la empresa
+  this.EmpresaService.getEmpresaByJobOfferId(idOferta).subscribe(
+    (empresa) => {
+      // Una vez que se obtiene la empresa, se navega a la ruta correspondiente
+      this.router.navigate([`Postulantes/hub/ver-empresa/${empresa.id}`]);
+    },
+    (error) => {
+      console.error('Error al obtener la empresa:', error);
+      // Aquí podrías mostrar un mensaje de error si lo necesitas
+    }
+  );
   }
   openDialog(element: Data): void {
     this.dialog.open(ReputacionDialogComponent, {

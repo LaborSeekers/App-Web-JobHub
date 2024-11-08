@@ -1,44 +1,37 @@
-
 <div class="derecha">
   <div class="container">
     <div class="a">
-      <button matt-button (click)="gotoBack()" class="back-button">
+      <!-- Botón de vuelta -->
+      <button mat-button (click)="gotoBack()" class="back-button">
         <img src="../../../assets/imagenes/Card/flecha.png" alt="Atrás">
       </button>
 
-      <button matt-button (click)="openFilterDialog()" class="filter-button">
+      <!-- Botón de filtros -->
+      <button mat-button (click)="openFilterDialog()" class="filter-button">
         <img src="../../../assets/imagenes/Card/filtro.png" alt="Filtros">
-        <p>FILTROS</p>
+      FILTROS
       </button>
-      <h1 class="title">{{offer?.name}}</h1>
-        
-    </div>
-      
-    <div class="cards">
-      <div class="card" *ngFor="let candidatos of candidatos">
-        <div class="profile-pic">
-          <img [src]="candidatos.image" alt="{{candidatos.name}}"> 
-        </div>
 
-        <button class="top-right-button">
-          <img src="../../../assets/imagenes/Card/icon-card-candidates.png" alt="Favoritos">
-        </button>  
-      
+      <!-- Título de la oferta -->
+      <h1 class="title"></h1>
+    </div>
+
+    <div class="cards">
+      <!-- Mostrar cada candidato -->
+      <div class="card" *ngFor="let candidato of filteredCandidates">
         <div class="details">
-          <h2>{{candidatos.name}}</h2>
-          <li>Profesión: {{candidatos.profession}}</li>
-          <li>Centro de estudio: {{candidatos.studyCenter}}</li>
-          <ul>
-            <li *ngFor="let skill of candidatos.skills">{{skill}}</li>
-          </ul>
-          
+          <img src="../../../assets/imagenes/Entrevistas/perfil.png" class="profile-pic">
+          <h2>{{ candidato.firstName }} {{ candidato.lastName }}</h2>
+          <li><strong>Teléfono:</strong> {{ candidato.phone }}</li>
+          <li><strong>Fecha de nacimiento:</strong> {{ candidato.birthday | date:'shortDate' }}</li>
         </div>
 
         <div class="actions">
+          <!-- Botones para ver CV y perfil -->
           <button class="cv-button">Ver CV</button>
           <button class="profile-button">Ver perfil</button>
+          <button class="feedback-button">Enviar Feedback</button>
         </div>
-
       </div>
     </div>
   </div>

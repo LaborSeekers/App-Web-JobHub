@@ -16,7 +16,8 @@ export class SideMenuComponent {
     image: string,
     alt: string,
     id: string,
-    text: string
+    text: string,
+    badge?: number;
     }[]= [];
     
   selectedIndex: number | null = null;

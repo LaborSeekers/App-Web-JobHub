@@ -1,79 +1,67 @@
-
-<div class="derecha">
-
-    <div class="derecha-superior">
-        <h1>MIS OFERTAS LABORALES</h1>
-        <button class="btn-crear-oferta"> <p>CREAR NUEVA OFERTA LABORAL</p> </button>
-
-    </div>
-
-    <hr class="line">
-
-    <div class="derecha-inferior">
-
-        <div class="search-container">
-            <div class="country">
-                <img src="../../../assets/imagenes/Header/peruflag.png" alt="Peru Flag">
-            </div>
-            
-            <div class="search-input">
-                <mat-form-field>
-                    <input matInput placeholder="Título, palabra clave" (keyup)="applyFilter($event)" #input>
-                    <button mat-icon-button matSuffix>
-                        <mat-icon aria-hidden="false">search</mat-icon>
-                    </button>
-                </mat-form-field>
-            </div>
+<div class="job-offers-container">
+    <div class="header">
+      <h2>MIS OFERTAS LABORALES</h2>
+      <button mat-raised-button color="primary" class="create-offer-button" (click)="createNewOffer()">
+        <div class="button-text">
+          <span>Crear nueva</span>
+          <span>Oferta laboral</span>
         </div>
- 
-        <div class="tablaEmple-ofer">
-       
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                <!-- Position Column -->
-                <ng-container matColumnDef="offer">
-                    <td mat-cell *matCellDef="let element"> 
-                        <div class="tb-offer" [ngClass]="{'card-1': element.position === 1, 'card-2': element.position === 2, 'card-3': element.position === 3}">
-                            <div class="offer-header">
-                                <h2>{{ element.name }}</h2>
-                            </div>
-                            
-
-                            <div class="offer-body">
-                                <div class ="Info">
-                                    <p><strong>INFORMACIÓN DE LA OFERTA</strong></p>
-                                    <ul>
-                                        <li>SE NECESITA UN COMPUTER SCIENCE</li>
-                                    </ul>
-                                    <p><strong>REQUISITOS:</strong></p>
-                                    <ul>
-                                        <li>Tener conocimiento en...</li>
-                                    </ul>
-                                </div>
-
-                                <div class = "ubicacion">
-                                    <img src="../../../assets/imagenes/Tabla/ubicacion.png" alt="Ubicacion">
-                                    <p>UBICACIÓN PARA EL PUESTO: _____</p>
-                                </div>
-
-                                <div class="offer-footer">
-                                    <button class="offer-btn-1" mat-button>Más Detalles</button>
-                                    <button class="offer-btn" mat-raised-button color="primary" (click)="goToCandidatos(element.position)">Ver Postulantes</button>
-                                </div>  
-
-                            </div>
-                            
-                
-                        </div>
-                    </td>
-                </ng-container>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-                <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell" colspan="4">No data matching the filter</td>
-                </tr>
-                
-            </table>
-        </div>
+      </button>
     </div>
-
-</div>
+  
+    <div class="filter-controls">
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput [(ngModel)]="filterTitle" (keyup.enter)="applyFilter()">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Modalidad</mat-label>
+        <mat-select [(ngModel)]="filterModality" (selectionChange)="applyFilter()">
+          <mat-option value="">Todas</mat-option>
+          <mat-option value="1">Presencial</mat-option>
+          <mat-option value="2">Hibrido</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="filterStatus" (selectionChange)="applyFilter()">
+          <mat-option value="">Todos</mat-option>
+          <mat-option value="ACTIVE">Activo</mat-option>
+          <mat-option value="INACTIVE">Inactivo</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="applyFilter()">Aplicar Filtros</button>
+    </div>
+  
+    <div class="offers-list">
+      <mat-card *ngFor="let offer of jobOffers; let i = index" class="offer-card" [style.background-color]="getBackgroundColor(i)">
+        <mat-card-header>
+          <img mat-card-avatar [src]="offer.logo" alt="Company Logo">
+          <mat-card-title>{{ offer.title }}</mat-card-title>
+          <mat-card-subtitle>{{ offer.ofertanteName }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="content-with-buttons">
+            <div class="job-details">
+              <p><mat-icon>location_on</mat-icon> {{ offer.location }}</p>
+              <p><mat-icon>event</mat-icon> Publicado: {{ offer.createdAt | date }}</p>
+              <p><mat-icon>info</mat-icon> Estado: {{ offer.status }}</p>
+            </div>
+            <div class="action-buttons">
+              <button mat-button color="primary" class="outline-button" (click)="viewDetails(offer)">Más Detalles</button>
+              <button mat-button color="accent" class="outline-button" (click)="verPostulantes(offer.id)">Ver Postulantes</button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <mat-paginator
+    [length]="totalElements"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[3, 10, 20, 50]"
+    (page)="onPageChange($event)"
+    aria-label="Seleccionar página">
+  </mat-paginator>
+  </div>

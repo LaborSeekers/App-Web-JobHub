@@ -1,3 +1,4 @@
+import { PostulanteCurriculum } from './../models/postulante-curriculum.interface';
 import { environment } from '../../../environments/enviroment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
@@ -5,11 +6,16 @@ import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { ofertalLaboral } from '../models/ofertaLaboral.interface';
 import { AuthService } from '../../core/services/auth.service';
 import { Filters } from '../models/filters.interface';
+import { LanguageLevel } from '../models/LanguageLevel.interface';
+import { EducationLevel } from '../models/EducationLevel.interface';
+import { UserInfo } from '../models/user-info.interface';
+import { Postulante } from '../models/postulante-dto-response';
 @Injectable({
   providedIn: 'root'
 })
 export class PostulantesService {
   private apiUrl = `${environment.apiUrl}/admin/joboffer`;
+  private apiUrl2 =`${environment.apiUrl}/admin`;
   constructor(private http: HttpClient, private  authService: AuthService) { }
 
   getAllOfertasLabo():Observable<ofertalLaboral[]>{
@@ -33,6 +39,16 @@ export class PostulantesService {
     const url = `${environment.apiUrl}/recomendations`;
     return this.http.get<ofertalLaboral[]>(url, {params});
 
+  }
+  // Método para obtener el postulante por ID y adaptarlo a UserInfo
+  getPostulanteById(id: number): Observable<Postulante> {
+    const url = `${environment.apiUrl}/auth/Postulantes/${id}`; // Asegúrate de usar la URL correcta según tu backend
+    return this.http.get<Postulante>(url); // Retorna un Observable de tipo Postulante
+  }
+
+  getPostulantesByIds(ids: number[]): Observable<Postulante[]>{
+    const url = `${environment.apiUrl}/auth/Postulantes/get`; 
+    return this.http.post<Postulante[]>(url, ids);
   }
 
   getAllOfertasLaboPage(page: number, size: number, location: string, modality: string, status: string, title : string):Observable<any>{
@@ -70,31 +86,22 @@ export class PostulantesService {
   }
 
   
-/*
-    createTrip(tripData: Trip):Observable<Trip>{
-        return this.http.post<Trip>(this.apiUrl,tripData);
-      }
-      
-      getTripsByDate(date:string): Observable<Trip[]>{
-        const url = `${this.apiUrl}/filter-by-date`;
-        const params = new HttpParams().set('date',date);
-        return this.http.get<Trip[]>(url,{params});
-      }
-    
-      getTripsByRoute(route:string): Observable<Trip[]>{
-        const url = `${this.apiUrl}/filter-by-route`;
-        const params = new HttpParams().set('route',route);
-        return this.http.get<Trip[]>(url,{params});
-      }
-    
-      getStatsbyRoute(): Observable<TripReport[]>{
-        const url = `${this.apiUrl}/stats-by-route`;
-        return this.http.get<TripReport[]>(url);
-      }
-    
-*/
+getCurriculum(userId: number): Observable<PostulanteCurriculum> {
+  return this.http.get<PostulanteCurriculum>(`${this.apiUrl2}/curriculums/${userId}`);
+}
+createCurriculum(cv: PostulanteCurriculum): Observable<PostulanteCurriculum> {
+  return this.http.post<PostulanteCurriculum>(`${this.apiUrl2}/curriculums`, cv);
+}
+updateCurriculum(cv: PostulanteCurriculum): Observable<PostulanteCurriculum> {
+  return this.http.put<PostulanteCurriculum>(`${this.apiUrl2}/curriculums/${cv.id}`, cv);
+}
 
-
+getLanguageLevels():Observable<LanguageLevel[]>{
+  return this.http.get<LanguageLevel[]>(`${this.apiUrl2}/language_level`);
+}
+getEducationLevels():Observable<EducationLevel[]>{
+  return this.http.get<EducationLevel[]>(`${this.apiUrl2}/education_level`);
+}
 
 
 }
