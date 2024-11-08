@@ -56,4 +56,11 @@ export class AlertasService {
       }
     }))
   }
+
+  enviarFeedback(postulantId: number, ): Observable<any>{ 
+    let params = new HttpParams()
+    
+
+    return this.http.post<any>(`${this.apiFeedbackUrl}/add`, null, {params});
+  }
 }

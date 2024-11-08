@@ -1,0 +1,33 @@
+<div class="loading" *ngIf="isLoadingSubscriptions">
+    <mat-spinner></mat-spinner>
+    <p>Buscando Subscripcion...</p>
+</div>
+
+
+<div *ngIf="subscription && !isLoadingSubscriptions">
+    <div class="subscription-container">
+        <h2>Suscripción {{getSubscriptionStatus(subscription.status)}}</h2>
+        
+        <!-- Detalles de la Suscripción -->
+        <div class="subscription-details">
+          <p><strong>Estado:</strong> {{ subscription.status }}</p>
+          <p><strong>Fecha de inicio:</strong> {{ subscription.startDate | date: 'shortDate' }}</p>
+          <p><strong>Fecha de fin:</strong> {{ subscription.endDate | date: 'shortDate' }}</p>
+          <p><strong>Frecuencia de pago:</strong> {{ subscription.paymentFrequency }}</p>
+          <p><strong>Monto total:</strong> {{ subscription.totalAmount | currency }}</p>
+        </div>
+        
+        <!-- Opciones de Gestión -->
+        <div class="subscription-actions">
+          <button *ngIf="!(subscription.status === 'INACTIVE')" (click)="createPaymentOrder()" [disabled]="isLoadingPayment" >Renovar suscripción</button>
+          <button *ngIf="subscription.status === 'INACTIVE'" class="pay-button" (click)="createPaymentOrder()" [disabled]="isLoadingPayment" >Realizar pago</button>
+          <button *ngIf="!(subscription.status === 'CANCELLED')" (click)="cancelSubscription()" [disabled]="isLoadingCancel">Cancelar suscripción</button>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="!subscription && !isLoadingSubscriptions">
+<p>No tienes una suscripción activa.</p>
+<button (click)="openSubscriptionDialog()">Crear nueva suscripción</button>
+</div>

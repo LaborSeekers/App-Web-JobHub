@@ -26,6 +26,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetailsDialogComponent } from './details-dialog/details-dialog.component';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { SubscriptionsModalComponent } from './subscriptions-modal/subscriptions-modal.component';
+import { SubscriptionCheckComponent } from './subscription-check/subscription-check.component';
 import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
 
 @NgModule({
@@ -39,7 +42,9 @@ import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-emp
     InicioComponent,
     CrearOfertaComponent,
     DetailsDialogComponent,
-    
+    SubscriptionsComponent,
+    SubscriptionsModalComponent,
+    SubscriptionCheckComponent
   ],
   imports: [
     MatCardModule,
