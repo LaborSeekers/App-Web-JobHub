@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="otp-verification.component.css">
+    <title>Verificación de OTP</title>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo-background">
+            <img src="assets/imagenes/JobHub.png" alt="JobHub Logo" class="logo-image">
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Verificación de OTP</h1>
+            <div class="avatar-container">
+                <img src="assets/imagenes/candado.png" alt="Candado Icon" class="avatar">
+            </div>
+            <p class="description">Un código de acceso único ha sido enviado a su correo electrónico. Valida tu identidad.</p>
+            
+            <input type="text" class="otp-input" [(ngModel)]="otp" placeholder="Ingrese el OTP" />
+            
+            <button class="verify-button" (click)="verificarOtp()">Verificar OTP</button>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

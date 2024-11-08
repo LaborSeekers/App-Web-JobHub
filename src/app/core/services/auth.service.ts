@@ -10,6 +10,8 @@ import { tap } from 'rxjs/operators';
 import { UserRegistrationDTO } from '../models/user-registration-request.interface';
 import { Empresa, UserInfo } from '../models/user-info.interface';
 import { ofertalLaboral } from '../models/ofertaLaboral.interface';
+import { HttpErrorResponse } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -89,7 +91,7 @@ export class AuthService {
     const url = `${this.apiUrl}/admin/Empresas`; 
     const token = localStorage.getItem(this.tokenKey);
     const headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`, 
+        'Authorization': `Bearer ${token}`,
     });
     return this.http.get<Empresa[]>(url, { headers });
   }
@@ -101,16 +103,50 @@ export class AuthService {
         // Almacena el token en el localStorage
         this.setToken(response.token);
 
-        
-        this.getUserbyEmail(userRequest.email).subscribe({
-          next: (userProfileDTO: UserInfo) => {
-          userProfileDTO.role = response.role;
-          localStorage.setItem("UserInfo", JSON.stringify(userProfileDTO));
-
-          this.redirectByRole(response.role);
-        }});
+        // Verifica si el token está presente
+        const token = localStorage.getItem('authToken');
+        if (token) {
+          this.getUserbyEmail(userRequest.email).subscribe({
+            next: (userProfileDTO: UserInfo) => {
+              userProfileDTO.role = response.role;
+              localStorage.setItem("UserInfo", JSON.stringify(userProfileDTO));
+  
+              this.redirectByRole(response.role);  // Redirige según el rol
+            }
+          });
+        } else {
+          console.error('El token no se guardó correctamente');
+        }
       })
     );
   }
 
+  forgotPassword(email: string): Observable<string> {
+    const token = localStorage.getItem(this.tokenKey);
+    const url = `${this.apiUrl}/auth/regenerate-otp`; // Endpoint del backend
+    const params = new HttpParams().set('email', email);
+  
+    // Crear los encabezados con el token de autenticación
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Asegúrate de que el token esté presente
+    });
+  
+    // Hacer la solicitud PUT con los encabezados y los parámetros, y especificar el tipo de respuesta como texto
+    return this.http.put<string>(url, null, { params, headers, responseType: 'text' as 'json' })
+  }
+  
+  verifyOtp(email: string, otp: string): Observable<string> {
+    const token = localStorage.getItem(this.tokenKey);
+    const url = `${this.apiUrl}/auth/verify-account`;  // Endpoint para verificar el OTP
+    const params = new HttpParams()
+      .set('email', email)
+      .set('otp', otp);
+
+    // Crear los encabezados con el token de autenticación
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Asegúrate de que el token esté presente
+    });
+
+    return this.http.put<string>(url, null, { params, headers, responseType: 'text' as 'json' });
+  }
 }
