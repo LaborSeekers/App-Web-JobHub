@@ -25,8 +25,8 @@ export class OtpVerificationComponent {
         this.authService.verifyOtp(email, this.otp).subscribe({
             next: (response) => {
                 console.log('OTP verificado exitosamente:', response);
-                this.router.navigate(['/ruta-exito']);
-                localStorage.removeItem('email'); // Elimina el correo de localStorage por seguridad
+                this.router.navigate(['/auth/change-password']); // Redirige a la página de recuperación de contraseña
+                //localStorage.removeItem('email'); // Elimina el correo de localStorage por seguridad
             },
             error: (error) => {
                 console.error('Error al verificar OTP:', error);

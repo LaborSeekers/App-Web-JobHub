@@ -142,11 +142,27 @@ export class AuthService {
       .set('email', email)
       .set('otp', otp);
 
-    // Crear los encabezados con el token de autenticación
+
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}` // Asegúrate de que el token esté presente
+      'Authorization': `Bearer ${token}`
     });
 
     return this.http.put<string>(url, null, { params, headers, responseType: 'text' as 'json' });
   }
+
+  setPassword(email: string, newPassword: string): Observable<any> {
+    const token = localStorage.getItem(this.tokenKey);
+    const url = `${this.apiUrl}/auth/set-password`;
+    const params = new HttpParams().set('email', email).set('newPassword', newPassword); 
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.put<any>(url, null, { 
+      headers,
+      params,
+      responseType: 'text' as 'json'
+    });
+}
 }
