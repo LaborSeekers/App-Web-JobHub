@@ -13,7 +13,6 @@ export interface ofertalLaboral{
   status: string;
   ofertanteName:string;
   reputation: string;
-  
   isFavorite: boolean | null; // para angular, no necesita el api
   isApplied: boolean | null;
 
