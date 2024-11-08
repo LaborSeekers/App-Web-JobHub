@@ -5,6 +5,8 @@ import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { ofertalLaboral } from '../models/ofertaLaboral.interface';
 import { AuthService } from '../../core/services/auth.service';
 import { Filters } from '../models/filters.interface';
+import { UserInfo } from '../models/user-info.interface';
+import { Postulante } from '../models/postulante-dto-response';
 import { PostulanteCurriculum } from '../models/postulante-curriculum.interface';
 @Injectable({
   providedIn: 'root'
@@ -35,6 +37,16 @@ export class PostulantesService {
     const url = `${environment.apiUrl}/recomendations`;
     return this.http.get<ofertalLaboral[]>(url, {params});
 
+  }
+  // Método para obtener el postulante por ID y adaptarlo a UserInfo
+  getPostulanteById(id: number): Observable<Postulante> {
+    const url = `${environment.apiUrl}/auth/Postulantes/${id}`; // Asegúrate de usar la URL correcta según tu backend
+    return this.http.get<Postulante>(url); // Retorna un Observable de tipo Postulante
+  }
+
+  getPostulantesByIds(ids: number[]): Observable<Postulante[]>{
+    const url = `${environment.apiUrl}/auth/Postulantes/get`; 
+    return this.http.post<Postulante[]>(url, ids);
   }
 
   getAllOfertasLaboPage(page: number, size: number, location: string, modality: string, status: string, title : string):Observable<any>{

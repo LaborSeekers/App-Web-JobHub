@@ -1,14 +1,6 @@
 
-.derecha{
-    flex: 5;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    min-height: 550px;
-}
 .derecha-superior{
-    flex: 1;
-    
+    flex: 1;    
 }
 .derecha-inferior{
     flex: 3;
@@ -17,14 +9,21 @@
 }
 
 table {
-    width: 90%;
-    display: block;
-    max-height:615px;
+    width: 100%;
+    max-height:550px;
     overflow-y: auto;
     margin: 0px auto;
+    
     border-collapse: collapse;
   }
-  
+  .mensaje{
+    width: 50%;
+  }
+
+  .filatabla > p{
+    width: 100%;
+    text-align: center;
+  }
   .tablaEmple{
     display: flex;
     align-items: center;
@@ -34,23 +33,14 @@ table {
   
   .TablaEmpleos{
     display: flex;
-    width: auto;
-    margin: 0% 5% 0% 5%;
-   
+    width: 90%;
+    margin: 0% 5% 0% 5%;   
   } 
-  
-  
-  tr.element-row:not(.expanded-row):hover {
-    background: whitesmoke;
-  }
   
   tr.detail-row {
     height: 0;
   }
   
-  tr.element-row:not(.expanded-row) {
-    cursor: pointer;
-  }
   
   .element-detail {
     overflow: hidden;
@@ -59,6 +49,7 @@ table {
   .filatabla{
     display: flex;
   }
+
   .salario-tipo{
     display: flex;
     gap: 10px;
@@ -92,7 +83,6 @@ table {
   
   }
   td {
-    min-width: 250px;
     border-bottom: 1px solid #ddd; 
     padding: 0px;
   }
