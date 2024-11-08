@@ -1,0 +1,27 @@
+<div class="container">
+
+    <h2>Crear una nueva suscripción</h2>
+    <div class="subscription-options">
+        <label class="payment-card">
+            <input type="radio" name="paymentFrequency" value="MONTHLY" [(ngModel)]="selectedFrequency" /> 
+            <div class="card-content">
+                <h3>Pago Mensual</h3>
+                <p>$10.00/mes</p>
+            </div>
+        </label>
+        
+        <label class="payment-card">
+            <input type="radio" name="paymentFrequency" value="YEARLY" [(ngModel)]="selectedFrequency" /> 
+            <div class="card-content">
+                <h3>Pago Anual</h3>
+                <p>$96.00/año</p>
+            </div>
+        </label>
+    </div>
+    
+    
+    <div class="modal-actions">
+        <button mat-button (click)="close()">Cancelar</button>
+        <button mat-button (click)="confirm()" [disabled]="!selectedFrequency">Confirmar</button>
+    </div>
+</div>

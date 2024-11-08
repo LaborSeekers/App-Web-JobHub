@@ -1,0 +1,14 @@
+<!-- src/app/modules/ofertantes/pages/ver-empresa/ver-empresa.component.html -->
+<div *ngIf="empresa" class="empresa-container">
+    <button mat-button (click)="gotoBack()" class="back-button">
+        <img src="../../../assets/imagenes/Card/flecha.png" alt="Atrás">
+      </button>
+
+    <img [src]="empresa.logo">
+    <h1>{{ empresa.name }}</h1>
+    <p>{{ empresa.description }}</p>
+  </div>
+  <div *ngIf="!empresa" class="loading">
+    Cargando información de la empresa...
+  </div>
+  

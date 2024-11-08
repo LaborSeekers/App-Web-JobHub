@@ -61,7 +61,18 @@ export class ApplicationsService {
     );
   }
 
+  logout(){
+    //this.appliedJobs.
+  }
+
   getAppliedIds(){
     return this.appliedSubject.asObservable();
+  }
+
+
+  loadApplicationsByJobId(jobId: number): Observable<any[]> {
+    let params = new HttpParams().set("id", jobId);
+    const url = `${this.apiAppliedUrl}/by-job`;
+    return this.http.get<any[]>(url, { params });
   }
 }

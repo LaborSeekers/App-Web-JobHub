@@ -1,0 +1,127 @@
+<div class="container">
+  <form [formGroup]="ofertaForm" (ngSubmit)="onSubmit()">
+    <div class="form-layout">
+      <!-- Left Column -->
+      <div class="left-column">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>PRESENTACIÓN</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field appearance="outline" class="full-width">
+              <textarea matInput formControlName="description" rows="4" placeholder="Ingresar texto..."></textarea>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>REQUISITOS</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field appearance="outline" class="full-width">
+              <textarea matInput formControlName="requirements" rows="4" placeholder="Ingresar texto..."></textarea>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>BENEFICIOS</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field appearance="outline" class="full-width">
+              <textarea matInput formControlName="benefits" rows="4" placeholder="Ingresar texto..."></textarea>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-column">
+        <div class="action-buttons">
+          <button mat-stroked-button type="button" (click)="vistaPrevia()">
+            <mat-icon>visibility</mat-icon>
+            Vista previa
+          </button>
+          <button mat-flat-button color="primary" type="submit">
+            <mat-icon>save</mat-icon>
+            {{ isEditMode ? 'Actualizar Oferta' : 'Crear Oferta' }}
+          </button>
+          <button mat-flat-button color="warn" type="button" (click)="salir()">
+            <mat-icon>exit_to_app</mat-icon>
+            Salir
+          </button>
+        </div>
+
+        <mat-card class="details-card">
+          <mat-card-content>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Ingresar puesto</mat-label>
+              <input matInput formControlName="title">
+              <mat-icon matPrefix>work</mat-icon>
+            </mat-form-field>
+
+            <div class="job-details">
+              <mat-form-field appearance="outline">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="status">
+                  <mat-option value="ACTIVE">Activo</mat-option>
+                  <mat-option value="INACTIVE">Inactivo</mat-option>
+                </mat-select>
+                <mat-icon matPrefix>schedule</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Sueldo</mat-label>
+                <input matInput formControlName="salary" type="number" placeholder="$/2000">
+                <mat-icon matPrefix>attach_money</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Modalidad</mat-label>
+                <mat-select formControlName="jobModality_id">
+                  <mat-option value="1">Presencial</mat-option>
+                  <mat-option value="2">Hibrido</mat-option>
+                </mat-select>
+                <mat-icon matPrefix>business</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Ubicación</mat-label>
+                <input matInput formControlName="location">
+                <mat-icon matPrefix>location_on</mat-icon>
+              </mat-form-field>
+            </div>
+            
+            <div class="location-section">
+              <mat-form-field appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="scheduledDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-icon matPrefix>calendar_today</mat-icon>
+              </mat-form-field>
+            
+              <mat-form-field appearance="outline">
+                <mat-label>Hora</mat-label>
+                <input matInput formControlName="scheduledTime" type="time">
+                <mat-icon matPrefix>access_time</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <div class="upload-buttons">
+              <button mat-stroked-button class="full-width" type="button" (click)="imageInput.click()">
+                <mat-icon>image</mat-icon>
+                Subir imagen
+              </button>
+              <input type="file" #imageInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </form>
+</div>

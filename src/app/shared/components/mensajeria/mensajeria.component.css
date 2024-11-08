@@ -1,0 +1,94 @@
+/* app.component.css */
+.sidenav-container {
+    display: flex;
+    height: 70vh;
+  }
+  mat-sidenav{
+    padding: 0 !important;
+  }
+  .sidenav {
+    width: 250px;  /* Ancho fijo para la barra lateral */
+    background-color: #f4f4f4;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .chat-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .chat-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chat-card-header {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .chat-card-body {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+  }
+  
+  .last-message {
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .last-message-time {
+    color: #999;
+    font-size: 0.8em;
+  }
+  
+  /* Chat Window */
+  .chat-window {
+    flex-grow: 1;  /* La ventana de chat ocupa el resto del espacio */
+    background-color: #ffffff;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .chat-header {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    height: 30px
+  }
+  
+  .messages {
+    height: 80%;
+    overflow-y: scroll;
+  }
+  
+  .message-input {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .message-input input {
+    flex-grow: 1;
+    padding: 10px;
+  }
+  
+  .sidenav-toggle {
+    position:absolute;
+    top:0;
+    left: 0;
+    z-index: 1000;
+  }
+  
