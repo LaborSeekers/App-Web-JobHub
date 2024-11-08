@@ -10,7 +10,6 @@ import { LanguageLevel } from '../models/LanguageLevel.interface';
 import { EducationLevel } from '../models/EducationLevel.interface';
 import { UserInfo } from '../models/user-info.interface';
 import { Postulante } from '../models/postulante-dto-response';
-import { PostulanteCurriculum } from '../models/postulante-curriculum.interface';
 @Injectable({
   providedIn: 'root'
 })
