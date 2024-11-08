@@ -5,7 +5,8 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { MensajeriaComponent } from './components/mensajeria/mensajeria.component';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { VerEmpresaComponent } from './components/ver-empresa/ver-empresa.component'; 
 
 
 
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     FooterComponent,
     SideMenuComponent,
-    MensajeriaComponent
+    MensajeriaComponent,
+    VerEmpresaComponent
   ],
   imports: [
     CommonModule,

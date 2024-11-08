@@ -11,7 +11,7 @@
       <div class="botones" >
         <button id="postuButton" (click)="postularOferta()" *ngIf="data.status == 'ACTIVE' && !data.isApplied">Postular</button>
         <button id="remPostuButton" (click)="retirarPostulacion()" *ngIf="data.status == 'ACTIVE' && data.isApplied">Retirarse</button>
-        <button id="perfilEButton">Perfil Empresarial</button>
+        <button id="perfilEButton"(click)="verEmpresa(data.id)">Perfil Empresarial</button>
         <mat-icon aria-hidden="false" 
                   class="mat-icon"
                   matBadgeColor="warn">

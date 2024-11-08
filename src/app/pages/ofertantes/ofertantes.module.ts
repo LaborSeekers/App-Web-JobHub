@@ -29,6 +29,7 @@ import { DetailsDialogComponent } from './details-dialog/details-dialog.componen
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { SubscriptionsModalComponent } from './subscriptions-modal/subscriptions-modal.component';
 import { SubscriptionCheckComponent } from './subscription-check/subscription-check.component';
+import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
 
 @NgModule({
   declarations: [

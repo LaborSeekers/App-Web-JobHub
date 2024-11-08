@@ -7,6 +7,7 @@ import { OfertasDeTrabajoComponent } from './ofertas-de-trabajo/ofertas-de-traba
 import { MisOfertasComponent } from './mis-ofertas/mis-ofertas.component';
 import { SharedModule } from '../../shared/shared.module';
 import { MensajeriaComponent } from '../../shared/components/mensajeria/mensajeria.component';
+import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'TablaOV', pathMatch: 'full'},
       {path: 'ofertas-laborales', component: OfertasDeTrabajoComponent},
       {path: 'TablaOV', component: TablaEmpleoComponent},
+      {path: 'ver-empresa/:Id', component: VerEmpresaComponent},
       {path: 'AlertasTrabajo', component:AlertasTrabajoComponent},
       {path: 'mis-ofertas', component:MisOfertasComponent},
       {path: 'mensajeria', component:MensajeriaComponent},
