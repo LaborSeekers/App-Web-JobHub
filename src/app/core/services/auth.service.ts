@@ -98,7 +98,7 @@ export class AuthService {
         this.setToken(response.token);
 
         // Verifica si el token está presente
-        const token = localStorage.getItem('authToken');
+        const token = localStorage.getItem('auth_token');
         if (token) {
           this.getUserbyEmail(userRequest.email).subscribe({
             next: (userProfileDTO: UserInfo) => {

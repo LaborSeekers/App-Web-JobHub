@@ -16,7 +16,6 @@ import { FormsModule } from '@angular/forms';
 import { OtpVerificationComponent } from './pages/auth/OTP/otp-verification.component';
 import { ForgotPasswordComponent } from './pages/auth/forgot-password/forgot-password.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

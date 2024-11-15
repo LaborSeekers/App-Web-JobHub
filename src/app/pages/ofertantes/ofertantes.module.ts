@@ -30,7 +30,8 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { SubscriptionsModalComponent } from './subscriptions-modal/subscriptions-modal.component';
 import { SubscriptionCheckComponent } from './subscription-check/subscription-check.component';
 import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
-
+import { ApplicantsReportComponent } from './applicants-report/applicants-report.component';
+import { Chart } from 'chart.js';
 @NgModule({
   declarations: [
     OfertantesComponent,
@@ -44,7 +45,8 @@ import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-emp
     DetailsDialogComponent,
     SubscriptionsComponent,
     SubscriptionsModalComponent,
-    SubscriptionCheckComponent
+    SubscriptionCheckComponent,
+    ApplicantsReportComponent
   ],
   imports: [
     MatCardModule,

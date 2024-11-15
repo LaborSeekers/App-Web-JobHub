@@ -1,0 +1,165 @@
+/* General styles for the report container */
+.sales-report-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: #f0f4f8;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .report-card {
+    background-color: white;
+    padding: 40px;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .report-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+  
+  .report-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+  }
+  
+  /* Chart container styles */
+  .chart-wrapper {
+    position: relative;
+    height: 450px;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Event details container styles */
+  .event-details-container {
+    background-color: white;
+    padding: 40px;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .event-details-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+  
+  .details-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: -0.5px;
+  }
+  
+  .event-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+  }
+  
+  .event-summary-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e6ed;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+  }
+  
+  .event-summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  .event-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #3498db;
+    margin-bottom: 15px;
+    letter-spacing: -0.3px;
+  }
+  
+  .event-quantity {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  .event-label {
+    font-size: 1rem;
+    color: #7f8c8d;
+    font-weight: 500;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .sales-report-container, .report-card, .event-details-container {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .event-summary-card {
+    animation: fadeIn 0.6s ease-out;
+    animation-fill-mode: both;
+  }
+  
+  .event-summary-card:nth-child(1) { animation-delay: 0.1s; }
+  .event-summary-card:nth-child(2) { animation-delay: 0.2s; }
+  .event-summary-card:nth-child(3) { animation-delay: 0.3s; }
+  .event-summary-card:nth-child(4) { animation-delay: 0.4s; }
+  .event-summary-card:nth-child(5) { animation-delay: 0.5s; }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .sales-report-container {
+      padding: 20px;
+    }
+  
+    .report-card, .event-details-container {
+      padding: 30px;
+    }
+  
+    .event-summary-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .report-title {
+      font-size: 1.8rem;
+    }
+  
+    .details-title {
+      font-size: 1.5rem;
+    }
+  
+    .event-name {
+      font-size: 1.2rem;
+    }
+  
+    .event-quantity {
+      font-size: 1.6rem;
+    }
+  }
