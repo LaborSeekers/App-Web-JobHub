@@ -115,7 +115,6 @@ export class RegisterComponent implements AfterViewInit {
       this.loginser.registerPostulante(newAccountPostulante).subscribe({
         next: (response: UserRegistrationDTO) => {       
           this.userRegistrationDTO = response;
-          console.log('Creación de cuenta correctamente', this.registerForm.value);
           this.showmodal = true;
         },
         
@@ -128,7 +127,6 @@ export class RegisterComponent implements AfterViewInit {
       this.loginser.registerOfertante(newAccountOfertante).subscribe({
         next: (response: UserRegistrationDTO) => {       
           this.userRegistrationDTO = response;
-          console.log('Creación de cuenta correctamente', this.registerForm.value);
           this.showmodal = true;
         },
         
