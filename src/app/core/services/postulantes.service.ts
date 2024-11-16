@@ -92,8 +92,8 @@ getCurriculum(userId: number): Observable<PostulanteCurriculum> {
 createCurriculum(cv: PostulanteCurriculum): Observable<PostulanteCurriculum> {
   return this.http.post<PostulanteCurriculum>(`${this.apiUrl2}/curriculums`, cv);
 }
-updateCurriculum(cv: PostulanteCurriculum): Observable<PostulanteCurriculum> {
-  return this.http.put<PostulanteCurriculum>(`${this.apiUrl2}/curriculums/${cv.id}`, cv);
+updateCurriculum(cvId:number ,cv: PostulanteCurriculum): Observable<PostulanteCurriculum> {
+  return this.http.put<PostulanteCurriculum>(`${this.apiUrl2}/curriculums/${cvId}`, cv);
 }
 
 getLanguageLevels():Observable<LanguageLevel[]>{
