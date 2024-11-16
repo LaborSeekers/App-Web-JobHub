@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { PostulantesService } from '../../../../core/services/postulantes.service';
 import { AuthService } from '../../../../core/services/auth.service';
 import { PostulanteCurriculum } from '../../../../core/models/postulante-curriculum.interface';
@@ -15,7 +16,10 @@ export class EditarCurriculumComponent {
   curriculumForm: FormGroup;
   niveles : LanguageLevel  [] = [];
   grados : EducationLevel  [] = [];
-  constructor(private fb: FormBuilder,private postulantesService: PostulantesService, private AuthService: AuthService ) {
+  curriculumExits = false;
+  isLoading = true;
+  idCurriculum : number = 0;
+  constructor(private fb: FormBuilder,private postulantesService: PostulantesService, private AuthService: AuthService, private snackBar: MatSnackBar, ) {
     this.curriculumForm = this.fb.group({
       nombre: [''],
       apellido: [''],
@@ -49,10 +53,10 @@ export class EditarCurriculumComponent {
 
   agregarExperiencia() {
     const experienciaForm = this.fb.group({
-      puesto: [''],
-      empresa: [''],
-      descripcion: [''],
-      fechaInicio: [''],
+      puesto: ['', Validators.required],
+      empresa: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      fechaInicio: ['', Validators.required],
       fechaFin: ['']
     });
     this.experienciaLaboral.push(experienciaForm);
@@ -60,9 +64,9 @@ export class EditarCurriculumComponent {
 
   agregarEducacion() {
     const educacionForm = this.fb.group({
-      institucion: [''],
-      grado: [''],
-      fechaInicio: [''],
+      institucion: ['', Validators.required],
+      grado: ['', Validators.required],
+      fechaInicio: ['', Validators.required],
       fechaFin: ['']
     });
     this.educacion.push(educacionForm);
@@ -75,8 +79,8 @@ export class EditarCurriculumComponent {
 
   agregarIdioma() {
     const idiomaForm = this.fb.group({
-      idioma: [''],
-      nivel: ['']
+      idioma: ['', Validators.required],
+      nivel: ['', Validators.required]
     });
     this.idiomas.push(idiomaForm);
   }
@@ -102,7 +106,7 @@ export class EditarCurriculumComponent {
     
     this.postulantesService.getCurriculum(this.AuthService.getUserInfo().userRoleId).subscribe({
       next: (response: PostulanteCurriculum) => {
-      
+        this.idCurriculum = response.id ?? 0;
         this.curriculumForm.patchValue({
           nombre: this.AuthService.getUserInfo().firstName,
           telefono: this.AuthService.getUserInfo().phone,
@@ -134,10 +138,10 @@ export class EditarCurriculumComponent {
         });
     
         
-        //this.habilidades.clear();
-        //(response.skills || []).forEach((skill: any) => {
-        //  this.habilidades.push(this.fb.control(skill.name || ''));
-        //});
+        this.habilidades.clear();
+        (response.skills || []).forEach((skill: any) => {
+          this.habilidades.push(this.fb.control(skill.skillName || ''));
+        });
     
         
         this.idiomas.clear();
@@ -147,11 +151,14 @@ export class EditarCurriculumComponent {
             nivel: idioma.languageLevel?.id || ''
           }));
         });
-    
-        console.log('Formulario llenado exitosamente');
+        this.curriculumExits = true;
+        this.isLoading=false
+        console.log(this.curriculumExits);
       },
       error: (error) => {
-        console.error('El usuario actualmente no tiene curriculum', error);
+        this.curriculumExits = false;
+        console.error(this.curriculumExits, error);
+        this.isLoading=false
       }
     });
     
@@ -174,15 +181,28 @@ export class EditarCurriculumComponent {
 
 
   }
-
+  private showSnackBar(message: string): void {
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000,
+    });
+  }
   // Submit form data
   onSubmit(): void {
+    if (this.curriculumForm.invalid) {
+      this.curriculumForm.markAllAsTouched();
+      const experienciaLaboralArray = this.curriculumForm.get('experienciaLaboral') as FormArray;
+      experienciaLaboralArray.controls.forEach((control: AbstractControl) => {
+        control.markAllAsTouched();
+      });
+      
+      return;
+    }
+    
     const formValue = this.curriculumForm.value;
   
-    
     const curriculumData = {
       postulante: {
-        id: +this.AuthService.getUserInfo().userRoleId,  
+        id: +this.AuthService.getUserInfo().userRoleId 
       },
       content: formValue.acercaDe, 
       
@@ -193,7 +213,7 @@ export class EditarCurriculumComponent {
             id: +idioma.nivel,  
         }
     })),
-  
+    
       // Mapeamos la experiencia laboral
       work_experience: formValue.experienciaLaboral.map((exp: any) => ({
         positionName: exp.puesto,
@@ -202,6 +222,8 @@ export class EditarCurriculumComponent {
         startDate: exp.fechaInicio,
         endDate: exp.fechaFin,
       })),
+
+      
   
       // Mapeamos la educación
       education: formValue.educacion.map((edu: any) => ({
@@ -212,17 +234,37 @@ export class EditarCurriculumComponent {
         startDate: edu.fechaInicio,
         endDate: edu.fechaFin,
       })),
+
+      skills: formValue.habilidades.map((habilidad: any) => ({
+        skillName: habilidad,
+      })),
     };
   
+    if (this.curriculumExits) {
+      this.postulantesService.updateCurriculum(this.idCurriculum,curriculumData).subscribe({
+        next: () => {
+          //console.log('Curriculum actualizado exitosamente');
+          this.showSnackBar('Curriculum actualizado exitosamente');
+        },
+        error: (error) => {
+          this.showSnackBar('Error al actualizar curriculum');
+          //console.error('Error al actualizar curriculum', error);
+        }
+      });
+    }
+    else {
+      this.postulantesService.createCurriculum(curriculumData).subscribe({
+        next: () => {
+          this.showSnackBar('Curriculum guardado exitosamente');
+        },
+        error: (error) => {
+          this.showSnackBar('Error al guardar curriculum');
+          //console.error('Error al guardar curriculum', error);
+        }
+      });
+    }
 
-    this.postulantesService.createCurriculum(curriculumData).subscribe({
-      next: () => {
-        console.log('Curriculum guardado exitosamente');
-      },
-      error: (error) => {
-        console.error('Error al guardar curriculum', error);
-      }
-    });
+
   }
   
 

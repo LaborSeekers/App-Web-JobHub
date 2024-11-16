@@ -5,5 +5,5 @@ export interface PostulanteCurriculum {
     languages?: object[];
     workExperience?:object[];
     education?: object[];
-    //skills?: object[];
+    skills?: object[];
 }
