@@ -86,7 +86,6 @@ export class ApplicantsReportComponent implements OnInit {
   ngOnInit(): void {
     const userInfo = this.authService.getUserInfo();
     const userId = userInfo?.userRoleId;
-    console.log('id: ', userId);
 
     if (userId) {
       this.ofertantesService.getJobOffersWithApplicantsCount(userId).subscribe({
@@ -96,7 +95,6 @@ export class ApplicantsReportComponent implements OnInit {
           this.renderChart();
         },
         error: (err) => {
-          console.error('Error al obtener los datos del reporte:', err);
         }
       });
     }

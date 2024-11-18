@@ -53,18 +53,27 @@ export class MensajeriaComponent {
 
   ngOnInit(){
     this.userID = this.authService.getUserInfo().id;
+
     this.messagingService.getConversations().subscribe(conversations =>{
       this.conversations = conversations.map(conversation => {
         conversation.created_at = this.datePipe.transform(conversation.created_at, 'MMMM d, y HH:mm') ?? "Fecha no disponible";
         if(conversation.lastMessage){
           conversation.lastMessage.createdAt = this.datePipe.transform(conversation.lastMessage.createdAt, 'MMMM d, y HH:mm') ?? "Fecha no disponible";
-          console.log(conversation.lastMessage);
         }
         return conversation;
       });
-    })    
+    })
+
+    this.messagingService.getChatMessages().subscribe(message => {
+      if(message && this.selectedConversation){
+        if(message.conversation == this.selectedConversation.id){
+          this.messages.push(message);
+          this.lastIndex = this.messages.length - 1;
+        }
+      }
+    })
+
     this.lastIndex = this.messages.length - 1;
-    console.log(this.selectedConversation)
   }
   
   selectConversation(conversation:any) {
@@ -78,7 +87,6 @@ export class MensajeriaComponent {
     this.page = this.messagingService.getCachePage(this.selectedConversation.id);
     this.lastIndex = this.messages.length - 1;
 
-    console.log(this.noMoreMessages, this.lastMessageId, this.page)
     if(this.messagingService.getCacheFirstLoad(this.selectedConversation.id)){
       this.loadOlderMessages();
     }

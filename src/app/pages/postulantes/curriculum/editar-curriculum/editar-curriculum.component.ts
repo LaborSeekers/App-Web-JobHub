@@ -153,11 +153,9 @@ export class EditarCurriculumComponent {
         });
         this.curriculumExits = true;
         this.isLoading=false
-        console.log(this.curriculumExits);
       },
       error: (error) => {
         this.curriculumExits = false;
-        console.error(this.curriculumExits, error);
         this.isLoading=false
       }
     });

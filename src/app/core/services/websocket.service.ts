@@ -35,7 +35,6 @@ export class WebSocketService {
     this.stompClient = new Client({
       webSocketFactory: () => socket,
       connectHeaders: { 'X-Authorization': `Bearer ${localStorage.getItem('auth_token')}` },
-      debug: console.log,
       onConnect: () => {
         this.isConnectedSubject.next(true);
       },
