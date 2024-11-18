@@ -2,7 +2,7 @@ import { AuthService } from './auth.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import SockJS from 'sockjs-client';
-import Stomp from 'stompjs'
+import Stomp from "stompjs";
 import { environment } from '../../../environments/enviroment';
 import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 
