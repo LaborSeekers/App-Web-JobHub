@@ -50,7 +50,7 @@ export class CrearOfertaComponent implements OnInit {
       logo: [''],
       image: [''],
       video: [''],
-      status: [''],
+      status: ['', Validators.required],
       ofertante_id: ['']
     });
   }

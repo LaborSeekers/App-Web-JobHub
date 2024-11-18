@@ -43,7 +43,6 @@ export class RegisterUserComponent {
     this.filteredEmpresasList = this.empresas.filter(empresa =>
       empresa?.name.toLowerCase().includes(searchTerm?.toLowerCase())
     );
-    console.log(this.filteredEmpresasList)
   }
 
   selectEmpresa(empresa: any) {
@@ -51,7 +50,6 @@ export class RegisterUserComponent {
     this.registerForm.get('searchTerm')?.setValue(empresa.name);
     this.registerForm.get('empresaDropBox')?.setValue(empresa.id);
 
-    console.log(this.registerForm.get('empresaDropBox'))
     this.isDropdownOpen = false;
   }
 
@@ -135,7 +133,6 @@ export class RegisterUserComponent {
 
   onSubmit(): void {
     if (this.registerForm.invalid) {
-      console.log("Formulario inválido");
     
       // Marca todos los campos como tocados
       this.registerForm.markAllAsTouched();
@@ -144,7 +141,6 @@ export class RegisterUserComponent {
       Object.keys(this.registerForm.controls).forEach(key => {
         const control = this.registerForm.get(key);
         if (control?.invalid) {
-          console.log(`${key} es inválido`);
         }
       });
     
@@ -198,7 +194,6 @@ export class RegisterUserComponent {
   LoadEmpresas():void{
     this.empresaService.getAllEmpresas().subscribe({
       next: (empresas: Empresa[]) => {
-        console.log(empresas)
         this.empresas = empresas;
         this.filterEmpresas("");
       },

@@ -67,7 +67,7 @@ export class MessagingService {
     } 
   } = {};
 
-  initCache(conversations: any[]){
+  initCache(conversations: any[]){    
     conversations.forEach((conversation) => {
       this.messageCache[conversation.id] = { messages: [], noMoreMessages: false, lastMessageID: conversation.lastMessage? conversation.lastMessage.id + 1: 0, page: 0, firstLoad: true };
     })
@@ -165,7 +165,6 @@ export class MessagingService {
       }
       conversation.lastMessage = chatmessage;
       this.newMessageSubject.next(chatmessage);
-
       this.messageCache[id].messages.push(chatmessage)
     });
   }
@@ -184,7 +183,7 @@ export class MessagingService {
                   this.newConversation.next(true);
                   
                   if (!exists) {
-                      this.addCache(newConversation.id);
+                      this.addCache(newConversation);
                       this.subscribeToConversation(newConversation.id);
                       this.conversations.push(newConversation);
                       this.conversationsSubject.next(this.conversations);
