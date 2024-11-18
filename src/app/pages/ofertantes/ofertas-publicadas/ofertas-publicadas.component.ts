@@ -54,20 +54,17 @@ export class OfertasPublicadasComponent implements OnInit {
             // Asignar totalElements desde la respuesta
             this.totalElements = response.page.totalElements; // Asegúrate de que esta sea la estructura correcta
           } else {
-            console.error('Invalid response format:', response);
             this.jobOffers = [];
             this.totalElements = 0;
           }
         },
         error: (error) => {
-          console.error('Error loading job offers:', error);
           this.showSnackBar('Error al cargar las ofertas laborales');
           this.jobOffers = [];
           this.totalElements = 0;
         }
       });
     } else {
-      console.error('User ID is null, cannot load job offers.');
       this.showSnackBar('Error al cargar las ofertas laborales: ID de usuario no disponible');
       this.jobOffers = [];
       this.totalElements = 0;
@@ -92,8 +89,6 @@ export class OfertasPublicadasComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('El diálogo fue cerrado');
-      // Puedes manejar la respuesta si es necesario
     });
   }
   verPostulantes(id: number){

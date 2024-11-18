@@ -3,25 +3,32 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/enviroment';
 import { UserResponse } from '../models/user-response.interface';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { tap } from 'rxjs/operators';
 import { UserRegistrationDTO } from '../models/user-registration-request.interface';
 import { Empresa, UserInfo } from '../models/user-info.interface';
-import { ofertalLaboral } from '../models/ofertaLaboral.interface';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private lougoutSignal = new BehaviorSubject<boolean>(false);
+
   private apiUrl: string = environment.apiUrl;
 
   private tokenKey = 'auth_token';
 
   private readonly http = inject(HttpClient);
+
+
+
+
+
+
+
   private router = inject(Router);
 
 
@@ -37,20 +44,25 @@ export class AuthService {
   }
 
   getUserInfo(): UserInfo{
-    const storedInfo = localStorage.getItem("UserInfo");    
+    const storedInfo = localStorage.getItem("UserInfo");
     return storedInfo ? JSON.parse(storedInfo) : null;
+  }
+
+  getLogoutSignal(){
+    return this.lougoutSignal.asObservable();
   }
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem('UserInfo');
+    this.lougoutSignal.next(true);
     this.router.navigate(['']); // Redirige a la página de login
   }
 
   private redirectByRole(role: string): void {
     switch(role){
       case "ADMIN":
-        this.router.navigate(['/Postulantes']); // falta /Admin
+        this.router.navigate(['/Admin']); // falta /Admin
         break;
       case "POSTULANTE":
         this.router.navigate(['/Postulantes']);
@@ -91,6 +103,7 @@ export class AuthService {
   }
 
   login(userRequest:UserRequest):Observable<UserResponse>{
+    this.lougoutSignal.next(false);
     const url =`${this.apiUrl}/auth/login`;
     return this.http.post<UserResponse>(url, userRequest , { withCredentials: true }).pipe(
       tap(response => {
@@ -103,13 +116,10 @@ export class AuthService {
           this.getUserbyEmail(userRequest.email).subscribe({
             next: (userProfileDTO: UserInfo) => {
               userProfileDTO.role = response.role;
-              localStorage.setItem("UserInfo", JSON.stringify(userProfileDTO));
-  
+              localStorage.setItem("UserInfo", JSON.stringify(userProfileDTO));  
               this.redirectByRole(response.role);  // Redirige según el rol
             }
           });
-        } else {
-          console.error('El token no se guardó correctamente');
         }
       })
     );

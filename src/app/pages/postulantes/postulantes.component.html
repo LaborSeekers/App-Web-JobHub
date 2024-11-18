@@ -1,4 +1,4 @@
-<app-postulante-header *ngIf="!isLoading"></app-postulante-header>
+<app-postulante-header *ngIf="!isLoading" [newMessage]="newMessages"></app-postulante-header>
 
 <div *ngIf="isLoading" class="loading">
   <mat-spinner></mat-spinner>

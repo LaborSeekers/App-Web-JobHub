@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+/*main css*/
+main{
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    border-top-width: 1px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+.izquierda{
+    flex: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.derecha{
+    flex: 5;
+    min-width: 80%;
+    border-width: 1px;
+    min-height: 650px;
+    border-style: solid;
+    border-color: rgb(137, 137, 137);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}

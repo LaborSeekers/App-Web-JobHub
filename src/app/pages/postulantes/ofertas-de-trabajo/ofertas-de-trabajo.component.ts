@@ -42,7 +42,6 @@ export class OfertasDeTrabajoComponent {
         this.data = response;
       },
       error: (err) => {
-        console.error('Error loading data', err);
       },
       complete: () =>{
         this.isLoading = false;
@@ -81,7 +80,7 @@ export class OfertasDeTrabajoComponent {
 
   recieveFilters(filters: Filters) {
     if (JSON.stringify(this.filtrosAplicados) !== JSON.stringify(filters)) {
-      this.filtrosAplicados = filters;
+      this.filtrosAplicados = { ...filters };
       this.loadData(0, this.pageSize, this.filtrosAplicados);
     }
   }

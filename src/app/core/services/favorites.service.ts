@@ -11,7 +11,15 @@ export class FavoritesService {
   private favorites: Array<number> = new Array();
   private favoritesSubject = new BehaviorSubject<Array<number>>(this.favorites);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, 
+    private AuthService:AuthService
+  ) {
+    this.AuthService.getLogoutSignal().subscribe((signal)=>{
+      if(signal){
+        this.clearFavoritesData();
+      }
+    })
+  }
 
   private apiFavUrl = `${environment.apiUrl}/admin/fav-job-offers`;
 
@@ -47,5 +55,10 @@ export class FavoritesService {
 
   getFavoritesIds(){
     return this.favoritesSubject.asObservable();
+  }
+
+  clearFavoritesData(): void {
+    this.favorites = [];
+    this.favoritesSubject.next(this.favorites);
   }
 }

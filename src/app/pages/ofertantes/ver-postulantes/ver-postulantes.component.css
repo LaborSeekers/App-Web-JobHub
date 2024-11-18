@@ -80,7 +80,13 @@
     background-color: #0056b3;
   }
   
-
+  .mat-icon {
+    position:absolute;
+    color: #007BFF;
+    transform: scale(1.5);
+    right: 20px;
+    top: 20px;
+  }
 
   .top-right-button {
     border: 1px solid rgba(0, 0, 0, 0.23);

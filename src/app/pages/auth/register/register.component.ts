@@ -119,7 +119,6 @@ export class RegisterComponent implements AfterViewInit {
         },
         
         error: (error) =>{
-          console.error('Error al crear cuenta', error);
         }
       });
     } 
@@ -131,12 +130,9 @@ export class RegisterComponent implements AfterViewInit {
         },
         
         error: (error) =>{
-          console.error('Error al crear cuenta', error);
         }
       });
-    }
-      
-   
+    }   
   }
  
   LoadEmpresas():void{
@@ -145,7 +141,6 @@ export class RegisterComponent implements AfterViewInit {
         this.empresas = empresas;
       },
       error: (error) => {
-        console.error('Error al obtener las empresas', error);
       }
     })
   }

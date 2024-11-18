@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { environment } from '../../../environments/enviroment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,24 @@ export class SubscriptionService {
   private loading : boolean = false;
   private loadingSubject = new BehaviorSubject<boolean>(this.loading);
 
+  clearSubscriptionData(): void {
+    this.subscription = null;
+    this.subscriptionSubject.next(this.subscription);
+    this.loading = false;
+    this.loadingSubject.next(this.loading);
+  }
   
   private apiUrl = `${environment.apiUrl}/subscription`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private AuthService:AuthService
+  ) {
+    this.AuthService.getLogoutSignal().subscribe((signal)=>{
+      if(signal){
+        this.clearSubscriptionData();
+      }
+    })
+  }
 
   getSubscription(ofertanteId: number): Observable<any> {    
     return this.http.get<any>(`${this.apiUrl}/ofertante/${ofertanteId}`).pipe(

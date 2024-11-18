@@ -1,4 +1,3 @@
-import { UserService } from './../../../core/services/user.service';
 import { PostulantesService } from './../../../core/services/postulantes.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';

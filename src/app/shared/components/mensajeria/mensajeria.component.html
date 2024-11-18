@@ -4,36 +4,52 @@
       <div class="chat-list">
         <h3>Chats</h3>
         <!-- Aquí agregamos una lista simple de chats -->
-        <div *ngFor="let chat of chats" (click)="selectChat(chat)" class="chat-card">
-            <div class="chat-card-header">
-              <h4>{{ chat.name }}</h4>
-            </div>
-            <div class="chat-card-body">
-              <p class="last-message">{{ chat.lastMessage }}</p>
-              <p class="last-message-time">{{ chat.lastMessageTime }}</p>
-            </div>
+        <div *ngFor="let conversation of getSortedConversations()" 
+        (click)="selectConversation(conversation)" 
+        class="chat-card" 
+        [ngClass]="{'unread': conversation.lastMessage?.sender !== userID && !conversation.lastMessage?.read,
+        'selected': selectedConversation === conversation}">
+          <div class="chat-card-header">
+            <h4>{{ conversation.user_1 == userID ? conversation.user_2_name : conversation.user_1_name}}</h4>
           </div>
+          <div class="chat-card-body">
+            <p class="last-message">{{ conversation.lastMessage?.content }}</p>
+            <p class="last-message-time">{{ conversation.lastMessage ? conversation.lastMessage.createdAt : conversation.created_at}}</p>
+          </div>
+        </div>
       </div>
     </mat-sidenav>
   
     <mat-sidenav-content class="chat-window">
         <button mat-icon-button (click)="sidenav.toggle()" class="sidenav-toggle">
-            <mat-icon>menusdas</mat-icon>
+            <mat-icon>menu</mat-icon>
           </button>
       <div class="chat-header">
-        <h3>{{ selectedChat?.name }}</h3>
+        <h3>{{ selectedConversation?.name }}</h3>
       </div>
-      <div class="messages">
-        <p *ngFor="let message of selectedChat?.messages">
-          {{ message }}
+      <div class="messages" (scroll)="onScroll($event)" #messageContainer>
+          <p *ngFor="let _ of messages; index as i; trackBy: messagesIdentity;"
+          [class]="messages[lastIndex - i].sender == userID ? 'send' : 'receive'"
+          [ngClass]="{
+            'message-separator': i === lastIndex || messages[lastIndex - i].sender !== messages[lastIndex - 1 - i].sender
+          }">
+          {{ messages[lastIndex - i].content }}
         </p>
+        <div *ngIf="isLoading" class="loading">
+          <mat-spinner [diameter]="40"></mat-spinner>
+          <p>Cargando mensajes anteriores...</p>
+        </div>
+        <div *ngIf="noMoreMessages" class="loading">
+          <p>Inicio de conversacion</p>
+        </div>
       </div>
-      <div class="message-input">
-        <input type="text" [(ngModel)]="newMessage" placeholder="Escribe un mensaje...">
+      <div *ngIf="selectedConversation != null" class="message-input">
+        <textarea 
+        [attr.rows]="rows" placeholder="Escribe un mensaje..." [(ngModel)]="newMessage" 
+        (input)="adjustRows($event)" 
+        (keydown)="onKeydown($event)"></textarea>
         <button (click)="sendMessage()">Enviar</button>
       </div>
     </mat-sidenav-content>
-  
-    
-  </mat-sidenav-container>
+</mat-sidenav-container>
   

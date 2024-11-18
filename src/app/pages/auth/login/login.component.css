@@ -63,8 +63,7 @@
 .show-password {
   position: absolute;
   right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 30px;
   cursor: pointer;
 }
 
@@ -120,14 +119,6 @@
   border-radius: 4px;
   font-weight: bold;
 }
-.show-password {
-  position: absolute;
-  right: 1; 
-  top: 75%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
 
 .error-message {
   color: red;

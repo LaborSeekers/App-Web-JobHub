@@ -168,7 +168,6 @@ export class EditarCurriculumComponent {
           this.niveles = response;
         },
         error: (error) => {
-          console.error('Error al obtener niveles de idioma', error);
       }});
 
       this.postulantesService.getEducationLevels().subscribe({
@@ -176,7 +175,6 @@ export class EditarCurriculumComponent {
           this.grados = response;
         },
         error: (error) => {
-          console.error('Error al obtener niveles de Educacion', error);
       }});
 
 
@@ -263,7 +261,6 @@ export class EditarCurriculumComponent {
         }
       });
     }
-
 
   }
   

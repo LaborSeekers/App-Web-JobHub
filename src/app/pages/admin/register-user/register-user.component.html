@@ -1,0 +1,100 @@
+
+<section class="register_box">
+    <div class="box_right">
+        <div class="circle_img">
+            <img src="../../assets/img/img_left.jpg" alt="profile" class="img_right">
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form_user">
+            <div class="column_form">
+                <div class="input_box">
+                    <label class="text_form">Nombres:</label>
+                    <input type="text" id="name" formControlName="name" placeholder="Ingrese su nombre">
+                    <div class="error-message" *ngIf="registerForm && registerForm.get('name')?.invalid && registerForm.get('name')?.touched">El nombre es requerido.</div>
+                </div>
+                <div class="input_box">
+                    <label class="text_form">Apellidos:</label>
+                    <input type="text" id="lastname" formControlName="lastName" placeholder="Ingrese su apellido">
+                    <div class="error-message" *ngIf="registerForm && registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">El apellido es requerido.</div>
+                </div>
+            </div>
+
+            <div class="input_box">
+                <label class="text_form">Correo electrónico:</label>
+                <input type="email" id="email" formControlName="email" placeholder="Ingrese su correo electrónico">
+                <div class="error-message" *ngIf="registerForm && registerForm.get('email')?.invalid && registerForm.get('email')?.touched">Correo inválido.</div>
+            </div>
+
+            <div class="input_box">
+                <label class="text_form">Contraseña:</label>
+                <div class="password_wrapper">
+                    <input type="password" id="password" formControlName="password" placeholder="Ingrese su contraseña">
+                    <img src="../../assets/img/pass_e_icon.svg" alt="Mostrar/Ocultar contraseña" class="show_password" id="togglePassword">
+                </div>
+                <div class="error-message" *ngIf="registerForm && registerForm.get('password')?.invalid && registerForm.get('password')?.touched">La contraseña debe tener al menos 6 caracteres.</div>
+            </div>
+
+            <div class="input_box">
+                <label class="text_form">Repetir Contraseña:</label>
+                <div class="password_wrapper">
+                    <input type="password" id="repeat_password" formControlName="repeat_password" placeholder="Repita su contraseña">
+                    <img src="../../assets/img/pass_e_icon.svg" alt="Mostrar/Ocultar contraseña" class="show_password" id="repeat_togglePassword">
+                </div>
+                <div class="error-message" *ngIf="registerForm && registerForm.hasError('mismatch') && registerForm.get('repeat_password')?.touched">Las contraseñas no coinciden.</div>
+            </div>
+
+            <div class="column_form">
+                <div class="input_box">
+                    <label class="text_form">Teléfono:</label>
+                    <input type="number" id="cel" formControlName="phone" placeholder="Ingrese su teléfono">
+                    <div class="error-message" *ngIf="registerForm && registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">El teléfono es requerido.</div>
+                </div>
+                <div class="input_box">
+                    <label class="text_form">Fecha de nacimiento:</label>
+                    <input type="date" id="date" formControlName="birthday" placeholder="dd/mm/yyyy">
+                    <div class="error-message" *ngIf="registerForm && registerForm.get('birthday')?.invalid && registerForm.get('birthday')?.touched">La fecha de nacimiento es requerida.</div>
+                </div>
+            </div>
+
+            <div class="type_user_option">
+                <div class="type_user">
+                    <input type="radio" id="check_post" formControlName="type_user" value="POSTULANTE" (change)="setSelecteRol('POSTULANTE')">
+                    <label for="check_post" class="text_form">Es Postulante</label>
+                </div>
+                <div class="type_user">
+                    <input type="radio" id="check_ofert" formControlName="type_user" value="OFERTANTE" (change)="setSelecteRol('OFERTANTE')">
+                    <label for="check_ofert" class="text_form">Es Ofertante</label>
+                </div>
+            </div>
+
+            <div class="custom-select input_box" [ngClass]="{'hidden': selectedRol !== 'OFERTANTE'}">
+                <label class="text_form">Empresa:</label>
+                <div class="select-box" (click)="toggleDropdown()">
+                    <input type="text" 
+                        placeholder="Buscar empresa" 
+                        formControlName="searchTerm" 
+                        (click)="$event.stopPropagation()" 
+                        class="search-input" 
+                        (focus)="onFocus()" 
+                        (blur)="onBlur()">
+                </div>
+            
+                <div class="dropdown" *ngIf="isDropdownOpen">
+                    <div *ngFor="let empresa of filteredEmpresasList" (click)="selectEmpresa(empresa)" class="dropdown-item">
+                        {{ empresa.name }}
+                    </div>
+                </div>
+            
+            </div>
+            <button type="submit" class="btn_register"> Registrarse</button>
+        </form>
+    
+    <!--Registro exitoso mensaje-->
+        <div class="modal-backdrop" *ngIf="showmodal">
+            <div class="modal-content">
+                <h1>¡La cuenta se creo correctamente!</h1>
+                <button class="btn_login" (click)="closeModal()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</section>

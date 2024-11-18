@@ -43,7 +43,6 @@ export class DetalleDialogComponent {
       this.router.navigate([`Postulantes/hub/ver-empresa/${empresa.id}`]);
     },
     (error) => {
-      console.error('Error al obtener la empresa:', error);
       // Aquí podrías mostrar un mensaje de error si lo necesitas
     }
   );
@@ -62,7 +61,6 @@ export class DetalleDialogComponent {
 
     this.ApplicationsService.addAppliedJobOffer(this.data.id, this.AuthService.getUserInfo().userRoleId).subscribe({
       next:(res) => {
-        console.log(res)
         this.data.isApplied = true;
         this.ApplicationsService.addApplied(res.id, this.data.id);
         this.showmodal = true;
@@ -72,18 +70,6 @@ export class DetalleDialogComponent {
       }
     })
   }
-/*
-const userId = this.userService.getUserId();
-    if (userId) {
-      this.PostulantesService.postularOferta(ofertaId, userId).subscribe(response => {this.showmodal = true;
-        console.log('Postulación exitosa', response);
-      }, error => {
-        console.error('Error al postular', error);
-      });
-    } else {
-      console.error('No se ha encontrado el ID del usuario');
-    }
-*/
   retirarPostulacion(){
     if (this.isLoadingApp) return;
     this.isLoadingApp = true;
@@ -115,7 +101,6 @@ const userId = this.userService.getUserId();
           this.FavoritesService.removeFavorite(this.data.id);
         },
         error: (err) => {
-          console.error('Error al remover de favoritos', err);
         },
         complete: () => {
           this.isLoadingFav = false;
@@ -128,7 +113,6 @@ const userId = this.userService.getUserId();
           this.FavoritesService.addFavorite(this.data.id);
         },
         error: (err) => {
-          console.error('Error al agregar a favoritos', err);
         },
         complete: () => {
           this.isLoadingFav = false;
