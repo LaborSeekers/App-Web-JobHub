@@ -11,6 +11,7 @@ import { SubscriptionCheckComponent } from './subscription-check/subscription-ch
 
 import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
 import { MensajeriaComponent } from '../../shared/components/mensajeria/mensajeria.component';
+import { ApplicantsReportComponent } from './applicants-report/applicants-report.component';
 
 const routes: Routes = [{path: 'hub', component: OfertantesComponent,
     children:[
@@ -18,6 +19,7 @@ const routes: Routes = [{path: 'hub', component: OfertantesComponent,
       {path: 'crear-ofertas', component: CrearOfertaComponent},
       {path: 'edit/:id', component: CrearOfertaComponent },
       {path: 'ver-postulantes/:offerId', component: VerPostulantesComponent},
+      {path: 'ver-reporte', component: ApplicantsReportComponent},
       {path: 'inicio', component:InicioComponent },
       {path: 'subscripcion', component:SubscriptionsComponent},
       {path: 'subscripcion/check', component: SubscriptionCheckComponent},

@@ -1,0 +1,1 @@
+import{ba as s}from"./chunk-PY7A6XRR.js";var n=(()=>{let t=class t{constructor(){this.userId=null}setUserId(e){this.userId=e}getUserId(){return this.userId}clearUserId(){this.userId=null}};t.\u0275fac=function(o){return new(o||t)},t.\u0275prov=s({token:t,factory:t.\u0275fac,providedIn:"root"});let r=t;return r})();export{n as a};

@@ -1,0 +1,19 @@
+<div class="sales-report-container">
+    <div class="report-card">
+      <h2 class="report-title">Reporte de Postulantes por Oferta Laboral</h2>
+      <div class="chart-wrapper">
+        <canvas id="applicantsChart"></canvas>
+      </div>
+    </div>
+    <div class="event-details-container">
+      <h3 class="details-title">Detalles de Ofertas</h3>
+      <div class="event-summary-grid">
+        <div *ngFor="let item of chartData.labels; let i = index" class="event-summary-card">
+          <h4 class="event-name">{{ chartData?.labels?.[i] }}</h4>
+          <p class="event-quantity">{{ chartData?.datasets?.[0]?.data?.[i] }}</p>
+          <p class="event-label">Postulantes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

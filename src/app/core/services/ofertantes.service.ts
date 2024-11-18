@@ -5,6 +5,7 @@ import { environment } from '../../../environments/enviroment';
 import { ofertalLaboral } from '../models/ofertaLaboral.interface';
 import { OfertaLaboralRequest } from '../models/ofertaLaboral-request-interface';
 import { OfertanteDTO } from '../models/ofertante-dto.response';
+import { ApplicantsByJobOfferReportDTO } from '../models/applicants-by-jobOffer-report.model';
 
 @Injectable({
   providedIn: 'root'
@@ -104,4 +105,9 @@ export class OfertantesService {
       return this.http.get<OfertanteDTO>(`${environment.apiUrl}/auth/Ofertantes/${id}`);
     }
 
+
+    getJobOffersWithApplicantsCount(ofertanteId: number): Observable<ApplicantsByJobOfferReportDTO[]> {
+      const url = `${this.apiUrl}/applicants-count/${ofertanteId}`;
+      return this.http.get<ApplicantsByJobOfferReportDTO[]>(url);
+    }
   }

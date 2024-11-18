@@ -2,7 +2,12 @@
     <mat-dialog-actions>
         <button mat-button mat-dialog-close>X</button>
     </mat-dialog-actions>
-    <div class="contenedor">
+
+    <div *ngIf="isLoading" class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!isLoading" class="fade-in">
+      <div class="contenedor">
         <form [formGroup]="curriculumForm" (ngSubmit)="onSubmit()">
             <!-- Información de perfil -->
             <div class="centrado">
@@ -11,7 +16,7 @@
                 </div>
                 <div class="perfil2">
                     <h3>Nombre</h3>
-                    <input formControlName="nombre" type="text" placeholder="Ingrese su nombre" />
+                    <input formControlName="nombre" type="text" placeholder="Ingrese su nombre"/>
           
                     <h3>Apellido</h3>
                     <input formControlName="apellido" type="text" placeholder="Ingrese su apellido" />
@@ -32,16 +37,31 @@
               <h3 class="seccion-titulo">EXPERIENCIA LABORAL</h3>
               <div class="experiencia-laboral" formArrayName="experienciaLaboral">
                 <div *ngFor="let experiencia of experienciaLaboral.controls; let i = index" [formGroupName]="i" class="experiencia-item">
-                  <input formControlName="puesto" type="text" placeholder="Nombre del puesto" />
-                  <input formControlName="empresa" type="text" placeholder="Nombre de la empresa" />
-                  <textarea formControlName="descripcion" placeholder="Descripción"></textarea>
-                  <input formControlName="fechaInicio" type="date" placeholder="Fecha de inicio" />
-                  <input formControlName="fechaFin" type="date" placeholder="Fecha de fin" />
-                  <button type="button" (click)="eliminarExperiencia(i)" style="margin-top: 2%;">Eliminar Experiencia</button>
+                  <div class="div-izquierda-experiencia">
+                    <input class="exp" formControlName="puesto" type="text" placeholder="Nombre del puesto" />
+                    <!-- Acceso al control dentro del FormArray -->
+                    <div class="error-message" 
+                        *ngIf="experiencia.get('puesto')?.invalid && experiencia.get('puesto')?.touched">
+                      El Nombre del puesto es requerido.
+                    </div>
+
+                    <input class="exp" formControlName="empresa" type="text" placeholder="Nombre de la empresa" />
+                    <textarea class="exp" formControlName="descripcion" placeholder="Descripción"></textarea>
+                  </div>
+                  <div class="div-derecha-experiencia">
+                    <input formControlName="fechaInicio" type="date" placeholder="Fecha de inicio" />
+                    <input formControlName="fechaFin" type="date" placeholder="Fecha de fin" />
+                  </div>
+                  <button mat-icon-button (click)="eliminarExperiencia(i)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button>
                 </div>
-                <button type="button" (click)="agregarExperiencia()">Agregar Experiencia</button>
+                <button type="button" mat-icon-button (click)="agregarExperiencia()" class="green-icon">
+                  <mat-icon>add_circle</mat-icon>
+                </button>
               </div>
             </div>
+
           
             <!-- Educación -->
             <div class="seccion">
@@ -56,24 +76,32 @@
 
                   <input formControlName="fechaInicio" type="date" placeholder="Fecha de inicio" />
                   <input formControlName="fechaFin" type="date" placeholder="Fecha de fin" />
-                  <button type="button" (click)="eliminarEducacion(i)">Eliminar Educación</button>
+                  <button mat-icon-button (click)="eliminarEducacion(i)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button> 
                 </div>
-                <button type="button" (click)="agregarEducacion()">Agregar Educación</button>
+                <button type="button" mat-icon-button (click)="agregarEducacion()" class="green-icon">
+                  <mat-icon>add_circle</mat-icon>
+                </button> 
               </div>
             </div>
           
-            <!-- Habilidades 
+            
             <div class="seccion">
               <h3 class="seccion-titulo">HABILIDADES</h3>
               <div class="habilidades" formArrayName="habilidades">
                 <div *ngFor="let habilidad of habilidades.controls; let i = index" class="habilidad-item">
                   <input [formControlName]="i" type="text" placeholder="Nombre de la habilidad" />
-                  <button type="button" (click)="eliminarHabilidad(i)">Eliminar Habilidad</button>
+                  <button mat-icon-button (click)="eliminarHabilidad(i)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button> 
                 </div>
-                <button type="button" (click)="agregarHabilidad()">Agregar Habilidad</button>
+                <button type="button" mat-icon-button (click)="agregarHabilidad()" class="green-icon">
+                  <mat-icon>add_circle</mat-icon>
+                </button> 
               </div>
             </div>
-          -->
+          
 
           
             <!-- Idiomas -->
@@ -87,14 +115,25 @@
                     <option *ngFor="let nivel of niveles; let i = index" [value]="nivel.id">{{nivel.languageLevel}}</option>
                   </select>
 
-                  <button type="button" (click)="eliminarIdioma(i)">Eliminar Idioma</button>
+                  <button mat-icon-button (click)="eliminarIdioma(i)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button> 
                 </div>
-                <button type="button" (click)="agregarIdioma()">Agregar Idioma</button>
+                <button type="button" mat-icon-button (click)="agregarIdioma()" class="green-icon">
+                  <mat-icon>add_circle</mat-icon>
+                </button> 
               </div>
             </div>
           
-            <!-- Botón de Envío -->
-            <button type="submit">Enviar Curriculum</button>
-          </form>          
+             <div class="actions-group">
+              <button class="btn-primary" [disabled]="curriculumForm.invalid" mat-icon-button (click)="onSubmit()" type="button" style="font-size: 14px;">Guardar cambios</button>
+              <mat-dialog-actions>
+                <button class="btn-danger" mat-button mat-dialog-close>Salir</button>
+              </mat-dialog-actions>
+             </div>
+            
+          </form>
+      </div>
     </div>
+    
 </body>
