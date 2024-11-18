@@ -5,6 +5,6 @@ export const environment =  {
     //apiUrl: 'https://api-fake-w39a.onrender.com/api/v1'
 
     //ING SOFTWARE
-    //apiUrl: 'http://localhost:8080/api/v1'
-    apiUrl: 'https://jobhub-api-latest-zc2y.onrender.com/api/v1'
+    apiUrl: 'http://localhost:8080/api/v1'
+    //apiUrl: 'https://jobhub-api-latest-zc2y.onrender.com/api/v1'
 }

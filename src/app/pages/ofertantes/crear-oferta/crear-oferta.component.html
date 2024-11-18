@@ -96,22 +96,7 @@
               </mat-form-field>
             </div>
             
-            <div class="location-section">
-              <mat-form-field appearance="outline">
-                <mat-label>Fecha</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="scheduledDate">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-icon matPrefix>calendar_today</mat-icon>
-              </mat-form-field>
             
-              <mat-form-field appearance="outline">
-                <mat-label>Hora</mat-label>
-                <input matInput formControlName="scheduledTime" type="time">
-                <mat-icon matPrefix>access_time</mat-icon>
-              </mat-form-field>
-            </div>
-
             <div class="upload-buttons">
               <button mat-stroked-button class="full-width" type="button" (click)="imageInput.click()">
                 <mat-icon>image</mat-icon>

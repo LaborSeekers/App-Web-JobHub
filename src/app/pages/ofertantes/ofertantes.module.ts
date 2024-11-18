@@ -49,7 +49,7 @@ import { Chart } from 'chart.js';
     SubscriptionsComponent,
     SubscriptionsModalComponent,
     SubscriptionCheckComponent,
-    SendFeedbackComponent
+    SendFeedbackComponent,
     ApplicantsReportComponent
   ],
   imports: [
