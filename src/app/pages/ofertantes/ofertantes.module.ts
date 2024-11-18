@@ -30,8 +30,11 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { SubscriptionsModalComponent } from './subscriptions-modal/subscriptions-modal.component';
 import { SubscriptionCheckComponent } from './subscription-check/subscription-check.component';
 import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
+import { SendFeedbackComponent } from './ver-postulantes/send-feedback/send-feedback.component';
+
 import { ApplicantsReportComponent } from './applicants-report/applicants-report.component';
 import { Chart } from 'chart.js';
+
 @NgModule({
   declarations: [
     OfertantesComponent,
@@ -46,6 +49,7 @@ import { Chart } from 'chart.js';
     SubscriptionsComponent,
     SubscriptionsModalComponent,
     SubscriptionCheckComponent,
+    SendFeedbackComponent,
     ApplicantsReportComponent
   ],
   imports: [
@@ -60,8 +64,7 @@ import { Chart } from 'chart.js';
     MaterialModule,
     MatSelectModule,
     FormsModule,
-    SharedModule,
-    
+    SharedModule,    
   ],
   exports:[HeaderComponent]
 })

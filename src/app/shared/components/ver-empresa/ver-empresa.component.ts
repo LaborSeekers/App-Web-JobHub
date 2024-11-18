@@ -26,10 +26,8 @@ export class VerEmpresaComponent implements OnInit {
           next: (empresa) => {
             
             this.empresa = empresa;
-            console.log("holaaa ",empresa)
           },
           error: (error) => {
-            console.error('Error al obtener la empresa:', error);
           }
         });
       }

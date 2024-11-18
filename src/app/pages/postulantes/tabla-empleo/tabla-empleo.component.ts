@@ -9,6 +9,7 @@ import { DetalleDialogComponent } from '../detalle-dialog/detalle-dialog.compone
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-tabla-empleo',
@@ -19,6 +20,7 @@ export class TablaEmpleoComponent {
   data: any;
 
   isLoading = true;
+  username: string= '';
 
   favorites_num : number = 0;
   applied_num : number = 0;
@@ -26,7 +28,8 @@ export class TablaEmpleoComponent {
   constructor(private postulantesService :PostulantesService,
     private FavoritesService: FavoritesService,
     private ApplicationsService: ApplicationsService,
-    private AlertasService: AlertasService
+    private AlertasService: AlertasService,
+    private authService: AuthService
   ) {}
 
   loadOfertas():void{
@@ -53,6 +56,9 @@ export class TablaEmpleoComponent {
         this.alertas_num = feedbacks.length;
       }
     })
+
+    this.username = this.authService.getUserInfo().firstName + " "+this.authService.getUserInfo().lastName 
+
     this.loadOfertas();
   }
 

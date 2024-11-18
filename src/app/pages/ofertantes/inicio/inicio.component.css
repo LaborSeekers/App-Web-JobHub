@@ -1,95 +1,37 @@
-.derecha{
-    flex: 5;
+.container{
+    flex: 1;
     text-align: center;
     display: flex;
     flex-direction: column;
-}
-.derecha-superior{
-    flex: 1;
-    background-color: blueviolet;
-}
-.derecha-inferior{
-    flex: 3;
-    background-color: lightblue;
-    display: flex;
-    flex-direction: column;
+    height: 70vh; 
 }
 
-.optionTabla{
-    display: flex;
-    gap: calc(512px - calc(512px - 32vw));
-}
-.optionTabla-izquierda{
-    flex: 1;
-    color: #000;
-
-    text-align: center;
-    font-family: Epilogue;
-    font-size: 14px !important;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-.optionTabla-derecha{
-    flex: 1;
-    text-align: center;
-    font-family: Epilogue;
-    font-size: 14px !important;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    
-}
-.optionTabla-derecha h4{
-   margin-left:45%;
-}
-.optionTabla-derecha img{
-    
-    max-width: 5%;
-}
-.tablaEmple{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-h6{
-width: 600px;
-margin-top: 50px; 
-margin-left: 90px; 
-}
-
-.derecha {
-    display: flex;
-    flex-direction: row; 
-    height: 80vh; 
+.title{
+    width: 100%;
+    margin: 10% auto;
 }
 
 .derecha_izquierda {
-    flex-basis: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column; 
     justify-content: flex-start; 
-    padding-right: 20px; 
+    z-index: 1;
+    word-wrap: break-word;
 }
 
 .derecha_derecha {
-    flex-basis: 40%;
+    position: absolute;
     display: flex;
     justify-content: center; 
     align-items: center; 
-}
-.derecha_derecha {
-    
-    justify-content: center; 
-    align-items: center; 
+    right: 0;
+    bottom: 0;
+    z-index: 0;
 }
 
 .derecha_derecha img {
-    max-width: 100%; 
+    width: 100%;
     height: auto;
     border-radius: 10px; 
 }
@@ -98,11 +40,11 @@ margin-left: 90px;
     color: var(--Neutrals-100, #25324B);
     font-feature-settings: 'cv11' on;
     font-family: Laila;
-    font-size: 72px;
+    font-size: 50px;
+    width: 100%;
     font-style: normal;
     font-weight: 400;
     line-height: 110%; 
-    white-space: nowrap
 }
 
 .letra2 {
@@ -128,13 +70,6 @@ h2 {
     line-height: 100%;
     margin: 0; 
     
-}
-
-.derecha_derecha img {
-    max-width: 100%; 
-    height: auto;
-    border-radius: 10px; 
-    margin-top: -50px; 
 }
 
 .derecha_izquierda_3 {
@@ -168,8 +103,4 @@ button {
     border-radius: 5px;
     border: 1px solid #000;
     background: #30CDFF;
-}
-.imagen-derecha {
-    width: 43vh; 
-    height: auto; 
 }
