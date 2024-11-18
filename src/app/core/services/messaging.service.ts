@@ -73,9 +73,7 @@ export class MessagingService {
     })
   }
   addCache(conversation: any){
-    console.log(conversation)
     this.messageCache[conversation.id] = { messages: [], noMoreMessages: false, lastMessageID: conversation.lastMessage? conversation.lastMessage.id + 1: 0, page: 0, firstLoad: true };
-    console.log(this.messageCache[conversation.id], "prueba")
   }
 
   updateCacheMessages(conversationId: number, newMessages: message[]) {

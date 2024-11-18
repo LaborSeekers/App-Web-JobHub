@@ -69,7 +69,6 @@ export class MensajeriaComponent {
         if(message.conversation == this.selectedConversation.id){
           this.messages.push(message);
           this.lastIndex = this.messages.length - 1;
-          console.log(this.messages)
         }
       }
     })
