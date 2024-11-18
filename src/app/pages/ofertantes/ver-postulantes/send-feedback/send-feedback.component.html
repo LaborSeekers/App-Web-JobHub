@@ -1,0 +1,9 @@
+
+<div mat-dialog-content>
+<h2>Deja tu Feedback</h2>
+<textarea [(ngModel)]="feedback" placeholder="Escribe tu feedback aquí..." rows="4" cols="50"></textarea>
+</div>
+<div mat-dialog-actions>
+<button mat-button (click)="closeModal()">Cancelar</button>
+<button mat-button (click)="submitFeedback()">Enviar</button>
+</div>

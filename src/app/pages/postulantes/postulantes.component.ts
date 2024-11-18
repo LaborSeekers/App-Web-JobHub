@@ -1,13 +1,13 @@
+import { MessagingService } from './../../core/services/messaging.service';
 import { AlertasService } from './../../core/services/alertas.service';
 import { ApplicationsService } from './../../core/services/applications.service';
 import { FavoritesService } from './../../core/services/favorites.service';
-import { PostulantesService } from './../../core/services/postulantes.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { UserService } from '../../core/services/user.service';
 import { AuthService } from '../../core/services/auth.service';
 import { forkJoin, Subscription } from 'rxjs';
+import { WebSocketService } from '../../core/services/websocket.service';
 
 @Component({
   selector: 'app-postulantes',
@@ -24,10 +24,14 @@ export class PostulantesComponent implements OnInit {
   ];
   selectedIndex: number | null = null;
   isLoading : boolean = false;
+  newMessages : boolean = false;
+
   constructor(private router: Router, private loginS:AuthService,
     private FavoritesService: FavoritesService,
     private ApplicationsService: ApplicationsService,
-    private AlertasService: AlertasService) {}
+    private AlertasService: AlertasService,
+    private webSocketService: WebSocketService,
+    private messagingService: MessagingService) {}
 
 
   private alertSubscription: Subscription = new Subscription;
@@ -38,14 +42,32 @@ export class PostulantesComponent implements OnInit {
       alerts: this.AlertasService.loadAlertas(this.loginS.getUserInfo().userRoleId)
     }).subscribe({
       error: (err) => {
-        console.error('Error loading offers:', err);
       },
       complete: () => {
         this.isLoading = false; // Cambiar a false al finalizar la carga
       }
     });
     
-    this.AlertasService.connect();
+    this.messagingService.getConversations().subscribe(conversations =>{
+      this.newMessages = conversations.some(conversation => {
+        const lastMessage = conversation.lastMessage;
+        if(lastMessage){
+          return lastMessage && lastMessage.sender !== this.loginS.getUserInfo().id && !lastMessage.read;
+        }
+      });
+    })
+
+    this.messagingService.getChatMessages().subscribe(message => {
+      if(message){
+        this.newMessages = message && message.sender !== this.loginS.getUserInfo().id && !message.isRead;
+      }
+    })
+
+    this.messagingService.getUpdates().subscribe(()=>{
+      this.newMessages = false;
+    })
+
+    this.webSocketService.connect();
     this.AlertasService.newFeedback().subscribe(()=>{
       this.addAlert();
     })
@@ -64,7 +86,6 @@ export class PostulantesComponent implements OnInit {
   }
 
   addAlert(){
-    console.log("agrego")
     const alertLink = this.links.find(link => link.id === 'alertas');
       if (alertLink) {
         alertLink.badge! += 1;
@@ -83,9 +104,5 @@ export class PostulantesComponent implements OnInit {
 
   selectLink(index: number) {
     this.selectedIndex = index;
-  }
-
-  logout(){
-    this.loginS.logout();
   }
 }

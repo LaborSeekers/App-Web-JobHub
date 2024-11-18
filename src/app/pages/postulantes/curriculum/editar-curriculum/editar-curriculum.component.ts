@@ -148,10 +148,8 @@ export class EditarCurriculumComponent {
           }));
         });
     
-        console.log('Formulario llenado exitosamente');
       },
       error: (error) => {
-        console.error('El usuario actualmente no tiene curriculum', error);
       }
     });
     
@@ -161,7 +159,6 @@ export class EditarCurriculumComponent {
           this.niveles = response;
         },
         error: (error) => {
-          console.error('Error al obtener niveles de idioma', error);
       }});
 
       this.postulantesService.getEducationLevels().subscribe({
@@ -169,7 +166,6 @@ export class EditarCurriculumComponent {
           this.grados = response;
         },
         error: (error) => {
-          console.error('Error al obtener niveles de Educacion', error);
       }});
 
 
@@ -217,10 +213,8 @@ export class EditarCurriculumComponent {
 
     this.postulantesService.createCurriculum(curriculumData).subscribe({
       next: () => {
-        console.log('Curriculum guardado exitosamente');
       },
       error: (error) => {
-        console.error('Error al guardar curriculum', error);
       }
     });
   }

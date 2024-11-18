@@ -48,7 +48,6 @@ export class SubscriptionsComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.newSubscription.paymentFrequency = result;
-        console.log(this.newSubscription);
         this.createSubscription();
       }
     });
@@ -84,8 +83,7 @@ export class SubscriptionsComponent {
     this.subscriptionService.createSubscription(this.authService.getUserInfo().userRoleId, this.newSubscription.paymentFrequency!).subscribe({
       next: (subscription) => {
         this.subscription = subscription;
-      },
-      error: (error) => console.error('Error al crear la suscripción:', error)
+      }
     });
   }
 

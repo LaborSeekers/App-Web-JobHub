@@ -11,6 +11,8 @@ import { ApplicationsService } from '../../../core/services/applications.service
 import { UserInfo } from '../../../core/models/user-info.interface'; // Importa UserInfo
 import { PostulantesService } from '../../../core/services/postulantes.service';
 import { Postulante } from '../../../core/models/postulante-dto-response';
+import { MessagingService } from '../../../core/services/messaging.service';
+import { SendFeedbackComponent } from './send-feedback/send-feedback.component';
 @Component({
   selector: 'app-ver-postulantes',
   templateUrl: './ver-postulantes.component.html',
@@ -22,6 +24,7 @@ export class VerPostulantesComponent implements OnInit {
   professionFilter: string = '';
   studyCenterFilter: string = '';
   filteredCandidates: Postulante[] = [];  // Lista de postulantes filtrados
+  isLoadingMessage: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +34,8 @@ export class VerPostulantesComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
     private applicationsService: ApplicationsService,
-    private postulantesService: PostulantesService // Asegúrate de tener PostulantesService
+    private postulantesService: PostulantesService,
+    private messagingService: MessagingService // Asegúrate de tener PostulantesService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +46,12 @@ export class VerPostulantesComponent implements OnInit {
         this.loadCandidates(offerId);          
       }
     });
+    
+    this.messagingService.getNewConversationCreated().subscribe((boolean:boolean)=> {
+      if(boolean){
+        this.router.navigate(["/Ofertantes/hub/mensajeria"]);
+      }
+    })
   }
 
   // Método para cargar los postulantes
@@ -58,19 +68,16 @@ export class VerPostulantesComponent implements OnInit {
             // Añadir applicationId a cada candidato
             this.filteredCandidates = candidates.map(candidate => ({
               ...candidate,
-              applicationId: candidateApplicationMap.get(candidate.id) // Asignar applicationId al candidato
+              applicationId: candidateApplicationMap.get(candidate.id)
             }));
 
-            console.log(this.filteredCandidates)
-            this.applyFilters();  // Aplicar los filtros si es necesario
+            this.applyFilters();
           },
           error: (error) => {
-            console.error('Error al cargar los postulantes:', error);
           }
         });
       },
       error: (error) => {
-        console.error('Error al cargar las aplicaciones:', error);
       }
     });
   }
@@ -90,12 +97,32 @@ export class VerPostulantesComponent implements OnInit {
     });
   }
 
+  openFeedbackDialog(id: number | undefined): void {
+    const dialogRef = this.dialog.open(SendFeedbackComponent, {
+      width: 'auto',
+      data: {id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+      }
+    });
+  }
+
   applyFilters(): void {
 
   }
 
   gotoBack(): void {
     window.history.back();
+  }
+
+  createConversation(recipientId: number): void{
+    if(this.isLoadingMessage){
+      return;
+    }
+    this.isLoadingMessage = true;
+    this.messagingService.sendNewConversation(recipientId);
   }
 
   private showSnackBar(message: string): void {

@@ -115,12 +115,10 @@ export class RegisterComponent implements AfterViewInit {
       this.loginser.registerPostulante(newAccountPostulante).subscribe({
         next: (response: UserRegistrationDTO) => {       
           this.userRegistrationDTO = response;
-          console.log('Creación de cuenta correctamente', this.registerForm.value);
           this.showmodal = true;
         },
         
         error: (error) =>{
-          console.error('Error al crear cuenta', error);
         }
       });
     } 
@@ -128,17 +126,13 @@ export class RegisterComponent implements AfterViewInit {
       this.loginser.registerOfertante(newAccountOfertante).subscribe({
         next: (response: UserRegistrationDTO) => {       
           this.userRegistrationDTO = response;
-          console.log('Creación de cuenta correctamente', this.registerForm.value);
           this.showmodal = true;
         },
         
         error: (error) =>{
-          console.error('Error al crear cuenta', error);
         }
       });
-    }
-      
-   
+    }   
   }
  
   LoadEmpresas():void{
@@ -147,7 +141,6 @@ export class RegisterComponent implements AfterViewInit {
         this.empresas = empresas;
       },
       error: (error) => {
-        console.error('Error al obtener las empresas', error);
       }
     })
   }

@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
@@ -12,7 +13,15 @@ export class ApplicationsService {
   private applicationsIds: Array<number> = new Array();
   private applicationsIdsSubject = new BehaviorSubject<Array<number>>(this.applicationsIds);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private AuthService:AuthService
+  ) { 
+    this.AuthService.getLogoutSignal().subscribe((signal)=>{
+      if(signal){
+        this.clearApplicationsData();
+      }
+    })
+  }
 
   private apiAppliedUrl = `${environment.apiUrl}/applications`;
 
@@ -61,10 +70,6 @@ export class ApplicationsService {
     );
   }
 
-  logout(){
-    //this.appliedJobs.
-  }
-
   getAppliedIds(){
     return this.appliedSubject.asObservable();
   }
@@ -74,5 +79,12 @@ export class ApplicationsService {
     let params = new HttpParams().set("id", jobId);
     const url = `${this.apiAppliedUrl}/by-job`;
     return this.http.get<any[]>(url, { params });
+  }
+
+  clearApplicationsData(): void {
+    this.appliedJobs = [];
+    this.applicationsIds = [];
+    this.appliedSubject.next(this.appliedJobs);
+    this.applicationsIdsSubject.next(this.applicationsIds);
   }
 }
