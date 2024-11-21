@@ -15,12 +15,14 @@ import { UserInterceptor } from './core/interceptors/user.interceptor';
 import { FormsModule } from '@angular/forms'; 
 import { OtpVerificationComponent } from './pages/auth/OTP/otp-verification.component';
 import { ForgotPasswordComponent } from './pages/auth/forgot-password/forgot-password.component';
+import { CategoryChartDialogComponent } from './pages/postulantes/ofertas-de-trabajo/category-chart-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    OtpVerificationComponent
+    OtpVerificationComponent,
+    
   ],
   imports: [
     BrowserModule,
