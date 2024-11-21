@@ -109,4 +109,57 @@ export class OfertasPublicadasComponent implements OnInit {
   createNewOffer(): void {
     this.router.navigate(['/Ofertantes/hub/crear-ofertas']);
   }
-}
+
+  showPopularityChart(): void {
+    if (!this.userId) {
+      this.showSnackBar('Error: No se pudo identificar el usuario');
+      return;
+    }
+  
+    this.ofertantesService.getJobOffersPopularity(this.userId).subscribe({
+      next: (data) => {
+        // Encuentra el trabajo más popular
+        const max = data.reduce((prev, current) => (current.applicantsCount > prev.applicantsCount ? current : prev), data[0]);
+        this.mostPopularJob = { name: max.jobTitle, applicants: max.applicantsCount };
+  
+        // Generar la gráfica
+        if (this.popularityChart) {
+          this.popularityChart.destroy();
+        }
+  
+        const ctx = document.getElementById('popularityChart') as HTMLCanvasElement;
+        this.popularityChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: data.map((item) => item.jobTitle),
+            datasets: [
+              {
+                label: 'Cantidad de Postulantes',
+                data: data.map((item) => item.applicantsCount),
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: true, position: 'top' },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      },
+      error: () => {
+        this.showSnackBar('Error al cargar la gráfica de popularidad');
+      },
+    });
+  }
+  
+} 
+

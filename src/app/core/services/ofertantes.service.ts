@@ -111,3 +111,9 @@ export class OfertantesService {
       return this.http.get<ApplicantsByJobOfferReportDTO[]>(url);
     }
   }
+
+  getJobOffersPopularity(ofertanteId: number): Observable<{ jobTitle: string; applicantsCount: number }[]> {
+    const url = `${this.apiUrl}/popularity/${ofertanteId}`;
+    return this.http.get<{ jobTitle: string; applicantsCount: number }[]>(url);
+  }
+  
