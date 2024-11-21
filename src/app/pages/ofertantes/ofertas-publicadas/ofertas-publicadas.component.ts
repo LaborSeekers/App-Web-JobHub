@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { DetailsDialogComponent } from '../details-dialog/details-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Chart, registerables } from 'chart.js';
 @Component({
   selector: 'app-ofertas-publicadas',
   templateUrl: './ofertas-publicadas.component.html',
@@ -16,6 +17,9 @@ import { MatDialog } from '@angular/material/dialog';
 export class OfertasPublicadasComponent implements OnInit {
   jobOffers: ofertalLaboral[] = [];
   totalElements = 0;
+  popularityData: { jobTitle: string; applicantsCount: number }[] = [];
+  mostPopularJob: { name: string; applicants: number } | null = null;
+  popularityChart: any;
   pageSize = 3;
   pageIndex = 0;
   filterTitle = '';
@@ -118,11 +122,13 @@ export class OfertasPublicadasComponent implements OnInit {
   
     this.ofertantesService.getJobOffersPopularity(this.userId).subscribe({
       next: (data) => {
+        this.popularityData = data;
+  
         // Encuentra el trabajo más popular
         const max = data.reduce((prev, current) => (current.applicantsCount > prev.applicantsCount ? current : prev), data[0]);
         this.mostPopularJob = { name: max.jobTitle, applicants: max.applicantsCount };
   
-        // Generar la gráfica
+        // Genera la gráfica
         if (this.popularityChart) {
           this.popularityChart.destroy();
         }
@@ -131,11 +137,11 @@ export class OfertasPublicadasComponent implements OnInit {
         this.popularityChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: data.map((item) => item.jobTitle),
+            labels: data.map((item) => item.jobTitle), // Eje X: nombres de las ofertas
             datasets: [
               {
                 label: 'Cantidad de Postulantes',
-                data: data.map((item) => item.applicantsCount),
+                data: data.map((item) => item.applicantsCount), // Eje Y: cantidad de postulantes
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1,
@@ -148,9 +154,7 @@ export class OfertasPublicadasComponent implements OnInit {
               legend: { display: true, position: 'top' },
             },
             scales: {
-              y: {
-                beginAtZero: true,
-              },
+              y: { beginAtZero: true },
             },
           },
         });
@@ -160,6 +164,10 @@ export class OfertasPublicadasComponent implements OnInit {
       },
     });
   }
+  
+
+
+
   
 } 
 

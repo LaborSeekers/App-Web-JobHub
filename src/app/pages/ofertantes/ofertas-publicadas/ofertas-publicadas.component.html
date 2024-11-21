@@ -1,6 +1,10 @@
 <div class="job-offers-container">
+  
     <div class="header">
       <h2>MIS OFERTAS LABORALES</h2>
+      <button mat-raised-button color="accent" class="popularity-chart-button" (click)="showPopularityChart()">
+        Ver gráfica de popularidad
+      </button>
       <button mat-raised-button color="primary" class="create-offer-button" (click)="createNewOffer()">
         <div class="button-text">
           <span>Crear nueva</span>
@@ -64,4 +68,13 @@
     (page)="onPageChange($event)"
     aria-label="Seleccionar página">
   </mat-paginator>
+
+  <!-- Contenedor para la gráfica -->
+<div *ngIf="popularityData && popularityData.length > 0" class="chart-container">
+  <canvas id="popularityChart"></canvas>
+  <p *ngIf="mostPopularJob">
+    El job offer <strong>{{ mostPopularJob.name }}</strong> es el más popular entre todas las ofertas publicadas, 
+    ya que tiene <strong>{{ mostPopularJob.applicants }}</strong> postulantes, siendo el más dominante.
+  </p>
+</div>
   </div>
