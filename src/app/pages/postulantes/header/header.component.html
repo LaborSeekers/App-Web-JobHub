@@ -17,7 +17,10 @@
       </div>
     -->
     <div class="perfil">
-      <mat-icon class="mat-icon"  matBadge="1" matBadgeColor="warn" aria-hidden="false"><a [routerLink]='["/Postulantes"]'>chat_bubble</a></mat-icon>
+      <mat-icon class="mat-icon"  
+      [matBadge]="newMessage ? '!' : null" 
+      matBadgeColor="warn" 
+      aria-hidden="false"><a [routerLink]='["/Postulantes/hub/mensajeria"]'>chat_bubble</a></mat-icon>
       <app-perfil-user></app-perfil-user>
     </div>
 </header>

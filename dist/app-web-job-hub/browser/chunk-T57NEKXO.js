@@ -1,0 +1,1 @@
+import{a}from"./chunk-OUK4PLN7.js";import"./chunk-4KJ5O5FH.js";import"./chunk-EM422GXN.js";import"./chunk-3VUKCVAB.js";import"./chunk-AESYL7IM.js";import"./chunk-CKR6JUYN.js";import"./chunk-PY7A6XRR.js";export{a as OfertantesModule};

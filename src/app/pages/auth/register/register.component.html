@@ -77,7 +77,7 @@
                   <label for="check_ofert" class="text_form">Soy Ofertante</label>
                 </div>
               </div>
-  
+              @if(selectedRol == 'OFERTANTE'){
               <div class="empresa_box">
                 <label class="text_form">Empresa:</label>
                 <select class="Empresa" formControlName="empresaDropBox" id="empresa">
@@ -86,6 +86,7 @@
                 <div class="error-message" *ngIf="registerForm && registerForm.get('empresaDropBox')?.invalid && registerForm.get('empresaDropBox')?.touched">La empresa es obligatoria.</div>
                 <br><br>
               </div>
+              }
             }
   
             <div class="input_checkbox">

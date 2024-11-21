@@ -3,8 +3,9 @@ import { AuthService } from './../../core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { UserService } from '../../core/services/user.service';
 import { SubscriptionService } from '../../core/services/subscription.service';
+import { WebSocketService } from '../../core/services/websocket.service';
+import { MessagingService } from '../../core/services/messaging.service';
 
 
 @Component({
@@ -20,17 +21,19 @@ export class OfertantesComponent implements OnInit {
     { route: ['ofertas-publicadas'], image: "assets/imagenes/Nav-bar/portafolio.png", alt: "portafolio", id: "portafolio-overview", text: "Ofertas publicadas" },
     { route: ['subscripcion'], image: "assets/imagenes/Nav-bar/subscription.png", alt: "image18", id: "marcador-overview", text: "Ver Suscripción" },
     { route: ['ver-empresa/'+this.loginS.getUserInfo().empresa?.id], image: "assets/imagenes/Nav-bar/campanasicon.png", alt: "campana", id: "campana-overview", text: "Ver Empresa" },
-    { route: ['/route/path'], image: "assets/imagenes/Nav-bar/Engranajes.png", alt: "config", id: "config-overview", text: "Configuración" },
+    { route: ['ver-reporte'], image: "assets/imagenes/Nav-bar/Engranajes.png", alt: "config", id: "config-overview", text: "Ver Reportes" },
  
   ];
 
   selectedIndex: number | null = null;
+  newMessages : boolean = false;
 
   constructor(
-    private router: Router, 
-    private userS:UserService, 
+    private router: Router,
     private loginS:AuthService,
-    private subsS: SubscriptionService) {}
+    private subsS: SubscriptionService,  
+    private webSocketService: WebSocketService,
+    private messagingService: MessagingService) {}
 
   ngOnInit() {
     this.getUserEmpresaId();
@@ -39,7 +42,27 @@ export class OfertantesComponent implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => this.updateSelectedIndex());
 
+    this.messagingService.getConversations().subscribe(conversations =>{
+        this.newMessages = conversations.some(conversation => {
+          const lastMessage = conversation.lastMessage;
+          if(lastMessage){
+            return lastMessage && lastMessage.sender !== this.loginS.getUserInfo().id && !lastMessage.read;
+          }
+        });
+      })
+  
+      this.messagingService.getChatMessages().subscribe(message => {
+        if(message){
+          this.newMessages = message && message.sender !== this.loginS.getUserInfo().id && !message.isRead;
+        }
+      })
+  
+      this.messagingService.getUpdates().subscribe(()=>{
+        this.newMessages = false;
+      })
+
     this.subsS.loadSubscription(this.loginS.getUserInfo().userRoleId);
+    this.webSocketService.connect();
   }
 
   updateSelectedIndex() {
@@ -52,21 +75,15 @@ export class OfertantesComponent implements OnInit {
     
   }
 
-  // Función para obtener el id de la empresa del usuario logueado
   getUserEmpresaId() {
-    const userInfo = this.loginS.getUserInfo(); // Obtener la información del usuario
+    const userInfo = this.loginS.getUserInfo(); 
     if (userInfo && userInfo.empresa) {
-      this.empresaId = userInfo.empresa.id; // Asignar el id de la empresa a la variable
-      console.log(this.empresaId)
+      this.empresaId = userInfo.empresa.id;
     }
     //this.loginS.getUserInfo().empresa.id
   }
   selectLink(index: number) {
     this.selectedIndex = index;
-  }
-  logout(){
-    this.userS.clearUserId();
-    this.loginS.logout();
   }
 
 }

@@ -30,6 +30,10 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { SubscriptionsModalComponent } from './subscriptions-modal/subscriptions-modal.component';
 import { SubscriptionCheckComponent } from './subscription-check/subscription-check.component';
 import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
+import { SendFeedbackComponent } from './ver-postulantes/send-feedback/send-feedback.component';
+
+import { ApplicantsReportComponent } from './applicants-report/applicants-report.component';
+import { Chart } from 'chart.js';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,9 @@ import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-emp
     DetailsDialogComponent,
     SubscriptionsComponent,
     SubscriptionsModalComponent,
-    SubscriptionCheckComponent
+    SubscriptionCheckComponent,
+    SendFeedbackComponent,
+    ApplicantsReportComponent
   ],
   imports: [
     MatCardModule,
@@ -58,8 +64,7 @@ import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-emp
     MaterialModule,
     MatSelectModule,
     FormsModule,
-    SharedModule,
-    
+    SharedModule,    
   ],
   exports:[HeaderComponent]
 })

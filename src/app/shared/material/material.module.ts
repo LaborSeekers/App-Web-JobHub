@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -34,9 +35,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule
   ],
-  exports:[MatExpansionModule,MatSidenavModule,MatPaginatorModule,MatProgressSpinnerModule,MatTableModule,MatIconModule,MatButtonModule,MatBadgeModule,MatFormFieldModule,MatInputModule,MatDialogModule,MatTabsModule,ReactiveFormsModule, MatSelectModule
+  exports:[MatExpansionModule,MatCardModule,MatSidenavModule,MatPaginatorModule,MatProgressSpinnerModule,MatTableModule,MatIconModule,MatButtonModule,MatBadgeModule,MatFormFieldModule,MatInputModule,MatDialogModule,MatTabsModule,ReactiveFormsModule, MatSelectModule
    ]
 })
 export class MaterialModule { }

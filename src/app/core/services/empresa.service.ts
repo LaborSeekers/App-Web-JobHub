@@ -9,6 +9,7 @@ import { environment } from '../../../environments/enviroment';
   providedIn: 'root'
 })
 export class EmpresasService {
+  
     private apiUrl = `${environment.apiUrl}/admin/Empresas`;
 
     constructor(private http: HttpClient) {}
@@ -17,6 +18,14 @@ export class EmpresasService {
       return this.http.get<Empresa>(`${this.apiUrl}/${id}`);
     }
     getEmpresaByJobOfferId(jobOfferId: number): Observable<Empresa> {
-        return this.http.get<Empresa>(`${this.apiUrl}/${jobOfferId}/empresa`);
-      }
+      return this.http.get<Empresa>(`${this.apiUrl}/${jobOfferId}/empresa`);
+    }
+
+    createEmpresa(empresa: any): Observable<Empresa> {
+      return this.http.post<Empresa>(this.apiUrl, empresa)
+    }
+
+    getAllEmpresas(): Observable<Empresa[]>{
+      return this.http.get<Empresa[]>(this.apiUrl);
+    }
 }

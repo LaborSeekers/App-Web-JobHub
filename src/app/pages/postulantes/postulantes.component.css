@@ -26,6 +26,7 @@ main{
 .derecha{
     flex: 5;
     min-width: 80%;
+    min-height: 650px;
     border-width: 1px;
     border-style: solid;
     border-color: rgb(137, 137, 137);

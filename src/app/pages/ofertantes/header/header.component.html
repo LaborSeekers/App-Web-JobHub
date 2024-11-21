@@ -5,7 +5,10 @@
     </div>
    
     <div class="perfil">
-      <mat-icon aria-hidden="false" class="mat-icon"  matBadge="1" matBadgeColor="warn"><a [routerLink]='["/Ofertantes/hub/mensajeria"]'>chat_bubble</a></mat-icon>
+      <mat-icon class="mat-icon"  
+      [matBadge]="newMessage ? '!' : null" 
+      matBadgeColor="warn" 
+      aria-hidden="false"><a [routerLink]='["/Ofertantes/hub/mensajeria"]'>chat_bubble</a></mat-icon>
       <app-perfil-usario></app-perfil-usario>
     </div>
 </header>

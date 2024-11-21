@@ -50,7 +50,7 @@ export class CrearOfertaComponent implements OnInit {
       logo: [''],
       image: [''],
       video: [''],
-      status: [''],
+      status: ['', Validators.required],
       ofertante_id: ['']
     });
   }
@@ -89,7 +89,6 @@ export class CrearOfertaComponent implements OnInit {
       },
       error: (error) => {
         this.showSnackBar('Error al cargar la oferta laboral');
-        console.error('Error:', error);
       }
     });
   }
@@ -143,7 +142,6 @@ export class CrearOfertaComponent implements OnInit {
       },
       error: (error) => {
         this.showSnackBar(this.isEditMode ? 'Error al actualizar la oferta laboral' : 'Error al crear la oferta laboral');
-        console.error('Error:', error);
       }
     });
   }
@@ -169,7 +167,6 @@ export class CrearOfertaComponent implements OnInit {
   }
 
   vistaPrevia(): void {
-    console.log('Vista previa', this.ofertaForm.value);
   }
 
   salir(): void {

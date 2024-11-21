@@ -17,19 +17,15 @@ export class OtpVerificationComponent {
         const email = localStorage.getItem('email'); // Recupera el correo de localStorage
 
         if (!email) {
-            console.error('No se encontró el correo en localStorage.');
             alert('Hubo un problema. Por favor, intenta nuevamente.');
             return;
         }
 
         this.authService.verifyOtp(email, this.otp).subscribe({
             next: (response) => {
-                console.log('OTP verificado exitosamente:', response);
-                this.router.navigate(['/auth/change-password']); // Redirige a la página de recuperación de contraseña
-                //localStorage.removeItem('email'); // Elimina el correo de localStorage por seguridad
+                this.router.navigate(['/auth/change-password']);
             },
             error: (error) => {
-                console.error('Error al verificar OTP:', error);
                 alert('Hubo un problema al verificar el OTP. Intenta nuevamente.');
             }
         });

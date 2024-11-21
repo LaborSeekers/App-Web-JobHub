@@ -19,6 +19,11 @@
     <div class="cards">
       <!-- Mostrar cada candidato -->
       <div class="card" *ngFor="let candidato of filteredCandidates">
+        <mat-icon class="mat-icon"
+        matBadgeColor="warn" 
+        aria-hidden="false"
+        (click)="createConversation(candidato.userId)" >chat_bubble</mat-icon>
+        
         <div class="details">
           <img src="../../../assets/imagenes/Entrevistas/perfil.png" class="profile-pic">
           <h2>{{ candidato.firstName }} {{ candidato.lastName }}</h2>
@@ -30,7 +35,7 @@
           <!-- Botones para ver CV y perfil -->
           <button class="cv-button">Ver CV</button>
           <button class="profile-button">Ver perfil</button>
-          <button class="feedback-button">Enviar Feedback</button>
+          <button class="feedback-button" (click)="openFeedbackDialog(candidato.applicationId)">Enviar Feedback</button>
         </div>
       </div>
     </div>

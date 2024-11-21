@@ -32,7 +32,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                  "glob": "_redirects",
+                  "input": "src",
+                  "output": "/"
+              }
             ],
             "styles": [
               "src/custom-theme.scss",
@@ -59,7 +64,7 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": false
             }
           },
           "defaultConfiguration": "production"
@@ -92,7 +97,8 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/_redirects"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",

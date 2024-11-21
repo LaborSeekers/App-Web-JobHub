@@ -10,8 +10,6 @@ export interface OfertaLaboralRequest{
     jobModality_id: string;
     status?: string;
     ofertante_id:string;
-
-
   }
     /*id?: number
     logo: string;

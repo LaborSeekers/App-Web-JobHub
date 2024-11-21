@@ -28,6 +28,7 @@ export class SideMenuComponent {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => this.updateSelectedIndex());
+
   }
 
   updateSelectedIndex() {
@@ -42,6 +43,7 @@ export class SideMenuComponent {
 
     this.checkNavbar();
   }
+
   logout(){
     this.authService.logout();
   }
@@ -59,16 +61,15 @@ export class SideMenuComponent {
 
   checkNavbar() {
     const navbarWidth = this.navbar.nativeElement.offsetWidth;
-    const windowWidth = window.innerWidth; // Ancho de la ventana
-    const threshold = windowWidth * 0.6; // 90% del ancho de la ventana
+    const windowWidth = window.innerWidth;
+    const threshold = windowWidth * 0.6;
 
-    // Verifica si el ancho del navbar es mayor al 90% de la ventana
     setTimeout(() => {
-      this.isDropdownVisible = navbarWidth > threshold;
+      this.isDropdownVisible = navbarWidth >= threshold;
       if (!this.isDropdownVisible) {
           this.dropdownVisible = false;
       }
-  });
+    });
   }
 
   toggleDropdown() {

@@ -52,7 +52,6 @@ export class AlertasTrabajoComponent {
   ngOnInit(){
     this.AlertasService.getFeedbacks().subscribe({
       next: (feedbacks)=>{
-        console.log(feedbacks);
         this.alertas = feedbacks;
         this.dataSource.data = this.alertas;
       }

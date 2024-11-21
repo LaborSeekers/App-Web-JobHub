@@ -29,16 +29,15 @@ export class ChangePasswordComponent {
   
     const newPassword = this.newPasswordInput.nativeElement.value;
     const confirmPassword = this.confirmPasswordInput.nativeElement.value;
+
     const email = localStorage.getItem('email'); // Recupera el correo de localStorage
-  
+
     if (!email) {
-      console.error('No se encontró el correo en localStorage.');
       alert('Hubo un problema. Por favor, intenta nuevamente.');
       return;
     }
   
     if (newPassword !== confirmPassword) {
-      console.log('Las contraseñas no coinciden');
       alert('Las contraseñas no coinciden. Intente nuevamente.');
       return;
     }
@@ -46,12 +45,11 @@ export class ChangePasswordComponent {
     // Llamada al servicio para actualizar la contraseña
     this.authService.setPassword(email, newPassword).subscribe({
       next: (response) => {
-        console.log('Contraseña actualizada con éxito', response);
         alert('Contraseña actualizada. Ahora puede iniciar sesión con la nueva contraseña.');
-        this.router.navigate(['/auth/login']); // Redirige al login
+        localStorage.removeItem("email");
+        this.router.navigate(['/auth/login']);
       },
       error: (error) => {
-        console.error('Error al actualizar la contraseña', error);
         alert('Hubo un problema al actualizar la contraseña. Intenta nuevamente.');
       }
     });

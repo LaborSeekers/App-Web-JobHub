@@ -10,6 +10,8 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { SubscriptionCheckComponent } from './subscription-check/subscription-check.component';
 
 import { VerEmpresaComponent } from '../../shared/components/ver-empresa/ver-empresa.component';
+import { MensajeriaComponent } from '../../shared/components/mensajeria/mensajeria.component';
+import { ApplicantsReportComponent } from './applicants-report/applicants-report.component';
 
 const routes: Routes = [{path: 'hub', component: OfertantesComponent,
     children:[
@@ -17,13 +19,14 @@ const routes: Routes = [{path: 'hub', component: OfertantesComponent,
       {path: 'crear-ofertas', component: CrearOfertaComponent},
       {path: 'edit/:id', component: CrearOfertaComponent },
       {path: 'ver-postulantes/:offerId', component: VerPostulantesComponent},
+      {path: 'ver-reporte', component: ApplicantsReportComponent},
       {path: 'inicio', component:InicioComponent },
       {path: 'subscripcion', component:SubscriptionsComponent},
       {path: 'subscripcion/check', component: SubscriptionCheckComponent},
       {path: '', redirectTo:'inicio', pathMatch:'full'},
       {path: 'ver-empresa/:Id', component: VerEmpresaComponent},
       {path: 'entrevistas', loadChildren: () => import('./entrevistas/entrevistas.module').then(m => m.EntrevistasModule) },
-      { path: 'mensajeria', loadChildren: () => import('./ofertantes-mensajeria/ofertantes-mensajeria.module').then(m => m.OfertantesMensajeriaModule) },
+      { path: 'mensajeria', component: MensajeriaComponent},
     ]
 },
     
