@@ -20,7 +20,7 @@
         <div class=" conf cambiaContra">
             <p>Usted puede cambiar su contraseña cuantas veces desea, por favor tener en cuenta que cada vez que se
                  cambia la contraseña, se cerrará su cuenta en todas las plataformas que inició sesión en algún momento.</p>
-            <button [textContent]="['Cambiar contraseña']"></button>
+            <button (click)="redirectToChangePassword()">Cambiar contraseña</button>
         </div>
 
         <h3>Eliminar cuenta</h3>

@@ -10,6 +10,7 @@ import { LanguageLevel } from '../models/LanguageLevel.interface';
 import { EducationLevel } from '../models/EducationLevel.interface';
 import { UserInfo } from '../models/user-info.interface';
 import { Postulante } from '../models/postulante-dto-response';
+import { CategoryChartDialogComponent } from '../../pages/postulantes/ofertas-de-trabajo/category-chart-dialog.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -101,6 +102,10 @@ getLanguageLevels():Observable<LanguageLevel[]>{
 }
 getEducationLevels():Observable<EducationLevel[]>{
   return this.http.get<EducationLevel[]>(`${this.apiUrl2}/education_level`);
+}
+getJobOffersByCategory(category: string): Observable<{ label: string; count: number }[]> {
+  const url = `${this.apiUrl}/category-chart/${category}`; // URL correcta según el backend
+  return this.http.get<{ label: string; count: number }[]>(url);
 }
 
 

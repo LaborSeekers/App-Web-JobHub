@@ -14,11 +14,13 @@ import { SharedModule } from '../../shared/shared.module';
 import { TablaOfertasComponent } from './tabla-ofertas/tabla-ofertas.component';
 import { OfertasDeTrabajoComponent } from './ofertas-de-trabajo/ofertas-de-trabajo.component';
 import { MisOfertasComponent } from './mis-ofertas/mis-ofertas.component';
+import { CategoryChartDialogComponent } from './ofertas-de-trabajo/category-chart-dialog.component';
 
 
 
 @NgModule({
   declarations: [
+    CategoryChartDialogComponent,
     PostulantesComponent,
     TablaEmpleoComponent,
     PerfilUserComponent,
