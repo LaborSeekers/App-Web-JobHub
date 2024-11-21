@@ -1,0 +1,16 @@
+/* Estilo para centrar el gráfico */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 400px;
+  }
+  
+  /* Asegura que el canvas ocupe el espacio necesario */
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  

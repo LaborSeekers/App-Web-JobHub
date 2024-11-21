@@ -6,4 +6,20 @@
       </div>
     </div>
     <app-tabla-ofertas [data]="data" [isLoading]="isLoading" (filtersChanged) = "recieveFilters($event)" (pageChanged) = "pageChanged($event)" ></app-tabla-ofertas>
-</div>
+     <!-- Sección del botón y selección de categoría -->
+     <div class="grafico-categoria-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Categoría</mat-label>
+        <mat-select [(value)]="selectedCategory" (selectionChange)="onCategoryChange($event)">
+          <mat-option value="status">Estado</mat-option>
+          <mat-option value="location">Ubicación</mat-option>
+          <mat-option value="modality">Modalidad</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <button mat-raised-button color="primary" (click)="showCategoryChart()">
+        Ver Gráfico por Categoría
+      </button>
+    </div>
+
+  </div>
